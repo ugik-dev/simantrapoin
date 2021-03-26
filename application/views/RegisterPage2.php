@@ -115,6 +115,8 @@
                 </div>
               </div>
               <hr>
+              tes
+              <input type="file" accept="image/*" capture="camera" />
 
               <div class="row">
                 <div class="col-sm-6">
