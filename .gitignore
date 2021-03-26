@@ -1,1 +1,5 @@
 /application/config/database.php
+/upload/npwp/*
+!/upload/npwp/.gitkeep
+/upload/nib/*
+!/upload/nib/.gitkeep
