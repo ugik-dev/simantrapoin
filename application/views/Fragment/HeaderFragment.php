@@ -56,24 +56,28 @@
 
 <!doctype html>
 <html lang="en">
-   <head>
-      <!-- Required meta tags -->
-    <title>SIMANTRAPOIN | <?= $title ?></title>
 
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <title>Vito - Responsive Bootstrap 4 Admin Dashboard Template</title>
-      <!-- Favicon -->
-      <link rel="shortcut icon" href="<?=base_url('assets/')?>images/favicon.ico" />
-      <!-- Bootstrap CSS -->
-      <link rel="stylesheet" href="<?=base_url('assets/')?>css/bootstrap.min.css">
-      <!-- Typography CSS -->
-      <link rel="stylesheet" href="<?=base_url('assets/')?>css/typography.css">
-      <!-- Style CSS -->
-      <link rel="stylesheet" href="<?=base_url('assets/')?>css/style.css">
-      <!-- Responsive CSS -->
-      <link rel="stylesheet" href="<?=base_url('assets/')?>css/responsive.css">
-      <script src="<?= base_url('assets/') ?>js/jquery-3.3.1.min.js"></script>
+<head>
+   <!-- Required meta tags -->
+   <title>SIMANTRAPOIN | <?= $title ?></title>
 
-   </head>
-   <body class="sidebar-main-active right-column-fixed header-top-bgcolor">
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <!-- <title>Vito - Responsive Bootstrap 4 Admin Dashboard Template</title> -->
+   <!-- Favicon -->
+   <link rel="apple-touch-icon" sizes="180x180" href="<?= base_url('assets/icon/') ?>apple-touch-icon.png">
+   <link rel="icon" type="image/png" sizes="32x32" href="<?= base_url('assets/icon/') ?>favicon-32x32.png">
+   <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url('assets/icon/') ?>favicon-16x16.png">
+   <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="<?= base_url('assets/') ?>css/bootstrap.min.css">
+   <!-- Typography CSS -->
+   <link rel="stylesheet" href="<?= base_url('assets/') ?>css/typography.css">
+   <!-- Style CSS -->
+   <link rel="stylesheet" href="<?= base_url('assets/') ?>css/style.css">
+   <!-- Responsive CSS -->
+   <link rel="stylesheet" href="<?= base_url('assets/') ?>css/responsive.css">
+   <script src="<?= base_url('assets/') ?>js/jquery-3.3.1.min.js"></script>
+
+</head>
+
+<body class="sidebar-main-active right-column-fixed header-top-bgcolor">

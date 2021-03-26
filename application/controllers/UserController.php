@@ -36,12 +36,8 @@ class UserController extends CI_Controller
 	public function daftar()
 	{
 		$this->SecurityModel->guestOnlyGuard();
-		// $this->load->library('user_agent');
-		// if ($this->agent->is_mobile()) {				
-		// 			echo "Mobile";
-		// 		} else {
-		// 			echo "Laptop";
-		// 		}
+		$this->load->library('user_agent');
+
 
 
 		$pageData = array(
@@ -49,7 +45,14 @@ class UserController extends CI_Controller
 		);
 		// $this->load->view('fragment/test', $pageData);
 
-		$this->load->view('RegisterPage2');
+		if ($this->agent->is_mobile()) {
+			$this->load->view('RegisterPage2');
+			// echo "Mobile";
+		} else {
+			$this->load->view('error500');
+
+			// echo "Laptop";
+		}
 	}
 
 

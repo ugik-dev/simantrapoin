@@ -8,7 +8,9 @@
   <title>SIMANTRAPOIN</title>
   <!-- Favicon -->
 
-  <link rel="shortcut icon" href="<?= base_url('assets/images/') ?>favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="<?= base_url('assets/icon/') ?>apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="<?= base_url('assets/icon/') ?>favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url('assets/icon/') ?>favicon-16x16.png">
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="<?= base_url('assets/css/') ?>bootstrap.min.css">
   <!-- Typography CSS -->
@@ -105,8 +107,6 @@
                   <label for="">KTP <small>.jpeg .jpg .png</small></label>
                   <p class="no-margins"><span id="ktp">-</span></p>
 
-                  <!-- <input class="form-control" type="file" accept="image/*" capture="camera"> -->
-                  <!-- </div> -->
                 </div>
                 <div class="col-sm-6">
                   <label for="">Pass Photo <small>.jpeg .jpg .png</small></label>
@@ -115,8 +115,7 @@
                 </div>
               </div>
               <hr>
-              tes
-              <input type="file" accept="image/*" capture="camera" />
+              <!-- <input type="file" accept="image/*" capture="camera" /> -->
 
               <div class="row">
                 <div class="col-sm-6">

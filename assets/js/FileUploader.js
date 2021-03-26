@@ -22,14 +22,18 @@ class FileUploader {
 	}
 
 	render() {
+		// console.log("cam" + this.camera);
 		var label = this.showLabel
 			? `<label for="${this.filename}Filename">Dokumen ${capFirstLetter(
 					this.filename.replace(/_/g, " ")
 			  )}</label>`
 			: "";
-			if(this.camera){
-				this.accept = "image/*"
-			}
+		if (this.camera) {
+			this.accept = "image/*";
+			this.camera = "capture='camera'";
+		} else {
+			this.camera = "zzzzzzzzzzz";
+		}
 		this.el.html(`
       <div class="form-group">
         ${label}
@@ -42,7 +46,7 @@ class FileUploader {
             <button class="btn btn-outline-warning file-upload-btn" type="button" id="cancelFileButton" style="display:none" data-toggle="tooltip" data-placement="top" title="Batal"><i class="fa fa-ban"></i></button>
           </div>
         </div>
-        <input type="file" id="file" name="${this.filename}" style="display:none" accept="${this.accept}">
+        <input type="file" id="file" name="${this.filename}" style="display:none" ${this.camera} accept="${this.accept}">
         <input type="text" id="delete_file" name="delete_${this.filename}" style="display:none">
       </div>
     `);
