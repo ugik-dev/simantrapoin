@@ -1,81 +1,100 @@
 <style>
-     .display-5 {
-        font-size: 40px !important;
-        font-weight: bold !important;
+  .display-5 {
+    font-size: 40px !important;
+    font-weight: bold !important;
+  }
+
+  @media (max-width: 800px) {
+    .jumbotron {
+      padding: 10px 0px 0px 0px !important;
+      margin: 10px 0px 0px 0px !important;
     }
 
-    @media (max-width: 800px) {
-        .jumbotron {
-            padding: 10px 0px 0px 0px !important;
-            margin: 10px 0px 0px 0px !important;
-        }
-
-        /* #logo_login { */
-        /* width: 100px; */
-        /* } */
-        .display-5 {
-            font-size: 20px !important;
-            font-weight: bold !important;
-        }
+    /* #logo_login { */
+    /* width: 100px; */
+    /* } */
+    .display-5 {
+      font-size: 20px !important;
+      font-weight: bold !important;
     }
+  }
 </style>
-<?php $this->load->view('Fragment/HeaderFragment', ['title' => $title]); ?>
-<div class="jumbotron " style="height: 95%">
+<?php $this->load->view('Fragment/HeaderFragment', ['title' => ""]); ?>
+<div class="jumbotron " style="height: 5px">
+
   <div class="background_login" id="login_page"></div>
   <div class="container">
-    <div class="row">
-      <div class="col-md-8">
-        <div class="row">
-          <div class="col-sm-3 justify-content-center" id='logo_login' style="margin-bottom: 10px;">
-            <img src="<?php echo base_url('assets/img/logo-bangka.png'); ?>" style="width : 90%; height: auto">
+    <div class="col-lg-12 iq-card" style="background-color:#ffffff91">
+      <div class="iq-card-body">
+        <div class="row align-items-center">
+          <div id="logo">
+            <img src="<?php echo base_url('assets/img/logo-bangka.png'); ?>" class="align-self-center rounded mr-3" style="max-width: 100%" alt="#">
           </div>
-          <div class="col-md-9">
-            <h1 class="display-5 shadowed">SISTEM INFORMASI DAN TRACKING DISPOSISI PERIZINAN</h1>
-            <!-- <h1 class="display-5 shadowed">DINAS PENANAMAN MODAL, PELAYANAN PERIZINAN TERPADU SATU PINTU</h1> -->
-            <p class="shadowed">DINAS PENANAMAN MODAL, PELAYANAN PERIZINAN TERPADU SATU PINTU, KOPERASI USAHA MIKRO KECIL DAN MENENGAH</p>
-            <p class="shadowed">KABUPATEN BANGKA</p>
+          <div id="info" class="col-lg-9 col-md-8 col-sm-8">
+            <!-- <h2 class=""><strong>SIMANTRAPOIN</strong></h2> -->
+            <h4 class="display-4">SIMANTRAPOIN</h4>
+            <h5 id="des_1">Sistem Informasi dan Tracking Disposisi Perizinan</h5>
+            <h5 id="des_2">Dinas Penanaman Modal Pelayanan Perizinan Terpadu Satu Pintu, Koperasi dan Usaha Kecil Menengah</h5>
+            <h5 id="des_3">DINPMP2KUKM</h5>
+            <!-- <h5>Dinas Penanaman Modal Pelayanan Perizinan Terpadu Satu Pintu Koperasi Usaha Mikro Kecil dan Menengah</h5> -->
 
-            <!-- <h1 class="display-5 shadowed">DINAS PENANAMAN MODAL, PELAYANAN PERIZINAN TERPADU SATU PINTU</h1>
-            <p class="lead shadowed">KABUPATEN BANGKA</p> -->
           </div>
-        </div>
-        <!-- <img class="col-md-3" src="<?php echo base_url('assets/img/logo-comeexplore.png'); ?>" >
-          <img class="col-md-3" src="<?php echo base_url('assets/img/logo-pesona-indonesia.png'); ?>" > -->
-        <!-- <div class="row">
-              <div class="col-md-6">
-                  Pemerintah KABUPATEN BANGKA
-              </div>
-              <div class="col-md-6 text-right">
-                <small>© 2019</small>
-              </div>
-            </div> -->
-
-      </div>
-      <div class="col-md-4">
-        <div class="ibox-content" style="background-color:#ffffff61">
-          <form id="loginForm" class="m-t" role="form">
-            <h3 style="color: black;">Login / Masuk</h3>
-            <div class="form-group">
-              <input type="text" class="form-control" name="username" placeholder="Username" required="required">
-            </div>
-            <div class="form-group">
-              <input type="password" class="form-control" name="password" placeholder="Password" required="required">
-            </div>
-            <button type="submit" id="loginBtn" class="btn btn-primary block full-width m-b" data-loading-text="Loging In...">Login</button>
-            <a type="button" href="daftar" class="btn btn-info block full-width m-b" data-loading-text=""><i class="fa fa-pencil"></i> Daftar</a>
-            <!-- <a type="button" href="search" class="btn btn-info block full-width m-b" data-loading-text=""><i class="fa fa-search"></i> Cari Data</a> -->
-          </form>
-          <p class="m-t">
-            <small style="color: black;">DINPMP2KUKM KAB BANGKA</small>
-          </p>
+          <!-- <div class="col-lg-4" style="background-color: blue; height: 100px"></div> -->
         </div>
       </div>
-
-
     </div>
-    <br>
+    <!-- <div class="row d-flex justify-content-between"> -->
+
+    <!-- <div class="col-lg-3"> -->
+    <div class="col-lg-12 d-flex justify-content-center">
+      <div class="col-lg-5 iq-card " style="background-color:#ffffff">
+        <form class="mt-4" id="loginForm" role="form">
+          <div class="form-group">
+            <label for="exampleInputEmail1">NIK</label>
+            <input type="text" class="form-control mb-0" id="exampleInputEmail1" name="username" placeholder="Username" required="required">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control mb-0" name="password" placeholder="Password" required="required">
+          </div>
+          <div class="d-inline-block w-100">
+            <div class="custom-control custom-checkbox d-inline-block mt-2 pt-1">
+              <input type="checkbox" class="custom-control-input" id="customCheck1">
+              <label class="custom-control-label" for="customCheck1">Ingatkan saya</label>
+            </div>
+            <button type="submit" id="loginBtn" class="btn btn-primary float-right" data-loading-text="Loging In...">Masuk</button>
+          </div>
+          <div class="sign-info">
+            <span class="dark-color d-inline-block line-height-2">Belum memiliki akun? <a href="daftar">Daftar sekarang</a></span>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- <div class="iq-card-body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="media mb-4">
+              <div class="media-body">
+                <div class="row">
+                  <div class="col-lg-8">
+                  
+                  </div>
+                </div>
+
+
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="iq-card-body" style="background-color:#ffffff">
+         
   </div>
 </div>
+</div>
+</div>
+</div> -->
+  </div>
+</div>
+
 
 
 <script>
@@ -123,12 +142,194 @@
   });
 </script>
 <style>
+  @media (max-width: 575.98px) {
+    #des_1 {
+      display: none !important;
+    }
+
+    #des_2 {
+      display: none !important;
+    }
+
+    #des_3 {
+      display: block !important;
+    }
+
+    #logo {
+      max-width: 3rem;
+    }
+
+    #info {
+      max-width: 7rem;
+    }
+  }
+
+  /* // Small devices (landscape phones, 576px and up) */
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    #des_1 {
+      display: block !important;
+    }
+
+    #des_2 {
+      display: block !important;
+    }
+
+    #des_3 {
+      display: none !important;
+    }
+
+    #logo {
+      width: 7rem;
+    }
+  }
+
+  /* // Medium devices (tablets, 768px and up) */
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    #des_1 {
+      display: block !important;
+    }
+
+    #des_2 {
+      display: block !important;
+    }
+
+    #des_3 {
+      display: none !important;
+    }
+
+    #logo {
+      width: 7rem;
+    }
+  }
+
+  /* // Large devices (desktops, 992px and up) */
+  @media (min-width: 992px) and (max-width: 1199.98px) {
+    #des_1 {
+      display: block !important;
+    }
+
+    #des_2 {
+      display: block !important;
+    }
+
+    #des_3 {
+      display: none !important;
+    }
+
+    #logo {
+      width: 7rem;
+    }
+  }
+
+  /* // Extra large devices (large desktops, 1200px and up) */
+  @media (min-width: 1200px) {
+    #des_1 {
+      display: block !important;
+    }
+
+    #des_2 {
+      display: block !important;
+    }
+
+    #des_3 {
+      display: none !important;
+    }
+
+    #logo {
+      width: 7rem;
+    }
+  }
+
+  /* @media (max-width: 574px) {
+    #des_1 {
+      display: none !important;
+    }
+
+    #des_2 {
+      display: none !important;
+    }
+
+    #des_3 {
+      display: block !important;
+    }
+
+    #logo {
+      width: 4rem;
+    }
+  }
+
+  @media (min-width: 575.98px) {
+    #des_1 {
+      display: none !important;
+    }
+
+    #des_2 {
+      display: none !important;
+    }
+
+    #des_3 {
+      display: block !important;
+    }
+
+    #logo {
+      width: 4rem;
+    }
+  }
+
+  @media (min-width: 767.98px) {
+
+    #logo {
+      max-width: 9rem !important;
+    }
+
+    #des_1 {
+      display: block !important;
+    }
+
+    #des_2 {
+      display: none !important;
+    }
+
+    #des_3 {
+      display: block !important;
+    }
+  }
+
+  @media (min-width: 991.98px) {
+    #des_1 {
+      display: block !important;
+    }
+
+    #des_2 {
+      display: block !important;
+    }
+
+    #des_3 {
+      display: none !important;
+    }
+  }
+
+  @media (min-width: 1199.98px) {
+    #des_1 {
+      display: block !important;
+    }
+
+    #des_2 {
+      display: block !important;
+    }
+
+    #des_3 {
+      display: none !important;
+    }
+  } */
+
   body {
     background-color: #f3f3f4 !important;
   }
 
   .img_0 {
     background-image: url('assets/img/background/1-Lomba-Foto-Babar-2017_Menangkis-Tantangan_Lintang-Tatang.jpg');
+
   }
 
   .img_1 {
@@ -243,7 +444,10 @@
     background-size: cover;
     height: 750px;
     border-radius: 0px;
-    padding: 130px;
+    padding-left: 130;
+    padding-right: 130;
+    padding-top: 10px;
+    /* padding: 130px; */
   }
 
   .background_login {
@@ -262,13 +466,11 @@
     color: #fff;
   }
 
-  .logo-logo {
+  /* .logo-logo {
     margin: 30px;
     background-color: #ffffff;
     border: 1px solid black;
     opacity: 0.6;
     filter: alpha(opacity=60);
-    /* For IE8 and earlier */
-  }
+  } */
 </style>
-<?php $this->load->view('Fragment/FooterFragment'); ?>

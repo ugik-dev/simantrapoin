@@ -29,7 +29,7 @@ class UserController extends CI_Controller
 		// $this->load->view('fragment/test', $pageData);
 
 		// $this->load->view('LoginPage', $pageData);
-		$this->load->view('LoginPage_2');
+		$this->load->view('LoginPage');
 	}
 
 

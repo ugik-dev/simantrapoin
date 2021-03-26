@@ -10,6 +10,22 @@ class Service extends CI_Controller
         $this->load->helper(array('DataStructure', 'Validation'));
         $this->db->db_debug = TRUE;
     }
+
+    public function help()
+    {
+        $this->SecurityModel->userOnlyGuard(TRUE);
+        // var_dump($this->session->userdata());
+        $pageData = array(
+            'title' => 'Help Service',
+            'content' => 'help',
+            'breadcrumb' => array(
+                'Home' => base_url(),
+            ),
+        );
+        $this->load->view('Page', $pageData);
+    }
+
+
     function getServiceCategory()
     {
         try {
@@ -244,18 +260,14 @@ class Service extends CI_Controller
 
 
 
-    function ipal()
+    function process()
     {
         try {
             $this->SecurityModel->userOnlyGuard(TRUE);
             $data = $this->input->POST();
             $data['file_pendukung'] = FileIO::genericUpload('file_pendukung', array('pdf', 'jpeg', 'jpg', 'png'), NULL, $data, '20000');
             $data['nib_file'] = FileIO::genericUpload('nib_file', array('pdf', 'jpeg', 'jpg', 'png'), NULL, $data, '20000');
-            $data['izin_lingkungan'] = FileIO::genericUpload('izin_lingkungan', array('pdf', 'jpeg', 'jpg', 'png'), NULL, $data, '20000');
-            $data['izin_komersial'] = FileIO::genericUpload('izin_komersial', array('pdf', 'jpeg', 'jpg', 'png'), NULL, $data, '20000');
-            $data['pernyataan'] = FileIO::genericUpload('pernyataan', array('pdf', 'jpeg', 'jpg', 'png'), NULL, $data, '20000');
-            $data['persyaratan_teknis'] = FileIO::genericUpload('persyaratan_teknis', array('pdf', 'jpeg', 'jpg', 'png'), NULL, $data, '20000');
-            $data = $this->ServiceModel->addIpal($data);
+            $data = $this->ServiceModel->addService($data);
 
             // throw new UserException("Pengajuan sudah diambil tindakan lanjut, harap lakukan pengajuan dari awal!!", USER_NOT_FOUND_CODE);
 

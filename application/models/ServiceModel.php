@@ -10,8 +10,8 @@ class ServiceModel extends CI_Model
     public function getServiceCategory($filter)
     {
         $this->db->select("*");
-        $this->db->from('service_category');
-        if (!empty($filter['id_service'])) $this->db->where('id_service', $filter['id_service']);
+        $this->db->from('jenis_perizinan');
+        if (!empty($filter['id_perizinan'])) $this->db->where('id_perizinan', $filter['id_perizinan']);
         $res = $this->db->get();
         // return $res;
         return $res->result_array();
@@ -77,23 +77,20 @@ class ServiceModel extends CI_Model
     }
 
 
-    public function addIpal($data)
+    public function addService($data)
     {
         $data['user_sending'] = $this->session->userdata('id_user');
-        $dataInsert = DataStructure::slice($data, ['izin_komersial', 'izin_lingkungan', 'pernyataan', 'persyaratan_teknis']);
-        $this->db->insert('service_1', $dataInsert);
-        ExceptionHandler::handleDBError($this->db->error(), "Insert Pengiriman", "pengiriman");
-        $id_sub_service =  $this->db->insert_id();
+        // $dataInsert = DataStructure::slice($data, ['izin_komersial', 'izin_lingkungan', 'pernyataan', 'persyaratan_teknis']);
+        // $this->db->insert('service_1', $dataInsert);
+        // ExceptionHandler::handleDBError($this->db->error(), "Insert Pengiriman", "pengiriman");
+        // $id_sub_service =  $this->db->insert_id();
 
         if ($this->session->userdata()['nama_role'] == 'customer') {
             $data['nik'] = $this->session->userdata()['username'];
         }
-        $data['id_sub_service'] = $id_sub_service;
-        $data['id_service'] = '1';
         $data['status_proposal'] = 'DIPROSES';
-        // echo json_encode($data);
-        // return;
-        $dataInsert = DataStructure::slice($data, ['nik', 'nib_file', 'id_service', 'id_sub_service', 'nib', 'user_sending', 'lokasi_perizinan', 'deskripsi',  'file_pendukung', 'tujuan', 'survey', 'nama_badan']);
+
+        $dataInsert = DataStructure::slice($data, ['nik', 'nib_file', 'id_service', 'nib', 'user_sending', 'lokasi_perizinan', 'deskripsi',  'file_pendukung', 'tujuan', 'survey', 'nama_badan']);
         $this->db->insert('pengiriman', $dataInsert);
         ExceptionHandler::handleDBError($this->db->error(), "Insert Pengiriman", "pengiriman");
         $id = $this->db->insert_id();

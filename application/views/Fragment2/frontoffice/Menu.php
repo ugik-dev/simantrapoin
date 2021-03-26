@@ -48,10 +48,13 @@
                   </li> -->
 
                   <li class="">
-                     <a href="<?= base_url('FOController/pengajuan') ?>" class=" active iq-waves-effect collapsed" aria-expanded="false"><i class="ri-pencil-ruler-line"></i><span>Daftar Pengajuan</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                     <a href="<?= base_url('FOController/pengajuan') ?>" class=" iq-waves-effect collapsed" aria-expanded="false"><i class="ri-pencil-ruler-line"></i><span>Daftar Pengajuan</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                   </li>
                   <li class="">
-                     <a href="<?= base_url('FOController/Service') ?>" class=" active iq-waves-effect collapsed" aria-expanded="false"><i class="ri-profile-line"></i><span>Service</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                     <a href="<?= base_url('FOController/Service') ?>" class="iq-waves-effect collapsed" aria-expanded="false"><i class="ri-profile-line"></i><span>Service</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                  </li>
+                  <li class="">
+                     <a href="<?= base_url('Service/Help') ?>" class=" iq-waves-effect collapsed" aria-expanded="false"><i class="ri-questionnaire-line"></i><span>Help</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                   </li>
                   <!-- <li>
                                     <a href="#forms" class="iq-waves-effect collapsed"  data-toggle="collapse" aria-expanded="false"><i class="ri-profile-line"></i><span>Forms</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>

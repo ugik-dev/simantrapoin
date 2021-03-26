@@ -18,22 +18,20 @@
             <div class="iq-card-body">
               <ul class="nav nav-tabs" id="myTab-three" role="tablist">
                 <li class="nav-item">
-                  <a class="nav-link" id="disposisi-tab" data-toggle="tab" href="#tab-disposisi" role="tab" aria-controls="disposisi" aria-selected="false">Disposisi</a>
+                  <a class="nav-link active" id="disposisi-tab" data-toggle="tab" href="#tab-disposisi" role="tab" aria-controls="disposisi" aria-selected="false">Disposisi</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link active" id="home-tab-three" data-toggle="tab" href="#home-three" role="tab" aria-controls="home" aria-selected="false">Info</a>
+                  <a class="nav-link" id="home-tab-three" data-toggle="tab" href="#home-three" role="tab" aria-controls="home" aria-selected="false">Info</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" id="profile-tab-three" data-toggle="tab" href="#profile-three" role="tab" aria-controls="profile" aria-selected="false">Dokumen</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" id="contact-tab-three" data-toggle="tab" href="#contact-three" role="tab" aria-controls="contact" aria-selected="true">Persyaratan Teknis</a>
-                </li>
+
               </ul>
 
               <div class="tab-content" id="myTabContent-4">
                 <!-- TAB Disposisi -->
-                <div class="tab-pane fade active show" id="tab-disposisi" role="tabpanel" aria-labelledby="profile-tab-three">
+                <div class="tab-pane fade" id="tab-disposisi" role="tabpanel" aria-labelledby="profile-tab-three">
                   <div class="table-responsive">
                     <table id="FDataTable" class="table table-bordered table-hover" style="padding:0px">
                       <thead>
@@ -50,66 +48,112 @@
                     </table>
                   </div>
                 </div>
-                <!-- END TAB Disposisi -->
-
-                <!-- TABS 1 -->
-                <div class="tab-pane fade" id="home-three" role="tabpanel" aria-labelledby="home-tab-three">
+                <div class="tab-pane fade active show" id="home-three" role="tabpanel" aria-labelledby="home-tab-three">
                   <form>
-                    <!-- <div class="row"> -->
-                    <div class="col-lg-6">
-                      <label for="formGroupExampleInput">Tanggal Terdata</label>
-                      <h4 id='created_at'> </h4>
-                      <hr>
-                      <!-- </div> -->
-                    </div>
-                    <div class="row iq-card-body">
-                      <div class="form-group col-sm-6">
-                        <label for="nama">Nama :</label>
-                        <h4 id='nama'> </h4>
-                        <hr>
+                    <div class="row">
+                      <div class="col-lg-6 list-group list-group-horizontal">
+                        <label class="list-group-item" style="border: none" for="formGroupExampleInput">Tanggal Terdata</label>
+                        <h6 id='created_at' class="list-group-item" style="border: none"> </h6>
                       </div>
-                      <div class="form-group col-sm-6">
-                        <label for="nama_badan">Nama Badan :</label>
-                        <h4 id='nama_badan'> </h4>
-                        <hr>
+                      <div class="col-lg-6 list-group list-group-horizontal">
+                        <label class="list-group-item" style="border: none" for="formGroupExampleInput">Status </label>
+                        <h4 id='status_proposal' class="list-group-item" style="border: none"> </h4>
                       </div>
                     </div>
 
-                    <div class="row iq-card-body">
-                      <div class="form-group col-sm-6">
-                        <label for="formGroupExampleInput">Perizinan</label>
-                        <h4 id='tujuan'> </h4>
-                        <hr>
+                    <div class=" form-card text-left">
+                      <div class="row">
+                        <div class="col-12">
+                          <hr>
+                          <hr>
+                        </div>
+
                       </div>
-                      <div class="form-group col-sm-6">
-                        <label for="nib">NIB :</label>
-                        <h4 id='nib'> </h4>
-                        <hr>
+                      <div class="row">
+                        <div class="form-group col-lg-6">
+                          <label for="nama" class="">Nama Perseorangan</label>
+                          <strong>
+                            <h4> <strong id='nama'></strong></h4>
+                          </strong>
+
+                          <hr>
+                        </div>
+                        <div class="form-group col-lg-6">
+                          <label for="nik">NIK</label>
+                          <h4>
+                            <strong id='nik'> </strong>
+                          </h4>
+                          <hr>
+                        </div>
+                        <div class="form-group col-lg-6">
+                          <label for="no_telp">No Telp <small></small></label>
+                          <!-- <div class="row col-lg-12"> -->
+                          <a id="wa_to" href="" class="btn btn-outline-success my-2 mr-sm-4" style="width: 150px;" target="_blank"><i class='fa fa-whatsapp'></i> via Whatsapp</a>
+                          <h4><strong id='no_telp'>-</strong></h4>
+                          <!-- </div> -->
+
+                          <hr>
+                        </div>
+                        <div class="form-group col-lg-6">
+                          <label for="email">Email</label>
+                          <a id="mail_to" href="" class="btn btn-outline-success my-2 mr-sm-4" style="width: 150px;" target="_blank"><i class='fa fa-envelope'></i> via Whatsapp</a>
+                          <h4><strong id='email'>-</strong>
+                          </h4>
+
+                          <hr>
+                        </div>
+                        <div class="form-group col-lg-6">
+                          <label for="alamat">Alamat Perseorangan</label>
+                          <h4><strong id='alamat'> </strong>
+                          </h4>
+                          <hr>
+                        </div>
+
+                      </div>
+                      <!-- END SLIDE 1 -->
+                    </div>
+                    <div class="form-card text-left">
+                      <div class="row">
+                        <div class="col-12">
+                          <hr>
+                          <hr>
+                          <!-- <h3 class="mb-4">Informasi Layanan:</h3> -->
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="form-group col-lg-12">
+                          <label for="id_service">Layanan</label>
+                          <h4><strong id='id_service'> </strong>
+                          </h4>
+                          <hr>
+                        </div>
+                        <div class="form-group col-lg-6">
+                          <label for="nama_badan">Nama Badan Usaha</label>
+                          <h4><strong id='nama_badan'> </strong>
+                          </h4>
+                          <hr>
+                        </div>
+                        <div class="form-group col-lg-6">
+                          <label for="nib">NIB</label>
+                          <h4><strong id='nib'> </strong>
+                          </h4>
+                          <hr>
+                        </div>
+                        <div class="form-group col-lg-6">
+                          <label for="exampleFormControlTextarea1">Alamat / Lokasi Perizinan</label>
+                          <h4><strong id='lokasi_perizinan'> </strong>
+                          </h4>
+                          <hr>
+                        </div>
+                        <div class="form-group col-lg-6">
+                          <label for="exampleFormControlTextarea1">Deskripsi Lainnya</label>
+                          <h4><strong id='deskripsi'> </strong>
+                          </h4>
+                          <hr>
+                        </div>
                       </div>
                     </div>
 
-
-                    <div class="row iq-card-body">
-                      <div class="form-group col-sm-6">
-                        <label for="formGroupExampleInput">Alamat</label>
-
-                        <h4 id='alamat'></h4>
-                        <hr>
-                      </div>
-
-                      <div class="form-group  col-sm-6">
-                        <label for="formGroupExampleInput">Deskripsi</label>
-                        <h4 id='deskripsi'></h4>
-                        <hr>
-
-                      </div>
-                    </div>
-                    <div class="form-group iq-card-body">
-                      <label for="status_proposal">Status :</label>
-                      <h4 id='status_proposal'> </h4>
-                      <hr>
-
-                    </div>
 
                   </form>
                 </div>
@@ -125,9 +169,7 @@
                 </div>
                 <!-- END TABS 2 -->
                 <!-- END TABS 3 -->
-                <div class="tab-pane fade " id="contact-three" role="tabpanel" aria-labelledby="contact-tab-three">
-                  <div class="row" id="dok_service"></div>
-                </div>
+
                 <!-- END TABS 3 -->
 
               </div>
@@ -236,92 +278,8 @@
 </div>
 
 
-<div class="modal inmodal" id="survey_modal" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content animated fadeIn">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" id='close2'><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title">Survey Form</h4>
-        <span class="info"></span>
-      </div>
-      <div class="modal-body" id="modal-body">
-        <form role="form" id="survey_form" onsubmit="return false;" type="multipart" autocomplete="off">
-          <input type="hidden" id="id_pengiriman" name="id_pengiriman">
-          <div class="form-group">
-            <select class="form-control mr-sm-2" id="survey_fm" name="survey" required="required">
-              <option class="form-control mr-sm-2" value="">-- Pilih Tindkan --</option>
-              <option class="form-control mr-sm-2" value="ya">Survey</option>
-              <option class="form-control mr-sm-2" value="tidak">Tidak Survey</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="catatan_1">Catatan</label>
-            <textarea rows="3" type="text" placeholder="Catatan" class="form-control" id="catatan_1" name="catatan_1"></textarea>
-          </div>
-          <button class="btn btn-info my-1 mr-sm-2" type="submit" id="add_btn" data-loading-text="Loading..."><strong>Approv</strong></button>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-white" data-dismiss="modal" id='close1'>Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal inmodal" id="penomoran_modal2" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content animated fadeIn">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" id='close2'><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title">Form Penomoran</h4>
-        <span class="info"></span>
-      </div>
-      <div class="modal-body" id="modal-body">
-        <form role="form" id="last_acc_form" onsubmit="return false;" type="multipart" autocomplete="off">
-          <input type="hidden" id="id_pengiriman" name="id_pengiriman">
-          <div class="form-group">
-            <label for="output_no_dokumen">Nomor</label>
-            <input type="text" placeholder="Nomor" class="form-control" id="output_no_dokumen" name="output_no_dokumen">
-          </div>
-          <div class="form-group">
-            <label for="catatan_4">Catatan</label>
-            <textarea rows="3" type="text" placeholder="Catatan" class="form-control" id="catatan_4" name="catatan_4"></textarea>
-          </div>
-
-          <button class="btn btn-info my-1 mr-sm-2" type="submit" id="add_btn" data-loading-text="Loading..."><strong>Selesai</strong></button>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-white" data-dismiss="modal" id='close1'>Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<div class="modal fade modal_files" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id='title_file_modal'></h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body" id='freame_file_modal'>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
 <script>
   $(document).ready(function() {
-    // $('#cagar_dan_budaya').addClass('active');
-    // $('#cagarbudaya').addClass('active');
     var id_pengiriman = "<?= $contentData['id_pengiriman'] ?>";
     var n_role = "<?= $this->session->userdata()['nama_role'] ?>";
     var tabThree = $('#contact-tab-three');
@@ -347,6 +305,11 @@
       'alamat': $('#layout_pengiriman').find('#alamat'),
       'nama_badan': $('#layout_pengiriman').find('#nama_badan'),
       'tujuan': $('#layout_pengiriman').find('#tujuan'),
+      'no_telp': $('#layout_pengiriman').find('#no_telp'),
+      'email': $('#layout_pengiriman').find('#email'),
+      'nik': $('#layout_pengiriman').find('#nik'),
+      'lokasi_perizinan': $('#layout_pengiriman').find('#lokasi_perizinan'),
+      'id_service': $('#layout_pengiriman').find('#id_service'),
       'survey': $('#layout_pengiriman').find('#survey'),
       'nib': $('#layout_pengiriman').find('#nib'),
       'nib_file': $('#layout_pengiriman').find('#nib_file'),
@@ -354,6 +317,8 @@
       'ktp': $('#layout_pengiriman').find('#ktp'),
       'npwp': $('#layout_pengiriman').find('#npwp'),
       'dok_service': $('#layout_pengiriman').find('#dok_service'),
+      'wa_to': $('#layout_pengiriman').find('#wa_to'),
+      'mail_to': $('#layout_pengiriman').find('#mail_to'),
 
       'deskripsi': $('#layout_pengiriman').find('#deskripsi'),
       'status_proposal': $('#layout_pengiriman').find('#status_proposal'),
@@ -692,34 +657,6 @@
     };
 
 
-    // function renderpdf(file) {
-    //   ht = `<div class="ibox">
-    //       <div class="ibox-content">
-    //         <div>
-    //           <iframe id="iframepdf" width="100%" height="400px" src="<?= base_url() ?>/upload/dokumen_permohonan/${file}"></iframe>
-    //         </div>
-
-    //       </div>
-    //     </div>`;
-    //   f_pdf.html(ht);
-    // }
-
-    // function renderpdf2(label, dir, filename) {
-    //   return ` <div class="iq-card col-lg-6">
-    //               <div class="iq-card-header d-flex justify-content-between">
-    //                   <div class="iq-header-title">
-    //                       <h4 class="card-title">${label}</h4>
-    //                   </div>
-    //                 </div>
-    //                 <div class="iq-card-body">
-    //                   <iframe id="iframepdf" width="100%" height="400px" src="<?= base_url() ?>upload/${dir}/${filename}"></iframe>
-    //               </div>
-    //             </div>
-    //       `;
-    // }
-
-
-
     function renderImg(label, dir, filename) {
       return ` <div class="iq-card" col-lg-6>
             <div class="iq-card-header d-flex justify-content-between">
@@ -730,55 +667,6 @@
             </div> </div> `
     }
 
-    tabThree.on('click', (ev) => {
-      if (valTabs3 == false) {
-        $.ajax({
-          url: `<?= site_url('Service/getServiceCategory') ?>`,
-          'type': 'GET',
-          data: {
-            id_service: dataProfil['id_service']
-          },
-          success: function(data) {
-            json = JSON.parse(data);
-
-            if (json['error']) {
-              swal("Gagal", json['message'], "error");
-              return;
-            } else {
-              service = json['data'];
-              renderTabThree(service);
-            }
-          }
-        })
-      }
-    })
-
-    function renderTabThree(service) {
-      $.ajax({
-        url: `<?= site_url('Service/service_') ?>${dataProfil['id_service']}`,
-        'type': 'GET',
-        data: {
-          id_sub_service: dataProfil['id_sub_service']
-        },
-        success: function(data) {
-          json = JSON.parse(data);
-          if (json['error']) {
-            swal("Gagal", json['message'], "error");
-            return;
-          } else {
-            my_service = json['data'][0];
-            valTabs3 = true;
-            console.log(my_service)
-            Object.values(service).forEach((d) => {
-              if (my_service[d['direktori']]) {
-                Layout.dok_service.append(render_files(d['label'], `<?= base_url('upload/') ?>${d['direktori']}`, my_service[d['direktori']], my_service[d['direktori']].split('.').pop(), 'col-lg-6'))
-              }
-
-            })
-          }
-        }
-      })
-    }
 
     getProfil();
 
@@ -841,6 +729,11 @@
       Layout.nama.html(dataProfil['nama'])
       Layout.nama_badan.html(dataProfil['nama_badan'])
       Layout.nib.html(dataProfil['nib'])
+      Layout.nik.html(dataProfil['nik'])
+      Layout.email.html(dataProfil['email'])
+      Layout.lokasi_perizinan.html(dataProfil['lokasi_perizinan'])
+      Layout.no_telp.html(dataProfil['no_telp'])
+      Layout.id_service.html(dataProfil['nama_service'])
       Layout.tujuan.html(dataProfil['tujuan'] == 'usaha' ? "Perizinan Usaha" : "Perizinan Umum")
       Layout.status_proposal.html(statusPermohonan(dataProfil['status_proposal']))
       dwn = ` < a type = ""
@@ -849,7 +742,23 @@
           href = "<?= site_url() ?>PengirimanController/word?id_pengiriman=${id_pengiriman}"
           data - loading - text = "Loading..." > < i class = "fal fa-download" > < /i> Download Docx</a >
             `;
-      Layout.btn_word.html(dwn)
+      // Layout.btn_word.html(dwn)
+      var str = dataProfil['no_telp'];
+      str = str.replace(/[^0-9]/ig, "");;
+      var res = str.substring(0, 2);
+      if (res == 08) {
+        var res2 = str.substring(2, 16);
+        res = '628';
+        fx = res + res2;
+      } else {
+        fx = str;
+      }
+      var formattedBody = `Salam Sejahterah! \nHalo ${dataProfil['nama']} \nkami Dinas Penanaman Modal, Pelayanan Terpadu Satu Pintu, Koperasi Usaha Mikro Kecil dan Menengah Kabupaten Bangka \nMenyampaikan bahwa :`;
+      var waToLink = `https://api.whatsapp.com/send?phone=${fx}&text=` + encodeURIComponent(formattedBody);
+      var mailToLink = `mailto:${dataProfil['email']}?body=` + encodeURIComponent(formattedBody);
+
+      Layout.wa_to.prop('href', waToLink);
+      Layout.mail_to.prop('href', mailToLink);
       $.get(`<?= base_url('upload/') ?>accept_npwp/${dataProfil['npwp']}`)
         .done(function() {
           Layout.npwp.html(render_files('NPWP', '<?= base_url('upload/') ?>accept_npwp', dataProfil['npwp'], dataProfil['npwp'].split('.').pop()))
@@ -868,7 +777,7 @@
           Layout.file_pendukung.html(render_files('File Pendukung', '<?= base_url('upload/') ?>file_pendukung', dataProfil['file_pendukung'], dataProfil['file_pendukung'].split('.').pop(), 'col-lg-6'))
         })
 
-      Layout.created_at.html(renderDate2(dataProfil['created_at']) + ' <br>Oleh : ' + dataProfil['nama_sending'])
+      Layout.created_at.html(renderDate2(dataProfil['created_at']) + '(' + dataProfil['nama_sending'] + ' / ' + (dataProfil['role_sending'] == '99' ? 'Customer' : 'Front Office') + ' )')
 
       dataProfil['output_no_dokumen'] ? Layout.status_proposal.append("<br>No Dokumen: " + dataProfil['output_no_dokumen']) : '';
 

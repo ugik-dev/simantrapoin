@@ -16,7 +16,11 @@ class PengirimanModel extends CI_Model
 		if (!empty($filter['sort'])) {
 			$this->db->select('created_at,id_pengiriman, nib, ,nama_badan, lokasi_perizinan, status_proposal , id_tahap_proposal, tujuan , survey');
 		} else {
-			$this->db->select('cb.*,uu.*, u.nama as nama_sending, u.id_role as role_sending, 
+			$this->db->select('cb.*,uu.*,
+			
+			jp.nama_perizinan as nama_service,
+			u.nama as nama_sending,
+			 u.id_role as role_sending, 
 			u1.nama as nama_acc_1 ,
 			u2.nama as nama_acc_2 , 
 			u3.nama as nama_acc_3 ,
@@ -33,6 +37,7 @@ class PengirimanModel extends CI_Model
 		$this->db->from('pengiriman as cb');
 		if (empty($filter['sort'])) {
 
+			$this->db->join("jenis_perizinan as jp", "cb.id_service = jp.id_perizinan", 'LEFT');
 			$this->db->join("user as uu", "cb.nik = uu.username", 'LEFT');
 			$this->db->join("user as u", "cb.user_sending = u.id_user", 'LEFT');
 			$this->db->join("user as u1", "cb.acc_1 = u1.id_user", 'LEFT');

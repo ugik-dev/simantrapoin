@@ -1,108 +1,109 @@
 <div id="content-page" class="content-page">
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
+            <div class="col-sm-12 col-lg-12">
+                <div class="iq-card">
+                    <div class="iq-card-body" id="freame_service">
+                        <form id="form-wizard1" class="text-center mt-4">
+                            <!-- fieldsets -->
+                            <div class="form-card text-left">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <h3 class="mb-4">Informasi Perseorangan:</h3>
+                                    </div>
 
-            <div class="col-md-6 col-lg-3">
-                <div class="iq-card iq-card-block iq-card-stretch iq-card-height iq-border-box iq-border-box-1 text-primary">
-                    <div class="iq-card-body">
-                        <a id="service_ipal">
-                            <div class="text-center">
-                                <h4 class="">IZIN PEMBUANGAN AIR LIMBAH</h4>
+                                </div>
+                                <!-- SLIDE 1 -->
+                                <div class="row">
+                                    <div class="form-group col-lg-6">
+                                        <label for="nama">Nama Perseorangan</label>
+                                        <input required id="nama" name="nama" type="text" class="form-control" placeholder="Nama Perseorangan">
+                                    </div>
+                                    <div class="form-group col-lg-6">
+                                        <label for="nik">NIK</label>
+                                        <input id="nik" name="nik" type="number" class="form-control" placeholder="Nomor Induk Kependudukan" required>
+                                    </div>
+                                    <div class="form-group col-lg-6">
+                                        <label for="no_telp">No Telp <small>*Rekomendasi No Whatssapp</small></label>
+                                        <input required id="no_telp" name="no_telp" type="text" class="form-control" placeholder="No Telp">
+                                    </div>
+                                    <div class="form-group col-lg-6">
+                                        <label for="email">Email</label>
+                                        <input id="email" name="email" type="email" class="form-control" placeholder="Email" required>
+                                    </div>
+                                    <div class="form-group col-lg-6">
+                                        <label for="alamat">Alamat Perseorangan</label>
+                                        <textarea required id="alamat" class="form-control" name="alamat" rows="2"></textarea>
+                                    </div>
+
+                                </div>
+                                <!-- END SLIDE 1 -->
                             </div>
-                        </a>
+
+                            <div class="form-card text-left">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <h3 class="mb-4">Informasi Layanan:</h3>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-lg-12">
+                                        <label for="id_service">Pilih Layanan</label>
+                                        <select class="form-control mr-sm-2" id="id_service" name="id_service" required>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-lg-6">
+                                        <label for="nama_badan">Nama Badan Usaha</label>
+                                        <input id="nama_badan" name="nama_badan" type="text" class="form-control" placeholder="Nama Badan Usaha">
+                                    </div>
+                                    <div class="form-group col-lg-6">
+                                        <label for="nib">NIB</label>
+                                        <input id="nib" name="nib" type="text" class="form-control" placeholder="Nomor Induk Berusaha" required>
+                                    </div>
+                                    <div class="form-group col-lg-6">
+                                        <label for="exampleFormControlTextarea1">Alamat / Lokasi Perizinan</label>
+                                        <textarea id="lokasi_perizinan" class="form-control" name="lokasi_perizinan" rows="2"></textarea>
+                                    </div>
+                                    <div class="form-group col-lg-6">
+                                        <label for="exampleFormControlTextarea1">Deskripsi Lainnya</label>
+                                        <textarea id="deskripsi" class="form-control" name="deskripsi" rows="2"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-card text-left">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <h3 class="mb-4">Upload File:</h3>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-lg-6">
+                                        <label for="nib">File Pendukung</label>
+                                        <p id="file_pendukung"></p>
+                                    </div>
+
+                                    <div class="form-group col-lg-6">
+                                        <label for="nib">File NIB</label>
+                                        <p id="nib_file"></p>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="form-card text-left">
+                                <button type="submit" class="btn btn-primary float-right">
+                                    Submit
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div id="freame_service">
-            <div class="iq-card" id="service_ipal_fm" style="display: none">
-                <div class="iq-card-body">
-                    <p>Perizinan Pembuangan Air Limbah</p>
-                    <form id="form_ipal">
-                        <div class="row">
-                            <!-- <div class="container"> -->
-                            <div class="form-group col-lg-6">
-                                <label for="nama">Nama Perseorangan</label>
-                                <input id="nama" name="nama" type="text" class="form-control" placeholder="Nama Perseorangan">
-                            </div>
-                            <div class="form-group col-lg-6">
-                                <label for="nik">NIK</label>
-                                <input id="nik" name="nik" type="number" class="form-control" placeholder="Nomor Induk Kependudukan" required>
-                            </div>
-                            <div class="form-group col-lg-6">
-                                <label for="no_telp">No Telp <small>*Rekomendasi No Whatssapp</small></label>
-                                <input id="no_telp" name="no_telp" type="text" class="form-control" placeholder="No Telp">
-                            </div>
-                            <div class="form-group col-lg-6">
-                                <label for="email">Email</label>
-                                <input id="email" name="email" type="email" class="form-control" placeholder="Email" required>
-                            </div>
-                            <div class="form-group col-lg-6">
-                                <label for="alamat">Alamat Perseorangan</label>
-                                <textarea id="alamat" class="form-control" name="alamat" rows="2"></textarea>
-                            </div>
-                            <div class="form-group col-lg-6">
-                                <label for="exampleFormControlTextarea1">Alamat / Lokasi Perizinan</label>
-                                <textarea id="lokasi_perizinan" class="form-control" name="lokasi_perizinan" rows="2"></textarea>
-                            </div>
-                            <div class="form-group col-lg-6">
-                                <label for="exampleFormControlTextarea1">Deskripsi Lainnya</label>
-                                <textarea id="deskripsi" class="form-control" name="deskripsi" rows="2"></textarea>
-                            </div>
-                            <div class="form-group col-lg-6">
-                                <label for="nama_badan">Nama Badan Usaha</label>
-                                <input id="nama_badan" name="nama_badan" type="text" class="form-control" placeholder="Nama Badan Usaha">
-                            </div>
-                            <div class="form-group col-lg-6">
-                                <label for="nib">NIB</label>
-                                <input id="nib" name="nib" type="text" class="form-control" placeholder="Nomor Induk Berusaha" required>
-                            </div>
-                            <div class="form-group col-lg-6">
-                                <label for="nib">File Pendukung</label>
-                                <p id="file_pendukung"></p>
-                            </div>
 
-                            <div class="form-group col-lg-6">
-                                <label for="nib">File NIB</label>
-                                <p id="nib_file"></p>
-                            </div>
-
-                            <div class="form-group col-lg-6">
-                                <label for="nib">Izin Lingkungan Definitif</label>
-                                <p id="izin_lingkungan"></p>
-                            </div>
-                            <div class="form-group col-lg-6">
-                                <label for="nib">Izin Operasional/ Komersial dengan komitmen</label>
-                                <p id="izin_komersial"></p>
-                            </div>
-                            <div class="form-group col-lg-6">
-                                <label for="pernyataan">Pernyataan pemenuhan Komitmen yang ditanda tangani paling rendah setingkat manajer yang membidangi urusan lingkungan</label>
-                                <p id="pernyataan"></p>
-                            </div>
-
-                            <div class="form-group col-lg-6">
-                                <label data-toggle="modal" data-target="#persyaratan_teknis_modal" for="persyaratan_teknis">Persyaratan Teknis <small>
-                                        *dijadikan satu file berformat pdf *klik untuk lihat persyaratan
-                                    </small></label>
-                                <p id="persyaratan_teknis"></p>
-                            </div>
-
-
-                        </div>
-                        <!-- <div class="col-lg-5">
-                            <div class="iq-card-body">
-                                <p>Creating basic google map</p>
-                                <iframe class="w-100" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3902543.2003194243!2d-118.04220880485131!3d36.56083290513502!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80be29b9f4abb783%3A0x4757dc6be1305318!2sInyo%20National%20Forest!5e0!3m2!1sen!2sin!4v1576668158879!5m2!1sen!2sin" height="500" allowfullscreen=""></iframe>
-                            </div>
-                        </div> -->
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                        <!-- <button type="submit" class="btn iq-bg-danger">cancle</button> -->
-                    </form>
-                </div>
             </div>
         </div>
     </div>
 </div>
+
 <div class="modal fade show" id="persyaratan_teknis_modal" tabindex="-1" role="dialog" aria-labelledby="persyaratan_teknis_modalLabel" style="display: none; padding-right: 8px;" aria-modal="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -152,17 +153,13 @@
 <script>
     $(document).ready(function() {
         freame_service = $('#freame_service')
-        // service_ipal = $('#service_ipal')
+        id_service = $('#id_service')
 
         var ipal = {
-            'form': $('#form_ipal'),
-            'nib': $('#form_ipal').find('#nib'),
-            'file_pendukung': new FileUploader($('#form_ipal').find('#file_pendukung'), "", "file_pendukung", ".png , .pdf , .jpg , .jpeg", false, false),
-            'nib_file': new FileUploader($('#form_ipal').find('#nib_file'), "", "nib_file", ".png , .pdf , .jpg , .jpeg", false, false),
-            'izin_lingkungan': new FileUploader($('#form_ipal').find('#izin_lingkungan'), "", "izin_lingkungan", ".png , .pdf , .jpg , .jpeg", false, false),
-            'izin_komersial': new FileUploader($('#form_ipal').find('#izin_komersial'), "", "izin_komersial", ".png , .pdf , .jpg , .jpeg", false, false),
-            'pernyataan': new FileUploader($('#form_ipal').find('#pernyataan'), "", "pernyataan", ".png , .pdf , .jpg , .jpeg", false, false),
-            'persyaratan_teknis': new FileUploader($('#form_ipal').find('#persyaratan_teknis'), "", "persyaratan_teknis", ".png , .pdf , .jpg , .jpeg", false, false),
+            'form': $('#form-wizard1'),
+            'nib': $('#form-wizard1').find('#nib'),
+            'file_pendukung': new FileUploader($('#form-wizard1').find('#file_pendukung'), "", "file_pendukung", ".png , .pdf , .jpg , .jpeg", false, false),
+            'nib_file': new FileUploader($('#form-wizard1').find('#nib_file'), "", "nib_file", ".png , .pdf , .jpg , .jpeg", false, false),
         }
 
         var swalLoading = {
@@ -192,7 +189,7 @@
 
                 // swal.fire(swalLoading);
                 $.ajax({
-                    url: "<?= base_url() . 'Service/ipal' ?>",
+                    url: "<?= base_url() . 'Service/process' ?>",
                     type: "POST",
                     // data: registerForm.serialize(),
                     data: new FormData(ipal.form[0]),
@@ -214,9 +211,36 @@
             });
 
         })
+        getServiceCategory()
 
-        $('#service_ipal').on('click', (ev) => {
-            document.getElementById('service_ipal_fm').style.display = '';
-        })
+        function getServiceCategory() {
+            return $.ajax({
+                url: "<?= base_url() . 'Service/getServiceCategory' ?>",
+                type: "GET",
+                // data: registerForm.serialize(),
+                data: {},
+                success: (data) => {
+                    json = JSON.parse(data);
+                    if (json['error']) {
+                        // swal("Pengajuan Gagal", json['message'], "error");
+                        return;
+                    }
+                    data = json['data']
+                    id_service.append($('<option>', {
+                        value: '',
+                        text: '',
+                    }));
+                    Object.values(data).forEach((d) => {
+
+                        id_service.append($('<option>', {
+                            value: d['id_perizinan'],
+                            text: d['id_perizinan'] + ' :: ' + d['nama_perizinan'],
+                        }));
+                    })
+
+                },
+            });
+        }
+
     });
 </script>

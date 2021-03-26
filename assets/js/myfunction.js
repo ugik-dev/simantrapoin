@@ -4,7 +4,7 @@ function render_files(label, dir, filename, format, col = "") {
 		console.log(format);
 		frm = ` <iframe width="100%" height="600px" src="${dir}/${filename}"></iframe>`;
 	} else if (format == "doc" || format == "docx") {
-		frm = `<iframe src='https://view.officeapps.live.com/op/embed.aspx?src=https://ugik-dev.com/covid19/uploads/photo/doc_tes.docx' width='100%' height='500' frameborder='0'>This is an embedded <a target='_blank' href='http://office.com'>Microsoft Office</a> document, powered by <a target='_blank' href='http://office.com/webapps'>Office Online</a>.</iframe>`;
+		frm = `<iframe src='https://view.officeapps.live.com/op/embed.aspx?src=${dir}/${filename}' width='100%' height='500' frameborder='0'>This is an embedded <a target='_blank' href='http://office.com'>Microsoft Office</a> document, powered by <a target='_blank' href='http://office.com/webapps'>Office Online</a>.</iframe>`;
 	} else {
 		frm = `<img src="${dir}/${filename}" class="img-fluid" alt="Responsive image">`;
 	}
