@@ -7,7 +7,7 @@ class FOController extends CI_Controller
   public function __construct()
   {
     parent::__construct();
-    $this->load->model(array('FOModel'));
+    $this->load->model(array('FOModel', "PengirimanModel", "ServiceModel"));
     $this->load->helper(array('DataStructure', 'Validation'));
   }
 
@@ -37,6 +37,32 @@ class FOController extends CI_Controller
     );
     $this->load->view('Page', $pageData);
   }
+
+  public function EditService()
+  {
+    $this->SecurityModel->roleOnlyGuard('frontoffice');
+    $id = $this->input->get('id');
+    $data = $this->PengirimanModel->getPengiriman($id);
+    $data2 = $this->ServiceModel->getDataDumy(array('id_pengiriman' => $id));
+
+    // echo json_encode($data2);
+    // die();
+    if ($data['id_tahap_proposal'] > 0) {
+      throw new UserException("Sudah ada tindakan !!", USER_NOT_FOUND_CODE);
+    }
+
+    $pageData = array(
+      'title' => 'Pengajuan',
+      'content' => 'frontoffice/EditService',
+      'breadcrumb' => array(
+        'Home' => base_url(),
+      ),
+      'dataContent' => $data,
+      'dataContent2' => $data2[0]
+    );
+    $this->load->view('Page', $pageData);
+  }
+
 
   public function pengajuan()
   {

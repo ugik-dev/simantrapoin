@@ -141,6 +141,59 @@ class UserController extends CI_Controller
 		}
 	}
 
+
+	public function edit_my_pass()
+	{
+		try {
+			$this->SecurityModel->userOnlyGuard(TRUE);
+			// $this->SecurityModel->pengusulSubTypeGuard(['dosen_tendik'], TRUE);
+			// Validation::ajaxValidateForm($this->SecurityModel->deleteDosenTendik());
+
+			$data = $this->input->post();
+			if (md5($data['old_password']) != $this->session->userdata('password')) {
+				throw new UserException('Pasword Salah!', 0);
+			} else {
+				$result = $this->UserModel->edit_my_pass($data);
+				$this->session->set_userdata('password', md5($result['password']));
+			}
+			//$this->UserModel->changePassword($CP);
+
+			echo json_encode($result);
+		} catch (Exception $e) {
+			ExceptionHandler::handle($e);
+		}
+	}
+
+
+	public function edit_my_data()
+	{
+		try {
+			$this->SecurityModel->userOnlyGuard(TRUE);
+			// $this->SecurityModel->pengusulSubTypeGuard(['dosen_tendik'], TRUE);
+			// Validation::ajaxValidateForm($this->SecurityModel->deleteDosenTendik());
+
+			$data = $this->input->post();
+			// if (md5($data['password']) != $this->session->userdata('password')) {
+			// 	throw new UserException('Pasword Salah!', 0);
+			// } else {
+
+			$data['photo'] = FileIO::genericUpload('photo', array('png', 'jpeg', 'jpg'), NULL, $data, '100000');
+			// $data['photo'] = FileIO::upload_compress($data, 'photo', array('png', 'jpeg', 'jpg'), NULL, '100000');
+			$result = $this->UserModel->edit_my_data($data);
+			$this->session->set_userdata('username', $result['username']);
+			$this->session->set_userdata('nama', $result['nama']);
+			$this->session->set_userdata('email', $result['email']);
+			$this->session->set_userdata('no_telp', $result['no_telp']);
+			if (!empty($data['photo'])) $this->session->set_userdata('photo', $result['photo']);
+			// }
+			//$this->UserModel->changePassword($CP);
+
+			echo json_encode($result);
+		} catch (Exception $e) {
+			ExceptionHandler::handle($e);
+		}
+	}
+
 	public function logout()
 	{
 		// $this->SecurityModel->userOnlyGuard();
@@ -188,5 +241,35 @@ class UserController extends CI_Controller
 		} catch (Exception $e) {
 			ExceptionHandler::handle($e);
 		}
+	}
+
+	public function editprofile()
+	{
+		$this->SecurityModel->userOnlyGuard(FALSE, TRUE);
+
+		// $this->SecurityModel->rolesOnlyGuard(array('admin','frontoffice','backoffice', 'kasi_umum'));
+		$pageData = array(
+			'title' => 'Edit Profile',
+			'content' => 'EditProfile',
+			'breadcrumb' => array(
+				'Home' => base_url(),
+			),
+		);
+		$this->load->view('Page', $pageData);
+	}
+
+	public function security()
+	{
+		$this->SecurityModel->userOnlyGuard(FALSE, TRUE);
+
+		// $this->SecurityModel->rolesOnlyGuard(array('admin','frontoffice','backoffice', 'kasi_umum'));
+		$pageData = array(
+			'title' => 'Edit Password',
+			'content' => 'EditPassword',
+			'breadcrumb' => array(
+				'Home' => base_url(),
+			),
+		);
+		$this->load->view('Page', $pageData);
 	}
 }

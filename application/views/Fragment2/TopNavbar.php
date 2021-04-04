@@ -24,7 +24,9 @@
                      </div>
                      <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ml-auto navbar-list">
-                           <?php $this->load->view('Fragment2/Notification') ?>
+                           <?php
+                           // $this->load->view('Fragment2/Notification')
+                           ?>
                         </ul>
                      </div>
                      <?php $this->load->view('Fragment2/ProfileNavigation') ?>

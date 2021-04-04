@@ -1,4 +1,7 @@
-<button type="button" class="btn btn-primary" id='btn_act' data-toggle="modal" data-target=".step1-modal">Ambil Keputusan</button>
+<div class="row">
+    <button type="button" class="btn btn-primary  btn-sm mr-2" style="display: none" id='btn_act' data-toggle="modal" data-target=".step1-modal">Ambil Keputusan</button>
+    <a href="<?= base_url() ?>FOController/EditService?id=<?= $contentData['id_pengiriman']  ?>" class="btn btn-light  btn-sm mr-2" style="display: none" id='btn_act_b'><i class="fa fa-pencil"></i> Edit Data</a>
+</div>
 <div class="modal fade step1-modal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <form id='form_act_1' role="form" onsubmit="return false;" type="multipart" autocomplete="off">

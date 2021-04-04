@@ -91,7 +91,7 @@
                     },
                 });
                 $.ajax({
-                    url: `<?= site_url('Service/act_7') ?>`,
+                    url: `<?= site_url('Service/act_8') ?>`,
                     'type': 'POST',
                     data: act_2_form.serialize(),
                     success: function(data) {
@@ -132,7 +132,7 @@
                     },
                 });
                 $.ajax({
-                    url: `<?= site_url('Service/act_10') ?>`,
+                    url: `<?= site_url('Service/act_11') ?>`,
                     'type': 'POST',
                     data: act_5_form.serialize(),
                     success: function(data) {

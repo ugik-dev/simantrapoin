@@ -7,9 +7,9 @@
             <form class="form-inline" id="toolbar_form" onsubmit="return false;">
               <input type="hidden" id="sort" name="sort" value='1'>
               <select class="form-control mr-sm-2" id="status_proposal" name="status_proposal">
-                <option class="form-control mr-sm-2" value="">Semua</option>
+                <option class="form-control mr-sm-2" value="" selected>Semua</option>
                 <option class="form-control mr-sm-2" value="DRAFT">Draft</option>
-                <option class="form-control mr-sm-2" value="DIPROSES" selected>Diproses</option>
+                <option class="form-control mr-sm-2" value="DIPROSES">Diproses</option>
                 <option class="form-control mr-sm-2" value="DITERIMA">Diterima</option>
                 <option class="form-control mr-sm-2" value="DITOLAK">Ditolak</option>
               </select>
@@ -295,28 +295,31 @@
         } else {
           apprv = "Sudah Di Approv";
         };
-        var detailButton = `
-      <a class="detail dropdown-item" href='<?= site_url() ?>PengirimanController/DetailPengiriman?id_pengiriman=${biro['id_pengiriman']}'><i class='fa fa-share'></i> Detail Pengiriman</a>
-      `;
-        var editButton = `
-        <a class="edit dropdown-item" data-id='${biro['id_pengiriman']}'><i class='fa fa-pencil'></i> Edit Pengiriman</a>
-      `;
-        var deleteButton = `
-        <a class="delete dropdown-item" data-id='${biro['id_pengiriman']}'><i class='fa fa-trash'></i> Hapus Pengiriman</a>
-      `;
-        var button = `
+        <?php if ($this->session->userdata()['nama_role'] == 'frontoffice') { ?>
+          var detailButton = `
+            <a class="detail dropdown-item" href='<?= site_url() ?>PengirimanController/DetailPengiriman?id_pengiriman=${biro['id_pengiriman']}'><i class='fa fa-share'></i> Detail Pengiriman</a>
+            `;
+          var editButton = `
+            <a class="dropdown-item" href='<?= base_url() ?>FOController/EditService?id=${biro['id_pengiriman']}'><i class='fa fa-pencil'></i> Edit Pengiriman</a>
+            `;
+          var deleteButton = `
+            <a class="delete dropdown-item" data-id='${biro['id_pengiriman']}'><i class='fa fa-trash'></i> Hapus Pengiriman</a>
+              `;
+          var button = `
         <div class="btn-group" role="group">
           <button id="action" type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class='fa fa-bars'></i></button>
           <div class="dropdown-menu" aria-labelledby="action">
-            ${detailButton}
-            <?php if ($this->session->userdata()['nama_role'] == 'frontoffice') { ?>
-
+          ${detailButton}
               ${editButton}
               ${deleteButton}
-              <?php  } ?>   
-          </div>
-        </div>
-      `;
+              </div>
+              </div>
+              `;
+        <?php  } else { ?>
+          var button = `
+            <a class="btn mb-3 btn-link" href='<?= site_url() ?>PengirimanController/DetailPengiriman?id_pengiriman=${biro['id_pengiriman']}'><i class='fa fa-share'></i> Open</a>
+              `;
+        <?php  } ?>
         renderData.push([biro['id_pengiriman'], renderDate(biro['created_at']), biro['nama_badan'] + '<br>NIB :' + biro['nib'], biro['lokasi_perizinan'], biro['tujuan'] == 'usaha' ? "Usaha" : 'Umum', statusPermohonan(biro['status_proposal']), button]);
       });
       FDataTable.clear().rows.add(renderData).draw('full-hold');

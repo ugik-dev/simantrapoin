@@ -19,7 +19,9 @@
     }
   }
 </style>
-<?php $this->load->view('Fragment/HeaderFragment', ['title' => ""]); ?>
+<?php $this->load->view('Fragment/HeaderFragment', ['title' => ""]);
+
+?>
 <div class="jumbotron " style="height: 5px">
 
   <div class="background_login" id="login_page"></div>
@@ -118,7 +120,11 @@
             swal("Login Gagal", json['message'], "error");
             return;
           }
-          $(location).attr('href', '<?= site_url() ?>' + json['user']['nama_controller']);
+          <?php if ($this->session->flashdata('originnalurl')) {  ?>
+            $(location).attr('href', '<?= $this->session->flashdata('originnalurl') ?>');
+          <?php } else { ?>
+            $(location).attr('href', '<?= site_url() ?>' + json['user']['nama_controller']);
+          <?php } ?>
         },
         error: () => {
           buttonIdle(submitBtn);

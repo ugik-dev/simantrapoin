@@ -8,7 +8,7 @@
    } ?>
    <li>
       <a href="#" class="search-toggle iq-waves-effect d-flex align-items-center">
-         <img src="<?= base_url('upload/profile/') . $ph ?>" class="img-fluid rounded mr-3" alt="user">
+         <img src="<?= base_url('upload/photo/') . $ph ?>" class="img-fluid rounded mr-3" alt="user">
          <div class="caption">
             <h6 class="mb-0 line-height"><?= $this->session->userdata()['nama'] ?></h6>
             <!-- <span class="font-size-12">Available</span> -->
@@ -32,7 +32,7 @@
                      </div>
                   </div>
                </a> -->
-               <a href="profile-edit.html" class="iq-sub-card iq-bg-primary-hover">
+               <a href="<?= base_url() ?>UserController/editprofile" class="iq-sub-card iq-bg-primary-hover">
                   <div class="media align-items-center">
                      <div class="rounded iq-card-icon iq-bg-primary">
                         <i class="ri-profile-line"></i>
@@ -43,14 +43,14 @@
                      </div>
                   </div>
                </a>
-               <a href="account-setting.html" class="iq-sub-card iq-bg-primary-hover">
+               <a href="<?= base_url() ?>UserController/security" class="iq-sub-card iq-bg-primary-hover">
                   <div class="media align-items-center">
                      <div class="rounded iq-card-icon iq-bg-primary">
                         <i class="ri-account-box-line"></i>
                      </div>
                      <div class="media-body ml-3">
-                        <h6 class="mb-0 ">Account settings</h6>
-                        <p class="mb-0 font-size-12">Manage your account parameters.</p>
+                        <h6 class="mb-0 ">Security settings</h6>
+                        <p class="mb-0 font-size-12">Manage your account password.</p>
                      </div>
                   </div>
                </a>

@@ -16,7 +16,9 @@ class PengirimanModel extends CI_Model
 		if (!empty($filter['sort'])) {
 			$this->db->select('created_at,id_pengiriman, nib, ,nama_badan, lokasi_perizinan, status_proposal , id_tahap_proposal, tujuan , survey');
 		} else {
-			$this->db->select('cb.*,uu.*,
+			$this->db->select('cb.*,
+			coalesce(cb.nib_file, "null", "")  as nib_file,
+			,uu.*,
 			
 			jp.nama_perizinan as nama_service,
 			u.nama as nama_sending,
@@ -66,7 +68,7 @@ class PengirimanModel extends CI_Model
 		if ($this->session->userdata()['nama_role'] == 'kasi_usaha') $this->db->where('cb.status_proposal != "DRAFT" AND cb.tujuan = "usaha"');
 		if ($this->session->userdata()['nama_role'] == 'kasi_umum') $this->db->where('cb.status_proposal != "DRAFT" AND cb.tujuan = "umum"');
 		if ($this->session->userdata()['nama_role'] == 'kasi_survey') $this->db->where('cb.status_proposal != "DRAFT" AND cb.survey = "ya"');
-		if ($this->session->userdata()['nama_role'] == 'kabid') $this->db->where('cb.status_proposal != "DRAFT" AND cb.survey = "ya"');
+		if ($this->session->userdata()['nama_role'] == 'kabid') $this->db->where('cb.status_proposal != "DRAFT" AND cb.id_tahap_proposal > "1"');
 
 		if (!empty($filter['status_kasi'])) {
 			if ($this->session->userdata()['nama_role'] == 'kasi_survey') {
@@ -88,8 +90,8 @@ class PengirimanModel extends CI_Model
 				if ($filter['status_kasi'] == 'approv') $this->db->where('cb.id_tahap_proposal > "6" AND status_proposal = "DITERIMA"');
 			}
 		}
-		// if(!empty($this->session->userdata('id_kabupaten'))) $this->db->where('cb.id_kabupaten', $this->session->userdata('id_kabupaten'));
-		//var_dump($this->session->userdata());
+		if ($this->session->userdata('nama_role') == 'customer') $this->db->where('cb.nik', $this->session->userdata('username'));
+		// var_dump($this->session->userdata());
 		// $this->db->where('cb.id_pengiriman', 16);
 
 		$res = $this->db->get();

@@ -12,6 +12,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <input hidden value="<?= $contentData['id_pengiriman'] ?>" name="id_pengiriman">
+                        <input hidden id='email_user_survey' name="email_user">
                         <label>Keputusan</label>
                         <select class="form-control mb-3" id="act_4" name="keputusan" required>
                             <option selected=""></option>
@@ -101,15 +102,23 @@
                 if (json['error']) {
                     return;
                 }
+                i = 1;
                 data = json['data'];
                 Object.values(data).forEach((d) => {
+
                     render_team.append(`
                       <div class="col-md-6 custom-control custom-switch">
-                                <input type="checkbox" class="custom-control-input" id="${d['nama_role']}" name="${d['nama_role']}" value="${d['id_user']}" >
-                                <label class="custom-control-label" for="${d['nama_role']}" >${d['title_role']} | ${d['nama']}</label>
+                                <input type="hidden" name="email_tim_${i}" value="${d['email']}" >
+                                <input type="checkbox" class="custom-control-input" id="tim_${i}" name="tim_${i}" value="${d['id_user']}" >
+                                <label class="custom-control-label" for="tim_${i}" >${d['title_role']} | ${d['nama']}</label>
                             </div>
                     `)
+                    i++;
                 })
+
+                render_team.append(`
+                                <input hidden type="number" name="count_tim" value="${(i-1)}" >
+                    `)
             },
             error: function(e) {}
         });

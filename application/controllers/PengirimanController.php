@@ -26,7 +26,7 @@ class PengirimanController extends CI_Controller
 
   public function DetailPengiriman()
   {
-    $this->SecurityModel->userOnlyGuard(TRUE);
+    $this->SecurityModel->userOnlyGuard(FALSE, TRUE);
 
     // $this->SecurityModel->rolesOnlyGuard(array('admin','frontoffice','backoffice', 'kasi_umum'));
     $pageData = array(

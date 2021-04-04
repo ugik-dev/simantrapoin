@@ -16,7 +16,7 @@ class CustomerController extends CI_Controller
         $this->SecurityModel->roleOnlyGuard('customer');
         $pageData = array(
             'title' => 'Beranda',
-            'content' => 'Service',
+            'content' => 'customer/Pengajuan',
             // 'content' => 'Dashboard',
             'breadcrumb' => array(
                 'Home' => base_url(),

@@ -1,10 +1,12 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class UserModel extends CI_Model {
+class UserModel extends CI_Model
+{
 
-  public function getAllUser($filter = []){
-		if(isset($filter['isSimple'])){
+	public function getAllUser($filter = [])
+	{
+		if (isset($filter['isSimple'])) {
 			$this->db->select('u.id_user, u.nama');
 		} else {
 			$this->db->select("u.*, r.*");
@@ -13,67 +15,87 @@ class UserModel extends CI_Model {
 		$this->db->join('role as r', 'r.id_role = u.id_role');
 		// $this->db->join('kabupaten as k', 'k.id_kabupaten = u.id_kabupaten','left');
 
-		if(isset($filter['username'])) $this->db->where('u.username', $filter['username']);
-		if(isset($filter['id_user'])) $this->db->where('u.id_user', $filter['id_user']);
-    	$res = $this->db->get();
-    return DataStructure::keyValue($res->result_array(), 'id_user');
+		if (isset($filter['username'])) $this->db->where('u.username', $filter['username']);
+		if (isset($filter['id_user'])) $this->db->where('u.id_user', $filter['id_user']);
+		$res = $this->db->get();
+		return DataStructure::keyValue($res->result_array(), 'id_user');
 	}
 
-	public function getUser($idUser = NULL){
+	public function getUser($idUser = NULL)
+	{
 		$row = $this->getAllUser(['id_user' => $idUser]);
-		if (empty($row)){
+		if (empty($row)) {
 			throw new UserException("User yang kamu cari tidak ditemukan", USER_NOT_FOUND_CODE);
 		}
 		return $row[$idUser];
 	}
-	
-	public function editPhoto($idUser,$newPhoto){
-		$this->db->set('photo',$newPhoto);
-		$this->db->where('id_user',$idUser);
+
+	public function editPhoto($idUser, $newPhoto)
+	{
+		$this->db->set('photo', $newPhoto);
+		$this->db->where('id_user', $idUser);
 		$this->db->update('user');
 		return $newPhoto;
 	}
-	
-	public function changePassword($data){
-		$this->db->set('password',md5($data['password']));
-		$this->db->where('id_user',$data['id_user']);
+
+	public function changePassword($data)
+	{
+		$this->db->set('password', md5($data['password']));
+		$this->db->where('id_user', $data['id_user']);
 		$this->db->update('user');
 		return 'succes';
 	}
-	public function editUser($tmpdata){
-		$data = array( 
-			'username' => $tmpdata['username'],
-			'nama' => $tmpdata['nama'],
-			);
 
-		$this->db->set($data);
-		$this->db->where('id_user',$tmpdata['id_user']);
+
+	public function edit_my_data($data)
+	{
+
+		if (!empty($data['username'])) $this->db->set('username', $data['username']);
+		if (!empty($data['nama'])) $this->db->set('nama', $data['nama']);
+		if (!empty($data['email'])) $this->db->set('email', $data['email']);
+		if (!empty($data['no_telp'])) $this->db->set('no_telp', $data['no_telp']);
+		if (!empty($data['photo'])) $this->db->set('photo', $data['photo']);
+		$this->db->where('id_user', $this->session->userdata()['id_user']);
 		$this->db->update('user');
-		
-		return $tmpdata;
+		ExceptionHandler::handleDBError($this->db->error(), "Edit Profile", "User");
+
+		return $data;
+	}
+
+	public function edit_my_pass($data)
+	{
+
+		$this->db->set('password', md5($data['password']));
+		$this->db->where('id_user', $this->session->userdata()['id_user']);
+		$this->db->update('user');
+		ExceptionHandler::handleDBError($this->db->error(), "Edit Password", "User");
+
+		return $data;
 	}
 
 
-	public function getUserByUsername($username = NULL){
+	public function getUserByUsername($username = NULL)
+	{
 		$row = $this->getAllUser(['username' => $username]);
-		if (empty($row)){
+		if (empty($row)) {
 			throw new UserException("User yang kamu cari tidak ditemukan", USER_NOT_FOUND_CODE);
 		}
 		return array_values($row)[0];
 	}
-		
-	public function login($loginData){
-		
+
+	public function login($loginData)
+	{
+
 		$user = $this->getUserByUsername($loginData['username']);
 		// var_dump($user);
-		if(md5($loginData['password']) != $user['password'])
+		if (md5($loginData['password']) != $user['password'])
 			throw new UserException("Password yang kamu masukkan salah.", WRONG_PASSWORD_CODE);
 		return $user;
 	}
 
 	public function registerUser($data)
 	{
-	
+
 		// $this->cekUserByEmailBuyer($data);
 		// $this->cekUserByEmailSeller($data);
 		// $data['password_hash'] = $data['password'];
@@ -82,7 +104,7 @@ class UserModel extends CI_Model {
 		// $data['activator'] =  substr(str_shuffle($permitted_activtor), 0, 20);
 		// echo $act;
 		$this->db->insert('user_temp', DataStructure::slice($data, [
-			'username', 'nama', 'password', 'ktp','npwp','swa','dok_pendukung', 'email', 'no_telp', 'pas_photo', 'alamat'
+			'username', 'nama', 'password', 'ktp', 'npwp', 'swa', 'dok_pendukung', 'email', 'no_telp', 'pas_photo', 'alamat'
 		], TRUE));
 		ExceptionHandler::handleDBError($this->db->error(), "Tambah User", "User");
 
@@ -90,5 +112,4 @@ class UserModel extends CI_Model {
 
 		return $data;
 	}
-
 }

@@ -166,7 +166,7 @@
                     },
                 });
                 $.ajax({
-                    url: `<?= site_url('Service/act_6') ?>`,
+                    url: `<?= site_url('Service/act_7') ?>`,
                     'type': 'POST',
                     data: new FormData(act_5_form[0]),
                     contentType: false,

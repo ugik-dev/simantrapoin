@@ -1,37 +1,28 @@
 <div id="content-page" class="content-page">
   <div class="container">
-    <!-- <iframe src='https://view.officeapps.live.com/op/embed.aspx?src=https://ugik-dev.com/covid19/uploads/photo/doc_tes.docx' width='1366px' height='623px' frameborder='0'>This is an embedded <a target='_blank' href='http://office.com'>Microsoft Office</a> document, powered by <a target='_blank' href='http://office.com/webapps'>Office Online</a>.</iframe> -->
     <div class="col-lg-12" id='layout_pengiriman'>
       <div class="iq-card">
-
-        <!-- <div class="iq-card-header d-flex justify-content-between"> -->
-        <!-- <div class="iq-header-title">
-            <h4 class="card-title">Basic</h4> -->
-        <!-- </div>
-        </div> -->
-        <!-- <div class="ibox">
-           -->
-
         <br>
         <div class="ibox-content">
           <div id="profil">
             <div class="iq-card-body">
               <ul class="nav nav-tabs" id="myTab-three" role="tablist">
                 <li class="nav-item">
-                  <a class="nav-link active" id="disposisi-tab" data-toggle="tab" href="#tab-disposisi" role="tab" aria-controls="disposisi" aria-selected="false">Disposisi</a>
+                  <a class="nav-link" id="disposisi-tab" data-toggle="tab" href="#tab-disposisi" role="tab" aria-controls="disposisi" aria-selected="false">Disposisi</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" id="home-tab-three" data-toggle="tab" href="#home-three" role="tab" aria-controls="home" aria-selected="false">Info</a>
+                  <a class="nav-link active" id="home-tab-three" data-toggle="tab" href="#home-three" role="tab" aria-controls="home" aria-selected="false">Info</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" id="profile-tab-three" data-toggle="tab" href="#profile-three" role="tab" aria-controls="profile" aria-selected="false">Dokumen</a>
                 </li>
-
+                <li class="nav-item">
+                  <?php
+                  if ($this->session->userdata('nama_role') != 'customer') $this->load->view('action/' . $this->session->userdata('nama_role'))
+                  ?> </li>
               </ul>
-
               <div class="tab-content" id="myTabContent-4">
-                <!-- TAB Disposisi -->
-                <div class="tab-pane fade" id="tab-disposisi" role="tabpanel" aria-labelledby="profile-tab-three">
+                <div class="tab-pane fade " id="tab-disposisi" role="tabpanel" aria-labelledby="profile-tab-three">
                   <div class="table-responsive">
                     <table id="FDataTable" class="table table-bordered table-hover" style="padding:0px">
                       <thead>
@@ -48,7 +39,7 @@
                     </table>
                   </div>
                 </div>
-                <div class="tab-pane fade active show" id="home-three" role="tabpanel" aria-labelledby="home-tab-three">
+                <div class="tab-pane fade  active show" id="home-three" role="tabpanel" aria-labelledby="home-tab-three">
                   <form>
                     <div class="row">
                       <div class="col-lg-6 list-group list-group-horizontal">
@@ -88,7 +79,7 @@
                         <div class="form-group col-lg-6">
                           <label for="no_telp">No Telp <small></small></label>
                           <!-- <div class="row col-lg-12"> -->
-                          <a id="wa_to" href="" class="btn btn-outline-success my-2 mr-sm-4" style="width: 150px;" target="_blank"><i class='fa fa-whatsapp'></i> via Whatsapp</a>
+                          <a id="wa_to" href="" class="btn btn-outline-success  btn-sm mr-2" target="_blank"><i class='fa fa-whatsapp'></i>chat via Whatsapp</a>
                           <h4><strong id='no_telp'>-</strong></h4>
                           <!-- </div> -->
 
@@ -96,7 +87,7 @@
                         </div>
                         <div class="form-group col-lg-6">
                           <label for="email">Email</label>
-                          <a id="mail_to" href="" class="btn btn-outline-success my-2 mr-sm-4" style="width: 150px;" target="_blank"><i class='fa fa-envelope'></i> via Whatsapp</a>
+                          <a id="mail_to" href="" class="btn btn-outline-success  btn-sm mr-2" target="_blank"><i class='fa fa-envelope'></i>chat via Email</a>
                           <h4><strong id='email'>-</strong>
                           </h4>
 
@@ -153,12 +144,11 @@
                         </div>
                       </div>
                     </div>
+                    <div id="categorySideMap" style="height: 380px; width: 100% ; display: none"></div>
 
 
                   </form>
                 </div>
-                <!-- END TABS 1 -->
-                <!-- TABS 2 -->
                 <div class="tab-pane fade" id="profile-three" role="tabpanel" aria-labelledby="profile-tab-three">
                   <div class="row">
                     <div id="ktp"></div>
@@ -167,25 +157,21 @@
                   <div id="nib_file"></div>
                   <div id="file_pendukung"></div>
                 </div>
-                <!-- END TABS 2 -->
-                <!-- END TABS 3 -->
 
-                <!-- END TABS 3 -->
+                <div class="tab-pane fade" id="maps" role="tabpanel" aria-labelledby="maps">
+                </div>
 
               </div>
             </div>
+
             <div class="iq-card-body">
-              <?php $this->load->view('action/' . $this->session->userdata('nama_role')) ?>
+
 
               <button class="btn btn-warning my-1 mr-sm-2" type="submit" id="de_approv_btn" data-loading-text="Loading..."><strong>Batalkan Aksi</strong></button>
-              <!-- <button class="btn btn-danger my-1 mr-sm-2" type="submit" id="not_approv_btn" data-loading-text="Loading..."><strong>Tolak</strong></button> -->
-              <!-- <div id='btn_word'> -->
             </div>
           </div>
         </div>
       </div>
-      <!-- </div>
-  </div> -->
 
 
       <div class="col-lg-12">
@@ -201,83 +187,23 @@
     </div>
   </div>
 </div>
-<!-- </div> -->
-
-<!-- modal STEP1 -->
-<!-- 
-<div class="modal fade step1-modal" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade modal_files" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
+        <h5 class="modal-title" id='title_file_modal'></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        <p>Modal body text goes here.</p>
+      <div class="modal-body" id='freame_file_modal'>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div> -->
-
-<!-- End Step1 -->
-<div class="modal inmodal" id="tolak_modal" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content animated fadeIn">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" id='close2'><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title">Tolak Pengiriman</h4>
-        <span class="info"></span>
-      </div>
-      <div class="modal-body" id="modal-body">
-        <form role="form" id="tolak_form" onsubmit="return false;" type="multipart" autocomplete="off">
-          <input type="hidden" id="id_pengiriman" name="id_pengiriman">
-          <div class="form-group">
-            <label for="catatan">Catatan</label>
-            <textarea rows="3" type="text" placeholder="Catatan" class="form-control" id="catatan" name="catatan"></textarea>
-          </div>
-
-          <button class="btn btn-danger my-1 mr-sm-2" type="submit" id="add_btn" data-loading-text="Loading..."><strong>Tolak</strong></button>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-white" data-dismiss="modal" id='close1'>Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
       </div>
     </div>
   </div>
 </div>
-
-<div class="modal inmodal" id="acc_modal" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content animated fadeIn">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" id='close2'><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title">Form Persetujuan</h4>
-        <span class="info"></span>
-      </div>
-      <div class="modal-body" id="modal-body">
-        <form role="form" id="penomoran_form" onsubmit="return false;" type="multipart" autocomplete="off">
-          <input type="hidden" id="id_pengiriman" name="id_pengiriman">
-          <div class="form-group">
-            <label for="catatan_23">Catatan</label>
-            <textarea rows="3" type="text" placeholder="Catatan" class="form-control" id="catatan_23" name="catatan_23"></textarea>
-          </div>
-          <button class="btn btn-info my-1 mr-sm-2" type="submit" id="add_btn" data-loading-text="Loading..."><strong>Approv</strong></button>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-white" data-dismiss="modal" id='close1'>Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
 <script>
   $(document).ready(function() {
     var id_pengiriman = "<?= $contentData['id_pengiriman'] ?>";
@@ -288,10 +214,8 @@
     var not_approv_btn = $('#not_approv_btn');
     var title_file_modal = $('#title_file_modal');
     var freame_file_modal = $('#freame_file_modal');
-    var f_pdf = $('#dok_permohonan');
-    approv_btn.hide();
-    de_approv_btn.hide();
-    not_approv_btn.hide();
+
+
     var dataProfil = [];
     var dataSurvey;
     var dataTahun;
@@ -324,217 +248,7 @@
       'status_proposal': $('#layout_pengiriman').find('#status_proposal'),
       'created_at': $('#layout_pengiriman').find('#created_at'),
       'btn_word': $('#layout_pengiriman').find('#btn_word'),
-
-
     }
-
-    var TolakModal = {
-      'self': $('#tolak_modal'),
-      'info': $('#tolak_modal').find('.info'),
-      'form': $('#tolak_modal').find('#tolak_form'),
-      'addBtn': $('#tolak_modal').find('#add_btn'),
-      'catatan': $('#tolak_modal').find('#catatan'),
-      'output_no_dokumen': $('#tolak_modal').find('#output_no_dokumen'),
-      'close2': $('#tolak_modal').find('#close2'),
-      'close1': $('#tolak_modal').find('#close1'),
-      'id_pengiriman': $('#tolak_modal').find('#id_pengiriman'),
-    }
-    TolakModal.close1.on('click', function() {
-      TolakModal.self.hide();
-    })
-
-    TolakModal.close2.on('click', function() {
-      TolakModal.self.hide();
-    })
-
-    var AccModal = {
-      'self': $('#acc_modal'),
-      'info': $('#acc_modal').find('.info'),
-      'form': $('#acc_modal').find('#penomoran_form'),
-      'addBtn': $('#acc_modal').find('#add_btn'),
-      'catatan': $('#acc_modal').find('#catatan'),
-      // 'output_no_dokumen': $('#acc_modal').find('#output_no_dokumen'),
-      'close2': $('#acc_modal').find('#close2'),
-      'close1': $('#acc_modal').find('#close1'),
-      'id_pengiriman': $('#acc_modal').find('#id_pengiriman'),
-    }
-    AccModal.close1.on('click', function() {
-      AccModal.self.hide();
-    })
-
-    AccModal.close2.on('click', function() {
-      AccModal.self.hide();
-    })
-
-
-    var SurveyModal = {
-      'self': $('#survey_modal'),
-      'info': $('#survey_modal').find('.info'),
-      'form': $('#survey_modal').find('#survey_form'),
-      'addBtn': $('#survey_modal').find('#add_btn'),
-      'survey_fm': $('#survey_modal').find('#survey_fm'),
-      'close2': $('#survey_modal').find('#close2'),
-      'close1': $('#survey_modal').find('#close1'),
-      'id_pengiriman': $('#survey_modal').find('#id_pengiriman'),
-    }
-    SurveyModal.close1.on('click', function() {
-      SurveyModal.self.hide();
-    })
-
-    SurveyModal.close2.on('click', function() {
-      SurveyModal.self.hide();
-    })
-
-
-    var PenomoranModal = {
-      'self': $('#penomoran_modal2'),
-      'info': $('#penomoran_modal2').find('.info'),
-      'form': $('#penomoran_modal2').find('#last_acc_form'),
-      'addBtn': $('#penomoran_modal2').find('#add_btn'),
-      'output_no_dokumen': $('#penomoran_modal2').find('#output_no_dokumen'),
-      'close2': $('#penomoran_modal2').find('#close2'),
-      'close1': $('#penomoran_modal2').find('#close1'),
-      'id_pengiriman': $('#penomoran_modal2').find('#id_pengiriman'),
-    }
-    PenomoranModal.close1.on('click', function() {
-      PenomoranModal.self.hide();
-    })
-
-    PenomoranModal.close2.on('click', function() {
-      PenomoranModal.self.hide();
-    })
-    approv_btn.on('click', function() {
-      if (n_role == 'kasi_umum') {
-        SurveyModal.self.show();
-        SurveyModal.id_pengiriman.val(id_pengiriman);
-
-        return;
-      }
-      if (n_role == 'kasi_usaha') {
-        SurveyModal.self.show();
-        SurveyModal.id_pengiriman.val(id_pengiriman);
-        return;
-      }
-
-      if (n_role == 'kabid' || n_role == 'kasi_survey') {
-        AccModal.self.show();
-        AccModal.id_pengiriman.val(id_pengiriman);
-        return;
-      }
-
-
-
-      <?php if (!empty($this->session->userdata()['level']) && $this->session->userdata()['level'] == '4') {
-      ?>
-        PenomoranModal.self.show();
-        PenomoranModal.id_pengiriman.val(id_pengiriman);
-      <?php   } else  if ($this->session->userdata()['nama_role'] == 'frontoffice') {  ?>
-
-        swal(swalKirimConfigure).then((result) => {
-          if (!result.value) {
-            return;
-          }
-          $.ajax({
-            url: `<?= site_url('PengirimanController/approv') ?>`,
-            'type': 'get',
-            data: {
-              id_pengiriman: id_pengiriman
-            },
-            success: function(data) {
-              getProfil();
-            },
-            error: function(e) {}
-          });
-        });
-      <?php   } else {  ?>
-
-        AccModal.self.show();
-        AccModal.id_pengiriman.val(id_pengiriman);
-      <?php
-      }  ?>
-    })
-
-    not_approv_btn.on('click', function() {
-      TolakModal.self.show();
-      TolakModal.id_pengiriman.val(id_pengiriman);
-      TolakModal.catatan.val(dataProfil['catatan']);
-      // TolakModal.output_no_dokumen.val(dataProfil['output_no_dokumen']);
-    })
-
-    TolakModal.form.on('submit', function() {
-      swal(swalNotApprovConfigure).then((result) => {
-        if (!result.value) {
-          return;
-        }
-        $.ajax({
-          url: `<?= site_url('PengirimanController/not_approv') ?>`,
-          'type': 'post',
-          data: TolakModal.form.serialize(),
-          success: function(data) {
-            getProfil();
-            TolakModal.self.hide();
-          },
-          error: function(e) {}
-        });
-      })
-
-    })
-
-    PenomoranModal.form.on('submit', function() {
-      swal(swalApprovConfigure).then((result) => {
-        if (!result.value) {
-          return;
-        }
-        $.ajax({
-          url: `<?= site_url('PengirimanController/approv') ?>`,
-          'type': 'post',
-          data: PenomoranModal.form.serialize(),
-          success: function(data) {
-            getProfil();
-            PenomoranModal.self.hide();
-          },
-          error: function(e) {}
-        });
-      })
-    })
-
-    AccModal.form.on('submit', function() {
-      swal(swalApprovConfigure).then((result) => {
-        if (!result.value) {
-          return;
-        }
-        $.ajax({
-          url: `<?= site_url('PengirimanController/approv') ?>`,
-          'type': 'post',
-          data: AccModal.form.serialize(),
-          success: function(data) {
-            getProfil();
-            AccModal.self.hide();
-          },
-          error: function(e) {}
-        });
-      })
-    })
-
-    SurveyModal.form.on('submit', function() {
-      swal(swalApprovConfigure).then((result) => {
-        if (!result.value) {
-          return;
-        }
-        $.ajax({
-          url: `<?= site_url('PengirimanController/approv') ?>`,
-          'type': 'post',
-          data: SurveyModal.form.serialize(),
-          success: function(data) {
-            getProfil();
-            SurveyModal.self.hide();
-          },
-          error: function(e) {}
-        });
-      })
-
-    })
-
     var FDataTable = $('#FDataTable').DataTable({
       'columnDefs': [],
       deferRender: true,
@@ -599,22 +313,6 @@
         return `<i class='fa fa-times text-danger'> ${labels} </i>`;
     }
 
-    var swalKirimConfigure = {
-      title: "Konfirmasi Kirim",
-      text: "Yakin akan Kirim data ini?",
-      type: "info",
-      showCancelButton: true,
-      confirmButtonColor: "#18a689",
-      confirmButtonText: "Ya, Kirim!",
-    };
-    var swalApprovConfigure = {
-      title: "Konfirmasi Approv",
-      text: "Yakin akan Approv data ini?",
-      type: "info",
-      showCancelButton: true,
-      confirmButtonColor: "#18a689",
-      confirmButtonText: "Ya, Approv!",
-    };
     var swalDeApprovConfigure = {
       title: "Konfirmasi Batal Approv",
       text: "Yakin akan Batal Approv data ini?",
@@ -623,50 +321,6 @@
       confirmButtonColor: "#18a689",
       confirmButtonText: "Ya, Batalkan!",
     };
-    var swalNotApprovConfigure = {
-      title: "Konfirmasi Tolak",
-      text: "Yakin akan Tolak Approv data ini?",
-      type: "info",
-      showCancelButton: true,
-      confirmButtonColor: "red",
-      confirmButtonText: "Ya, Tolak!",
-    };
-    var swalSaveConfigure = {
-      title: "Konfirmasi simpan",
-      text: "Yakin akan menyimpan data ini?",
-      type: "info",
-      showCancelButton: true,
-      confirmButtonColor: "#18a689",
-      confirmButtonText: "Ya, Simpan!",
-    };
-    var swalSaveConfigure2 = {
-      title: "Konfirmasi Approv",
-      text: "Yakin Approv data ini?",
-      type: "info",
-      showCancelButton: true,
-      confirmButtonColor: "#18a689",
-      confirmButtonText: "Ya, Approv!",
-    };
-    var swalNotApprov = {
-      title: "Konfirmasi simpan",
-      text: "Yakin akan menyimpan data ini?",
-      type: "info",
-      showCancelButton: true,
-      confirmButtonColor: "#red",
-      confirmButtonText: "Ya, Simpan!",
-    };
-
-
-    function renderImg(label, dir, filename) {
-      return ` <div class="iq-card" col-lg-6>
-            <div class="iq-card-header d-flex justify-content-between">
-            <div class="iq-header-title">
-            <h4 class="card-title"> ${label}</h4>
-             </div> </div> <div class="iq-card-body">
-            <img src="<?= base_url() ?>upload/${dir}/${filename}" class="img-fluid" alt="Responsive image">
-            </div> </div> `
-    }
-
 
     getProfil();
 
@@ -693,7 +347,6 @@
             }
           }
           if (dataProfil['role_sending'] != '99') {
-            // console.log('dumy')
             $.when(getDataDumy()).done(function(a1) {
               if (dataProfil['id_tahap_proposal'] >= '4' && dataProfil['survey'] == 'ya') {
                 $.when(getTimSurveyDetail()).done(function(a1) {
@@ -714,15 +367,12 @@
 
             }
           }
-
-
         },
         error: function(e) {}
       });
     }
 
     function renderProfile() {
-      // Layout.nama.html(dataProfil['nama'])
       Layout.no_dokumen.html(dataProfil['no_dokumen'])
       Layout.alamat.html(dataProfil['alamat_user'] ? dataProfil['alamat_user'] : dataProfil['alamat'])
       Layout.deskripsi.html(dataProfil['deskripsi'].replace('\n', ' <br> '))
@@ -736,12 +386,8 @@
       Layout.id_service.html(dataProfil['nama_service'])
       Layout.tujuan.html(dataProfil['tujuan'] == 'usaha' ? "Perizinan Usaha" : "Perizinan Umum")
       Layout.status_proposal.html(statusPermohonan(dataProfil['status_proposal']))
-      dwn = ` < a type = ""
-          class = "btn btn-light my-1 mr-sm-2"
-          id = "export_btn"
-          href = "<?= site_url() ?>PengirimanController/word?id_pengiriman=${id_pengiriman}"
-          data - loading - text = "Loading..." > < i class = "fal fa-download" > < /i> Download Docx</a >
-            `;
+      dwn = ` <a type=""  class="btn btn-light my-1 mr-sm-2"   id="export_btn"  href="<?= site_url() ?>PengirimanController/word?id_pengiriman=${id_pengiriman}" data-loading-text="Loading...">
+      <i class="fal fa-download"> </i> Download Docx</a>`;
       // Layout.btn_word.html(dwn)
       var str = dataProfil['no_telp'];
       str = str.replace(/[^0-9]/ig, "");;
@@ -753,6 +399,13 @@
       } else {
         fx = str;
       }
+      if (dataProfil['longitude'] && dataProfil['latitude']) {
+        document.getElementById('categorySideMap').style.display = 'block';
+        createListingsMap({
+          mapId: 'categorySideMap',
+        }, dataProfil);
+      }
+
       var formattedBody = `Salam Sejahterah! \nHalo ${dataProfil['nama']} \nkami Dinas Penanaman Modal, Pelayanan Terpadu Satu Pintu, Koperasi Usaha Mikro Kecil dan Menengah Kabupaten Bangka \nMenyampaikan bahwa :`;
       var waToLink = `https://api.whatsapp.com/send?phone=${fx}&text=` + encodeURIComponent(formattedBody);
       var mailToLink = `mailto:${dataProfil['email']}?body=` + encodeURIComponent(formattedBody);
@@ -786,80 +439,20 @@
       }
 
       renderData = renderUserApprov();
-      console.log('renderData')
       FDataTable.clear().rows.add(renderData).draw('full-hold');
-
-
-
-      approv_btn.hide();
       de_approv_btn.hide();
-      not_approv_btn.hide();
-      console.log(n_role)
-      if (n_role == 'admin') {
-        approv_btn.hide();
-        de_approv_btn.hide();
-      } else if (n_role == 'kasi_usaha' || n_role == 'kasi_umum') {
-        if (dataProfil['id_tahap_proposal'] == '1') {
-          if (dataProfil['status_proposal'] == 'DIPROSES') {
-            approv_btn.show();
-            not_approv_btn.show();
-          }
-        }
-        return;
-      } else if (n_role == 'kabid') {
-        if (dataProfil['id_tahap_proposal'] == '2') {
-          if (dataProfil['status_proposal'] == 'DIPROSES') {
-            approv_btn.show();
-            not_approv_btn.show();
-          }
-        }
-        return;
-      } else if (n_role == 'kasi_survey') {
-        if (dataProfil['id_tahap_proposal'] == '3') {
-          if (dataProfil['status_proposal'] == 'DIPROSES') {
 
-            approv_btn.show();
-            not_approv_btn.show();
-          }
-        }
-        return;
-      } else if (n_role == 'kadin') {
-        if (dataProfil['id_tahap_proposal'] == '6') {
-          if (dataProfil['status_proposal'] == 'DIPROSES') {
-            approv_btn.show();
-            not_approv_btn.show();
-          }
-          if (dataProfil['status_proposal'] == 'DITOLAK') {
-            approv_btn.show();
-            // not_approv_btn.show();
-          }
-        }
-        return;
-      } else if (n_role == 'frontoffice') {
+      if (n_role == 'frontoffice') {
         if (dataProfil['status_proposal'] == 'DRAFT') {
           approv_btn.show();
           de_approv_btn.hide();
         }
         if (dataProfil['id_tahap_proposal'] == '1') {
-          // console.log(dataProfil['id_tahap_proposal'])
           approv_btn.hide();
           de_approv_btn.show();
         }
         if (dataProfil['id_tahap_proposal'] > '1') {}
         return;
-      } else if (n_role == 'backoffice') {
-        your_level = "<?= $this->session->userdata()['level'] ?>";
-        if (dataProfil['id_tahap_proposal'] == your_level) {
-          approv_btn.show();
-          // not_approv_btn.show();
-          de_approv_btn.hide();
-
-          if (dataProfil['status_proposal'] == 'DITOLAK') {
-            //               approv_btn.hide();
-            // not_approv_btn.hide();
-            // de_approv_btn.hide();
-          }
-        }
       };
 
     }
@@ -869,22 +462,21 @@
       var i = 0;
       var renderData = [];
       if (data['id_role'] == '99') {
-        console.log(data)
         renderData.push([renderDate(data['created_at']), data['nama_sending'], 'Customer', '', statusSelf(7)]);
-        // renderData.push([renderDate(data['date_sending']), data['nama_sending'], 'Front Office', data['catatan_fo'], statusSelf(1)]);
       }
-      if (data['status_proposal'] == 'DIPROSES' || data['status_proposal'] == 'DITERIMA') {
+
+      if (data['status_proposal'] == 'DIPROSES' || data['status_proposal'] == 'DITERIMA' || data['status_proposal'] == 'DRAFT') {
 
         if (data['id_tahap_proposal'] == '0') {
           renderData.push(['-', '-', 'Front Office', '-', statusSelf(3)]);
+          if (n_role == 'frontoffice') {
+            document.getElementById('btn_act').style.display = 'block';
+            document.getElementById('btn_act_b').style.display = 'block';
+          }
           return renderData;
         } else {
-          if (n_role == 'frontoffice') {
-            document.getElementById('btn_act').style.visibility = 'hidden';
-          }
           renderData.push([renderDate(data['date_acc_1']), data['nama_acc_1'], 'Front Office', data['catatan_1'], statusSelf(6)]);
         }
-
         if (data['id_tahap_proposal'] == '1') {
           renderData.push(['-', '-', data['tujuan'] == 'usaha' ? 'Kasi Usaha' : 'Kasi Umum', '-', statusSelf(3)]);
           if (n_role == 'kasi_umum' || n_role == "kasi_usaha") {
@@ -910,22 +502,37 @@
 
         if (data['id_tahap_proposal'] == '3') {
           renderData.push(['-', '-', 'Kasi Survey', '-', statusSelf(3)]);
-          document.getElementById('btn_act').style.display = 'block';
+          if (n_role == 'kasi_survey') {
+
+            document.getElementById('email_user_survey').value = data['email'];
+            document.getElementById('btn_act').style.display = 'block';
+          }
           return renderData;
         } else {
           if (data['survey'] == 'ya') {
             if (data['id_tahap_proposal'] == '4') {
               document.getElementById('btn_act_b').style.display = 'block';
-              renderData.push([renderDate(data['date_acc_4']), data['nama_acc_4'], 'Kasi Survey', data['catatan_4'] + '<br><hr>Anggota Tim :' + dataSurvey, statusSelf(8) + '<br>' + statusSelf(9)]);
+              renderData.push([renderDate(data['date_acc_4']), data['nama_acc_4'], 'Kasi Survey', data['catatan_4'] + '<br><hr>' + dataSurvey, statusSelf(8) + '<br>' + statusSelf(9)]);
               return renderData;
             } else {
-              renderData.push([renderDate(data['date_acc_4']), data['nama_acc_4'], 'Kasi Survey', data['catatan_4'] + '<br><hr>Anggota Tim :' + dataSurvey, statusSelf(8)]);
+              renderData.push([renderDate(data['date_acc_4']), data['nama_acc_4'], 'Kasi Survey', data['catatan_4'] + '<br><hr>' + dataSurvey, statusSelf(8)]);
               renderData.push([renderDate(data['date_acc_5']), data['nama_acc_5'], 'Kasi Survey', data['catatan_5'], statusSelf(6)]);
             }
           }
         }
-
+        // NEW HERE
         if (data['id_tahap_proposal'] == '5') {
+          renderData.push(['-', '-', 'Kabid', '-', statusSelf(3)]);
+          if (n_role == 'kabid') {
+            document.getElementById('btn_act_c').style.display = 'block';
+          }
+          return renderData;
+        } else {
+          renderData.push([renderDate(data['date_acc_6']), data['nama_acc_6'], 'Kabid', data['catatan_6'], statusSelf(6)]);
+        }
+
+
+        if (data['id_tahap_proposal'] == '6') {
           renderData.push(['-', '-', data['tujuan'] = "umum" ? 'Kasi Umum ' : "Kasi Usaha", '-', statusSelf('wait', 'Draft')]);
           if (n_role == 'kasi_umum') {
             document.getElementById('btn_act_b').style.display = 'block';
@@ -935,57 +542,160 @@
           if (data['file_draft'] != '') {
 
             btn = `<button type="button" onclick="myFunctionRenderFiles('file_draft','${data['file_draft']}','Draft')" class="btn btn-primary" data-toggle="modal" data-target=".modal_files"><i class="ri-search-eye-line"></i> Draft</button><br>`
+          } else {
+
           }
-          renderData.push([renderDate(data['date_acc_6']), data['nama_acc_6'], data['tujuan'] = "umum" ? 'Kasi Umum ' : "Kasi Usaha", btn + data['catatan_6'], statusSelf('ok', 'Draft')]);
+          renderData.push([renderDate(data['date_acc_7']), data['nama_acc_7'], data['tujuan'] = "umum" ? 'Kasi Umum ' : "Kasi Usaha", btn + data['catatan_7'], statusSelf('ok', 'Draft')]);
         }
 
-        if (data['id_tahap_proposal'] == '6') {
+        if (data['id_tahap_proposal'] == '7') {
           renderData.push(['-', '-', "Operator", '-', statusSelf('wait', 'Cetak')]);
           if (n_role == 'backoffice') {
             document.getElementById('btn_act').style.display = 'block';
           }
           return renderData;
         } else {
-          renderData.push([renderDate(data['date_acc_7']), data['nama_acc_7'], "Operator", data['catatan_7'], statusSelf('ok', 'Cetak')]);
+          renderData.push([renderDate(data['date_acc_8']), data['nama_acc_8'], "Operator", data['catatan_8'], statusSelf('ok', 'Cetak')]);
         }
 
-        if (data['id_tahap_proposal'] == '7') {
-          renderData.push(['-', '-', "Kabid", '-', statusSelf('wait', 'Tembusan')]);
+        if (data['id_tahap_proposal'] == '8') {
+          renderData.push(['-', '-', "Kabid", '-', statusSelf('wait', 'Paraf')]);
           if (n_role == 'kabid') {
             document.getElementById('btn_act_b').style.display = 'block';
           }
           return renderData;
         } else {
-          renderData.push([renderDate(data['date_acc_8']), data['nama_acc_8'], "Kabid", data['catatan_8'], statusSelf('ok', 'Tembusan')]);
+          renderData.push([renderDate(data['date_acc_9']), data['nama_acc_9'], "Kabid", data['catatan_9'], statusSelf('ok', 'Selesai')]);
         }
 
-        if (data['id_tahap_proposal'] == '8') {
-          renderData.push(['-', '-', "Kepala Dinas", '-', statusSelf('wait', 'Tembusan')]);
+        if (data['id_tahap_proposal'] == '9') {
+          renderData.push(['-', '-', "Kepala Dinas", '-', statusSelf('wait', 'Tanda Tangan')]);
           if (n_role == 'kadin') {
             document.getElementById('btn_act').style.display = 'block';
           }
           return renderData;
         } else {
-          renderData.push([renderDate(data['date_acc_9']), data['nama_acc_9'], "Kepala Dinas", data['catatan_9'], statusSelf('ok', 'Tembusan')]);
+          renderData.push([renderDate(data['date_acc_10']), data['nama_acc_10'], "Kepala Dinas", data['catatan_10'], statusSelf('ok', 'Selesai')]);
         }
 
 
-        if (data['id_tahap_proposal'] == '9') {
+        if (data['id_tahap_proposal'] == '10') {
           renderData.push(['-', '-', "Operator", '-', statusSelf('wait', 'Penomoran')]);
           if (n_role == 'backoffice') {
             document.getElementById('btn_act_b').style.display = 'block';
           }
           return renderData;
         } else {
-          renderData.push([renderDate(data['date_acc_10']), data['nama_acc_10'], "Operator", 'No Surat : ' + data['no_dokumen'] + '<br>' + data['catatan_10'], statusSelf('ok', 'Penomoran')]);
+          renderData.push([renderDate(data['date_acc_11']), data['nama_acc_11'], "Operator", 'No Surat : ' + data['no_dokumen'] + '<br>' + data['catatan_11'], statusSelf('ok', 'Penomoran')]);
+        }
+      }
+
+      if (data['status_proposal'] == 'DITOLAK') {
+
+        if (data['tolak_in'] == '1') {
+          renderData.push([renderDate(data['date_acc_1']), data['nama_acc_1'], 'Front Office', data['catatan_1'], statusSelf(5)]);
+          return renderData;
         }
 
+        if (data['tolak_in'] == '2') {
+          renderData.push([renderDate(data['date_acc_1']), data['nama_acc_1'], 'Front Office', data['catatan_1'], statusSelf(6)]);
+          renderData.push([renderDate(data['date_acc_2']), data['nama_acc_2'], data['tujuan'] == 'usaha' ? 'Kasi Usaha' : 'Kasi Umum', data['catatan_2'], statusSelf(5)]);
+        }
+
+        if (data['tolak_in'] == '3') {
+          renderData.push([renderDate(data['date_acc_1']), data['nama_acc_1'], 'Front Office', data['catatan_1'], statusSelf(6)]);
+          renderData.push([renderDate(data['date_acc_2']), data['nama_acc_2'], data['tujuan'] == 'usaha' ? 'Kasi Usaha' : 'Kasi Umum', data['catatan_2'], statusSelf(6)]);
+          renderData.push([renderDate(data['date_acc_3']), data['nama_acc_3'], 'Kabid', data['catatan_3'], statusSelf(5)]);
+        }
+
+        //pemilihan tim
+        if (data['tolak_in'] == '4') {
+          renderData.push([renderDate(data['date_acc_1']), data['nama_acc_1'], 'Front Office', data['catatan_1'], statusSelf(6)]);
+          renderData.push([renderDate(data['date_acc_2']), data['nama_acc_2'], data['tujuan'] == 'usaha' ? 'Kasi Usaha' : 'Kasi Umum', data['catatan_2'], statusSelf(6)]);
+          renderData.push([renderDate(data['date_acc_3']), data['nama_acc_3'], 'Kabid', data['catatan_3'], statusSelf(6)]);
+          renderData.push([renderDate(data['date_acc_4']), data['nama_acc_4'], 'Kasi Survey', data['catatan_4'], statusSelf(5)]);
+        }
+
+        //evaluasi survey
+        if (data['tolak_in'] == '5') {
+          renderData.push([renderDate(data['date_acc_1']), data['nama_acc_1'], 'Front Office', data['catatan_1'], statusSelf(6)]);
+          renderData.push([renderDate(data['date_acc_2']), data['nama_acc_2'], data['tujuan'] == 'usaha' ? 'Kasi Usaha' : 'Kasi Umum', data['catatan_2'], statusSelf(6)]);
+          renderData.push([renderDate(data['date_acc_3']), data['nama_acc_3'], 'Kabid', data['catatan_3'], statusSelf(6)]);
+          // renderData.push([renderDate(data['date_acc_4']), data['nama_acc_4'], 'Kasi Survey', data['catatan_4'], statusSelf(6)]);
+          renderData.push([renderDate(data['date_acc_4']), data['nama_acc_4'], 'Kasi Survey', data['catatan_4'] + '<br><hr>' + dataSurvey, statusSelf(8)]);
+
+          renderData.push([renderDate(data['date_acc_5']), data['nama_acc_5'], 'Kasi Survey', data['catatan_5'], statusSelf(5)]);
+        }
+
+        if (data['id_tahap_proposal'] == '5') {
+          renderData.push(['-', '-', 'Kabid', '-', statusSelf(3)]);
+          if (n_role == 'kabid') {
+            document.getElementById('btn_act_c').style.display = 'block';
+          }
+          return renderData;
+        } else {
+          renderData.push([renderDate(data['date_acc_6']), data['nama_acc_6'], 'Kabid', data['catatan_6'], statusSelf(6)]);
+        }
+
+
+        if (data['id_tahap_proposal'] == '6') {
+          renderData.push(['-', '-', data['tujuan'] = "umum" ? 'Kasi Umum ' : "Kasi Usaha", '-', statusSelf('wait', 'Draft')]);
+          if (n_role == 'kasi_umum') {
+            document.getElementById('btn_act_b').style.display = 'block';
+          }
+          return renderData;
+        } else {
+          if (data['file_draft'] != '') {
+
+            btn = `<button type="button" onclick="myFunctionRenderFiles('file_draft','${data['file_draft']}','Draft')" class="btn btn-primary" data-toggle="modal" data-target=".modal_files"><i class="ri-search-eye-line"></i> Draft</button><br>`
+          } else {
+
+          }
+          renderData.push([renderDate(data['date_acc_7']), data['nama_acc_7'], data['tujuan'] = "umum" ? 'Kasi Umum ' : "Kasi Usaha", btn + data['catatan_7'], statusSelf('ok', 'Draft')]);
+        }
+
+        if (data['id_tahap_proposal'] == '7') {
+          renderData.push(['-', '-', "Operator", '-', statusSelf('wait', 'Cetak')]);
+          if (n_role == 'backoffice') {
+            document.getElementById('btn_act').style.display = 'block';
+          }
+          return renderData;
+        } else {
+          renderData.push([renderDate(data['date_acc_8']), data['nama_acc_8'], "Operator", data['catatan_8'], statusSelf('ok', 'Cetak')]);
+        }
+
+        if (data['id_tahap_proposal'] == '8') {
+          renderData.push(['-', '-', "Kabid", '-', statusSelf('wait', 'Paraf')]);
+          if (n_role == 'kabid') {
+            document.getElementById('btn_act_b').style.display = 'block';
+          }
+          return renderData;
+        } else {
+          renderData.push([renderDate(data['date_acc_9']), data['nama_acc_9'], "Kabid", data['catatan_9'], statusSelf('ok', 'Selesai')]);
+        }
+
+        if (data['id_tahap_proposal'] == '9') {
+          renderData.push(['-', '-', "Kepala Dinas", '-', statusSelf('wait', 'Tanda Tangan')]);
+          if (n_role == 'kadin') {
+            document.getElementById('btn_act').style.display = 'block';
+          }
+          return renderData;
+        } else {
+          renderData.push([renderDate(data['date_acc_10']), data['nama_acc_10'], "Kepala Dinas", data['catatan_10'], statusSelf('ok', 'Selesai')]);
+        }
+        if (data['id_tahap_proposal'] == '10') {
+          renderData.push(['-', '-', "Operator", '-', statusSelf('wait', 'Penomoran')]);
+          if (n_role == 'backoffice') {
+            document.getElementById('btn_act_b').style.display = 'block';
+          }
+          return renderData;
+        } else {
+          renderData.push([renderDate(data['date_acc_11']), data['nama_acc_11'], "Operator", 'No Surat : ' + data['no_dokumen'] + '<br>' + data['catatan_11'], statusSelf('ok', 'Penomoran')]);
+        }
 
       }
       return renderData;
     }
-
-
 
     function getTimSurveyDetail() {
       return $.ajax({
@@ -1000,18 +710,19 @@
             return;
           }
           data = json['data'][0];
-          tx = '';
-          // console.log(tx)
-          data['pupr'] != 0 ? (tx += ' <br>PUPR (' + data['nama_pupr'] + ')') : '';
-          data['lingkunganhidup'] != 0 ? (tx += ' <br>LH (' + data['nama_lingkunganhidup'] + ')') : '';
-          data['pariwisata'] != 0 ? (tx += ' <br>Pariwisata (' + data['nama_pariwisata'] + ')') : '';
-          data['disperindag'] != 0 ? (tx += ' <br>DISPERINDAG (' + data['nama_disperindag'] + ')') : '';
-          data['diknas'] != 0 ? (tx += ' <br>DIKNAS (' + data['nama_diknas'] + ')') : '';
-          data['pertanian'] != 0 ? (tx += ' <br>Pertanian (' + data['nama_pertanian'] + ')') : '';
-          data['perikanan'] != 0 ? (tx += ' <br>Perikanan (' + data['nama_perikanan'] + ')') : '';
-          data['perkim'] != 0 ? (tx += ' <br>Perkim (' + data['nama_perkim'] + ')') : '';
-          data['kesra'] != 0 ? (tx += ' <br>Kesra (' + data['nama_kesra'] + ')') : '';
-          console.log(tx);
+          title = '';
+          tx = 'Tanggal : ' + renderDate2(data['date_survey']) + '';
+          for (i = 1; i <= data['count_tim']; i++) {
+            if (data['nama_tim_' + i]) {
+
+
+              if (title != data['title_role_' + i]) {
+                tx += ' <br><hr><strong>' + data['title_role_' + i] + '</strong>';
+                title = data['title_role_' + i];
+              }
+              tx += ' <br>' + data['nama_tim_' + i];
+            }
+          }
           dataSurvey = tx;
         },
         error: function(e) {}

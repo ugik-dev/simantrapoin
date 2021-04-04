@@ -53,7 +53,7 @@
                 },
             });
             $.ajax({
-                url: `<?= site_url('Service/act_9') ?>`,
+                url: `<?= site_url('Service/act_10') ?>`,
                 'type': 'POST',
                 data: act_3_form.serialize(),
                 // contentType: false,
