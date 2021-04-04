@@ -1,15 +1,15 @@
 <div id="content-page" class="content-page">
    <div class="container">
       <div class="row">
-         <div class="col-lg-12" style=" z-index: -1;">
-            <div class="iq-card iq-card-block iq-card-stretch iq-card-height" style=" z-index: -1;">
+         <div class="col-lg-12" style=" z-index: 0;">
+            <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
                <!-- <div class="iq-card-header d-flex justify-content-between">
                   <div class="iq-header-title">
                      <h4 class="card-title">Maps</h4>
                   </div>
                </div> -->
                <div class="iq-card-body">
-                  <div id="mapid" style="height: 500px; width: 100%; "></div>
+                  <div id="mapid" style="height: 500px; width: 100%"></div>
                </div>
             </div>
          </div>
