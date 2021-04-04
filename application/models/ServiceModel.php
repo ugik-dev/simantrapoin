@@ -17,6 +17,16 @@ class ServiceModel extends CI_Model
         return $res->result_array();
     }
 
+    public function getMaps($filter)
+    {
+        $this->db->select("id_pengiriman, nama_badan, longitude , latitude");
+        $this->db->from('pengiriman');
+        $this->db->where('longitude <> "" AND longitude <> "0" AND latitude <> "" AND latitude <> "0" ');
+        $res = $this->db->get();
+        // return $res;
+        return $res->result_array();
+    }
+
     public function getServerSTMP()
     {
         $this->db->select("*");

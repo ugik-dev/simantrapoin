@@ -6,7 +6,7 @@
                <div class="iq-navbar-custom-menu d-flex align-items-center justify-content-between">
                   <div class="iq-sidebar-logo">
                      <div class="top-logo">
-                        <a href="index.html" class="logo">
+                        <a href="<?= base_url() ?>" class="logo">
                            <img src="<?= base_url('assets/') ?>images/logo-bangka.png" class="img-fluid" alt="">
                            <span>SIMANTRAPOIN</span>
                         </a>

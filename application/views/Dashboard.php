@@ -1,6 +1,18 @@
 <div id="content-page" class="content-page">
    <div class="container">
       <div class="row">
+         <div class="col-lg-12" style=" z-index: -1;">
+            <div class="iq-card iq-card-block iq-card-stretch iq-card-height" style=" z-index: -1;">
+               <!-- <div class="iq-card-header d-flex justify-content-between">
+                  <div class="iq-header-title">
+                     <h4 class="card-title">Maps</h4>
+                  </div>
+               </div> -->
+               <div class="iq-card-body">
+                  <div id="mapid" style="height: 500px; width: 100%; "></div>
+               </div>
+            </div>
+         </div>
          <div class="col-md-6 col-lg-3">
             <div class="iq-card iq-card-block iq-card-stretch iq-card-height iq-border-box iq-border-box-1 text-primary">
                <div class="iq-card-body">
@@ -112,7 +124,7 @@
                      <h4 class="card-title">Review</h4>
                   </div>
                </div>
-               <div class="iq-card-body">
+               <!-- <div class="iq-card-body">
                   <div class="iq-details">
                      <span class="title text-dark">5 Star</span>
                      <div class="percentage float-right text-primary">95 <span>%</span></div>
@@ -158,7 +170,7 @@
                         </div>
                      </div>
                   </div>
-               </div>
+               </div> -->
             </div>
          </div>
          <div class="col-lg-7">
@@ -360,3 +372,49 @@
       </div>
    </div>
 </div>
+
+
+<script>
+   $(document).ready(function() {
+      getMaps()
+      var map = L.map('mapid').setView({
+         lon: 106.0596408,
+         lat: -1.8509798
+      }, 13)
+
+      L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+         attribution: "",
+         minZoom: 1,
+         maxZoom: 19,
+      }).addTo(map);
+
+      function getMaps() {
+         return $.ajax({
+            url: `<?php echo site_url('Service/getMaps/') ?>`,
+            'type': 'GET',
+            data: {},
+            success: function(data) {
+               var json = JSON.parse(data);
+               if (json['error']) {
+                  return;
+               }
+               data = json['data'];
+               golden = L.marker([0.7893, 113.9213]).bindPopup('<a href="www.google.com"> aa </a>').addTo(map);
+               Object.values(data).forEach((d) => {
+                  console.log(d['latitude'], d['longitude'])
+                  var x = L.marker([d['longitude'], d['latitude']]).bindPopup(`<a href="<?= base_url() ?>PengirimanController/DetailPengiriman?id_pengiriman=${d['id_pengiriman']}">${d['nama_badan']} </a>`).addTo(map)
+                  // s
+               });
+            },
+            error: function(e) {}
+         });
+
+      }
+
+
+      var littleton = L.marker([39.61, -105.02]).bindPopup('This is Littleton, CO.'),
+         denver = L.marker([39.74, -104.99]).bindPopup('This is Denver, CO.'),
+         aurora = L.marker([39.73, -104.8]).bindPopup('This is Aurora, CO.'),
+         golden = L.marker([0.7893, 113.9213]).bindPopup('<a href="www.google.com"> aa </a>').addTo(map);
+   });
+</script>

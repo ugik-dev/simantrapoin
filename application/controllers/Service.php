@@ -75,6 +75,19 @@ class Service extends CI_Controller
     }
 
 
+    function getMaps()
+    {
+        try {
+            // $this->SecurityModel->roleOnlyGuard();
+            $data = $this->input->GET();
+            $data = $this->ServiceModel->getMaps($data);
+            echo json_encode(array('data' => $data));
+        } catch (Exception $e) {
+            ExceptionHandler::handle($e);
+        }
+    }
+
+
     function getDataDumy()
     {
         try {
