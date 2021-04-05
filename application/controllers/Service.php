@@ -245,7 +245,7 @@ class Service extends CI_Controller
     function act_7()
     {
         try {
-            $this->SecurityModel->rolesOnlyGuard(array('kasi_umum'));
+            $this->SecurityModel->rolesOnlyGuard(array('kasi_umum', 'kasi_usaha'));
             $data = $this->input->POST();
 
             $status = $this->PengirimanModel->getTahapProposal($data['id_pengiriman'])['id_tahap_proposal'];
