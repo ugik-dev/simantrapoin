@@ -409,8 +409,9 @@
           minZoom: 1,
           maxZoom: 19,
         }).addTo(map);
-
-        var marker = L.marker([dataProfil['latitude'], dataProfil['longitude']]).bindPopup(`<a href="<?= base_url() ?>PengirimanController/DetailPengiriman?id_pengiriman=${dataProfil['id_pengiriman']}">${dataProfil['nama_badan']} </a>`).addTo(map)
+        var label = `			<h6><a href="https://www.google.com/maps/search/?api=1&query=${dataProfil["latitude"]},${dataProfil["longitude"]}">${dataProfil["nama_badan"]} <br>(Open in Googlemaps)</a></h6>
+			`
+        var marker = L.marker([dataProfil['latitude'], dataProfil['longitude']]).bindPopup(label).addTo(map)
 
 
         // createListingsMap({
