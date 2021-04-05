@@ -19,6 +19,7 @@
 /upload/profile/*
 /upload/photo/*
 !/upload/photo/profile_small.jpg
+!/upload/profile/profile_small.jpg
 
 !/upload/accept_ktp/.gitkeep
 !/upload/accept_npwp/.gitkeep
