@@ -63,17 +63,26 @@
                                         <label for="nib">NIB</label>
                                         <input id="nib" name="nib" type="text" class="form-control" value="<?= $dataContent['nib'] ?>" placeholder="Nomor Induk Berusaha" required>
                                     </div>
-                                    <div class="form-group col-lg-6">
-                                        <label for="latitude"><a data-toggle="modal" data-target="#exampleModal">
-                                                Longitude <strong>*panduan maps</strong>
-                                            </a></label> <input id="longitude" name="longitude" value="<?= $dataContent['longitude'] ?>" type="text" class="form-control" placeholder="Longitude">
-                                    </div>
-                                    <div class="form-group col-lg-6">
-                                        <label for="latitude"><a data-toggle="modal" data-target="#exampleModal">
-                                                Latitude <strong>*panduan maps</strong>
-                                            </a></label>
-
-                                        <input id="latitude" name="latitude" type="text" value="<?= $dataContent['latitude'] ?>" class=" form-control" placeholder="Latitude">
+                                    <div class="col-lg-12">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group col-lg-12">
+                                                    <label for="latitude">Latitude </label>
+                                                    <input id="latitude" placeholder="Contoh : -1.863012" value="<?= $dataContent['latitude'] ?>" name="latitude" type="text" class="form-control" placeholder="Latitude">
+                                                </div>
+                                                <div class="form-group col-lg-12">
+                                                    <label for="longitude"> Longitude </label>
+                                                    <input id="longitude" placeholder="Contoh : 106.105571" value="<?= $dataContent['longitude'] ?>" name="longitude" type="text" class="form-control" placeholder="Longitude">
+                                                </div>
+                                                <div class="form-group col-lg-12">
+                                                    <label for="longitude"><a class="btn btn-outline-success mb-3" data-toggle="modal" data-target="#exampleModal">
+                                                            <i class="ion-help"></i> <strong> panduan Google maps</strong></a></label>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div id="mapid" style="height: 300px; width: 100%; z-index: 0"></div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="form-group col-lg-6">
                                         <label for="exampleFormControlTextarea1">Alamat / Lokasi Perizinan</label>
@@ -153,6 +162,71 @@
 </div>
 <script>
     $(document).ready(function() {
+        <?php if (!empty($dataContent['latitude']) && !empty($dataContent['longitude'])) { ?>
+            var curLocation = [<?= $dataContent['latitude'] . ', ' . $dataContent['longitude'] ?>]
+        <?php } else { ?>
+            var curLocation = [-1.8509798, 106.0596408]
+        <?php } ?>
+
+        var map = L.map('mapid').setView(curLocation, 13)
+
+        L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            attribution: "",
+            minZoom: 1,
+            maxZoom: 19,
+        }).addTo(map);
+
+        map.attributionControl.setPrefix(false)
+
+        marker = new L.marker(curLocation, {
+            draggable: 'true'
+        });
+
+        marker.on('dragend', function(event) {
+            var position = marker.getLatLng();
+            marker.setLatLng(position, {
+                draggable: 'true'
+            }).bindPopup(position).update();
+            $('#latitude').val(position.lat)
+            $('#longitude').val(position.lng)
+        })
+
+        map.on('click', function(e) {
+            var lat = e.latlng.lat;
+            var lng = e.latlng.lng;
+            if (!marker) {
+                marker = L.marker(e.latlng).addTo(map);
+            } else {
+                marker.setLatLng(e.latlng);
+            }
+
+            var position = marker.getLatLng();
+            $('#latitude').val(position.lat)
+            $('#longitude').val(position.lng)
+        })
+        $('#latitude').on('change', function(e) {
+            reRender()
+        });
+        $('#longitude').on('change', function(e) {
+            reRender()
+        });
+
+        function reRender() {
+            if ($('#latitude').val() != 0 && $('#longitude').val() != 0 && $('#latitude').val() != '' && $('#longitude').val() != '') {
+                curlat = $('#latitude').val();
+                curlng = $('#longitude').val();
+                curLocation = [curlat, curlng]
+                console.log('curLocation :' + curLocation)
+                if (!marker) {
+                    marker = L.marker(curLocation).addTo(map);
+                } else {
+                    marker.setLatLng(curLocation);
+                }
+
+            }
+        }
+        map.addLayer(marker)
+
         freame_service = $('#freame_service')
         id_service = $('#id_service')
 

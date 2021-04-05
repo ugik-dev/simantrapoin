@@ -419,7 +419,7 @@ function createListingsMap(options, dataProfil) {
 		},
 		geometry: {
 			type: "Point",
-			coordinates: [dataProfil["latitude"], dataProfil["longitude"]],
+			coordinates: [dataProfil["longitude"], dataProfil["latitude"]],
 		},
 	};
 	L.geoJSON(geojsonFeature, {

@@ -158,8 +158,6 @@
                   <div id="file_pendukung"></div>
                 </div>
 
-                <div class="tab-pane fade" id="maps" role="tabpanel" aria-labelledby="maps">
-                </div>
 
               </div>
             </div>
@@ -401,9 +399,23 @@
       }
       if (dataProfil['longitude'] && dataProfil['latitude']) {
         document.getElementById('categorySideMap').style.display = 'block';
-        createListingsMap({
-          mapId: 'categorySideMap',
-        }, dataProfil);
+        var map = L.map('categorySideMap').setView({
+          lon: dataProfil['longitude'],
+          lat: dataProfil['latitude']
+        }, 13)
+
+        L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          attribution: "",
+          minZoom: 1,
+          maxZoom: 19,
+        }).addTo(map);
+
+        var marker = L.marker([dataProfil['latitude'], dataProfil['longitude']]).bindPopup(`<a href="<?= base_url() ?>PengirimanController/DetailPengiriman?id_pengiriman=${dataProfil['id_pengiriman']}">${dataProfil['nama_badan']} </a>`).addTo(map)
+
+
+        // createListingsMap({
+        //   mapId: 'categorySideMap',
+        // }, dataProfil);
       }
 
       var formattedBody = `Salam Sejahterah! \nHalo ${dataProfil['nama']} \nkami Dinas Penanaman Modal, Pelayanan Terpadu Satu Pintu, Koperasi Usaha Mikro Kecil dan Menengah Kabupaten Bangka \nMenyampaikan bahwa :`;
