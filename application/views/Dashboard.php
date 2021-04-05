@@ -1,18 +1,6 @@
 <div id="content-page" class="content-page">
    <div class="container">
       <div class="row">
-         <div class="col-lg-12" style=" z-index: 0;">
-            <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
-               <!-- <div class="iq-card-header d-flex justify-content-between">
-                  <div class="iq-header-title">
-                     <h4 class="card-title">Maps</h4>
-                  </div>
-               </div> -->
-               <div class="iq-card-body">
-                  <div id="mapid" style="height: 500px; width: 100%"></div>
-               </div>
-            </div>
-         </div>
          <div class="col-md-6 col-lg-3">
             <div class="iq-card iq-card-block iq-card-stretch iq-card-height iq-border-box iq-border-box-1 text-primary">
                <div class="iq-card-body">
@@ -53,124 +41,37 @@
                </div>
             </div>
          </div>
-         <div class="col-lg-6">
+         <div class="col-lg-8">
             <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
                <div class="iq-card-header d-flex justify-content-between">
                   <div class="iq-header-title">
-                     <h4 class="card-title">User Overview</h4>
+                     <h4 class="card-title">User Perform</h4>
                   </div>
                </div>
                <div class="iq-card-body">
-                  <div class="row">
-                     <div class="col text-center">
-                        <div class="mt-3">
-                           <h5 class="">3500</h5>
-                           <span class="">users</span>
-                        </div>
-                     </div>
-                     <div class="col text-center">
-                        <div class="mt-3">
-                           <h5 class="">4253</h5>
-                           <span class="">clicks</span>
-                        </div>
-                     </div>
-                     <div class="col text-center">
-                        <div class="mt-3">
-                           <h5 class="">$8569</h5>
-                           <span class="">revenue</span>
-                        </div>
-                     </div>
-                  </div>
-                  <div id="user-chart" style="height: 400px;"></div>
+                  <div id="performa"></div>
                </div>
             </div>
          </div>
-         <div class="col-lg-6">
+         <div class="col-lg-4">
             <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
                <div class="iq-card-header d-flex justify-content-between">
                   <div class="iq-header-title">
-                     <h4 class="card-title">Worker Overview</h4>
+                     <h4 class="card-title">Worker Daily Overview</h4>
                   </div>
                </div>
                <div class="iq-card-body">
-                  <div class="row">
-                     <div class="col text-center">
-                        <div class="mt-3">
-                           <h5 class="">3500</h5>
-                           <span class="">Worker</span>
-                        </div>
-                     </div>
-                     <div class="col text-center">
-                        <div class="mt-3">
-                           <h5 class="">4253</h5>
-                           <span class="">clicks</span>
-                        </div>
-                     </div>
-                     <div class="col text-center">
-                        <div class="mt-3">
-                           <h5 class="">$8569</h5>
-                           <span class="">revenue</span>
-                        </div>
-                     </div>
-                  </div>
-                  <div id="worker-chart" style="height: 400px;"></div>
+                  <div id="performa_daily"></div>
                </div>
             </div>
          </div>
-         <div class="col-lg-5">
+         <!-- <div class="col-lg-5">
             <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
                <div class="iq-card-header d-flex justify-content-between">
                   <div class="iq-header-title">
                      <h4 class="card-title">Review</h4>
                   </div>
                </div>
-               <!-- <div class="iq-card-body">
-                  <div class="iq-details">
-                     <span class="title text-dark">5 Star</span>
-                     <div class="percentage float-right text-primary">95 <span>%</span></div>
-                     <div class="iq-progress-bar-linear d-inline-block w-100">
-                        <div class="iq-progress-bar">
-                           <span class="bg-primary" data-percent="95"></span>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="iq-details mt-4">
-                     <span class="title text-dark">4 Star</span>
-                     <div class="percentage float-right text-warning">75 <span>%</span></div>
-                     <div class="iq-progress-bar-linear d-inline-block w-100">
-                        <div class="iq-progress-bar">
-                           <span class="bg-warning" data-percent="75"></span>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="iq-details mt-4">
-                     <span class="title text-dark">3 Star</span>
-                     <div class="percentage float-right text-success">55 <span>%</span></div>
-                     <div class="iq-progress-bar-linear d-inline-block w-100">
-                        <div class="iq-progress-bar">
-                           <span class="bg-success" data-percent="55"></span>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="iq-details mt-4">
-                     <span class="title text-dark">2 Star</span>
-                     <div class="percentage float-right text-info">25 <span>%</span></div>
-                     <div class="iq-progress-bar-linear d-inline-block w-100">
-                        <div class="iq-progress-bar">
-                           <span class="bg-info" data-percent="25"></span>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="iq-details mt-4">
-                     <span class="title text-dark">1 Star</span>
-                     <div class="percentage float-right text-danger">10 <span>%</span></div>
-                     <div class="iq-progress-bar-linear d-inline-block w-100">
-                        <div class="iq-progress-bar">
-                           <span class="bg-danger" data-percent="10"></span>
-                        </div>
-                     </div>
-                  </div>
-               </div> -->
             </div>
          </div>
          <div class="col-lg-7">
@@ -198,7 +99,7 @@
                   <div id="menu-overtime-chart" style="height: 400px;"></div>
                </div>
             </div>
-         </div>
+         </div> -->
          <div class="col-lg-8">
             <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
                <div class="iq-card-header d-flex justify-content-between">
@@ -212,9 +113,8 @@
                         <tr>
                            <th scope="col"></th>
                            <th scope="col">Worker</th>
-                           <th scope="col">Age</th>
-                           <th scope="col">Designation</th>
-                           <th scope="col">Working Hour</th>
+                           <th scope="col">Position</th>
+                           <th scope="col">Daily Activity</th>
                            <th scope="col">Progress</th>
                         </tr>
                      </thead>
@@ -224,11 +124,10 @@
                               <img class="rounded-circle img-fluid avatar-40" src="<?= base_url('assets/') ?>images/user/01.jpg" alt="profile">
                            </td>
                            <td>Anna Sthesia</td>
-                           <td>Electronic</td>
-                           <td>#1456</td>
-                           <td>$300</td>
+                           <td>Front Office</td>
+                           <td>5</td>
                            <td>
-                              <div class="badge badge-pill badge-success">Paid</div>
+                              <div class="badge badge-pill badge-success">Sangat Baik</div>
                            </td>
                         </tr>
                         <tr>
@@ -236,11 +135,11 @@
                               <img class="rounded-circle img-fluid avatar-40" src="<?= base_url('assets/') ?>images/user/02.jpg" alt="profile">
                            </td>
                            <td>Brock Lee</td>
-                           <td>Laptop</td>
-                           <td>#8965</td>
-                           <td>$1200</td>
+                           <td>Kabid</td>
+                           <td>3</td>
+                           <!-- <td>$1200</td> -->
                            <td>
-                              <div class="badge badge-pill badge-primary">Shipped</div>
+                              <div class="badge badge-pill badge-primary">Stabil</div>
                            </td>
                         </tr>
                         <tr>
@@ -248,11 +147,10 @@
                               <img class="rounded-circle img-fluid avatar-40" src="<?= base_url('assets/') ?>images/user/03.jpg" alt="profile">
                            </td>
                            <td>Dan Druff</td>
-                           <td>Mobile</td>
-                           <td>#6325</td>
-                           <td>$600</td>
+                           <td>Back Office</td>
+                           <td>0</td>
                            <td>
-                              <div class="badge badge-pill badge-danger">Pending</div>
+                              <div class="badge badge-pill badge-danger">Sangat Buruk</div>
                            </td>
                         </tr>
                         <tr>
@@ -260,11 +158,11 @@
                               <img class="rounded-circle img-fluid avatar-40" src="<?= base_url('assets/') ?>images/user/04.jpg" alt="profile">
                            </td>
                            <td>Lynn Guini</td>
-                           <td>Bluetooth</td>
-                           <td>#4875</td>
-                           <td>$200</td>
+                           <td>Kabid</td>
+                           <!-- <td>#4875</td> -->
+                           <td>1</td>
                            <td>
-                              <div class="badge badge-pill badge-warning text-white">stoped</div>
+                              <div class="badge badge-pill badge-warning text-white">Kurang</div>
                            </td>
                         </tr>
                         <tr>
@@ -272,11 +170,10 @@
                               <img class="rounded-circle img-fluid avatar-40" src="<?= base_url('assets/') ?>images/user/05.jpg" alt="profile">
                            </td>
                            <td>Eric Shun</td>
-                           <td>Camera</td>
-                           <td>#8956</td>
-                           <td>$300</td>
+                           <td>Kasi Survey</td>
+                           <td>3</td>
                            <td>
-                              <div class="badge badge-pill badge-success">Paid</div>
+                              <div class="badge badge-pill badge-success">Baik</div>
                            </td>
                         </tr>
                      </tbody>
@@ -369,6 +266,18 @@
                </div>
             </div>
          </div>
+         <div class="col-lg-12" style=" z-index: 0;">
+            <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
+               <!-- <div class="iq-card-header d-flex justify-content-between">
+                  <div class="iq-header-title">
+                     <h4 class="card-title">Maps</h4>
+                  </div>
+               </div> -->
+               <div class="iq-card-body">
+                  <div id="mapid" style="height: 500px; width: 100%"></div>
+               </div>
+            </div>
+         </div>
       </div>
    </div>
 </div>
@@ -409,5 +318,130 @@
          });
 
       }
+
    });
+
+   options = {
+      chart: {
+         height: 350,
+         type: "line",
+         stacked: !1,
+      },
+      stroke: {
+         width: [0, 2, 5],
+         curve: "smooth",
+      },
+      plotOptions: {
+         bar: {
+            columnWidth: "50%",
+         },
+      },
+      colors: ["#27b345", "#827af3"],
+      series: [{
+            name: "Disposision",
+            type: "column",
+            data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30],
+         },
+         {
+            name: "Clear Disposition",
+            type: "area",
+            data: [44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43],
+         },
+      ],
+      fill: {
+         opacity: [0.85, 0.25, 1],
+         gradient: {
+            inverseColors: !1,
+            shade: "light",
+            type: "vertical",
+            opacityFrom: 0.85,
+            opacityTo: 0.55,
+            stops: [0, 100, 100, 100],
+         },
+      },
+      labels: [
+         "01/01/2003",
+         "02/01/2003",
+         "03/01/2003",
+         "04/01/2003",
+         "05/01/2003",
+         "06/01/2003",
+         "07/01/2003",
+         "08/01/2003",
+         "09/01/2003",
+         "10/01/2003",
+         "11/01/2003",
+      ],
+      markers: {
+         size: 0,
+      },
+      xaxis: {
+         type: "datetime",
+      },
+      yaxis: {
+         min: 0,
+      },
+      tooltip: {
+         shared: !0,
+         intersect: !1,
+         y: {
+            formatter: function(e) {
+               return void 0 !== e ? e.toFixed(0) + " views" : e;
+            },
+         },
+      },
+      legend: {
+         labels: {
+            useSeriesColors: !0,
+         },
+         markers: {
+            customHTML: [
+               function() {
+                  return "";
+               },
+               function() {
+                  return "";
+               }
+            ],
+         },
+      },
+   };
+
+   var chart = new ApexCharts(document.querySelector("#performa"), options);
+
+   chart.render();
+
+   performa_daily_option = {
+      chart: {
+         type: 'donut'
+      },
+      colors: ["#27b345", "#827af3", '#ffb037', '#ff7a00', '#007580', '#e4bad4', '#ff7171'],
+      series: [44, 55, 13, 33, 32, 25, 25],
+      labels: ['Front Office', 'Kasi Umum', 'Kasi Usaha', 'Kasi Survey', 'Kabid', 'Kepala Dinas', 'Operator']
+      // plotOptions: {
+      //    pie: {
+      //       donut: {
+      //          labels: {
+      //             show: true,
+      //             name: ['1', '2'],
+      //             value: [
+      //                '30', '70'
+      //             ]
+      //          }
+      //       }
+      //    }
+      // }
+   }
+
+   var performa_daily = new ApexCharts(document.querySelector("#performa_daily"), performa_daily_option);
+
+   performa_daily.render();
+
+   // chart = new ApexCharts(
+   //    document.querySelector("#performa-user"),
+   //    options
+   // )
+   // console.log('ws')
+   // console.log(chart)
+   // chart.render();
 </script>

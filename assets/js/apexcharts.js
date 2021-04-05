@@ -7876,14 +7876,12 @@
 									class: "apexcharts-yaxis",
 								})),
 								t.forEach(function (t, n) {
-									var o = e.graphics
-										.group()
-										.attr({
-											class: "apexcharts-series",
-											seriesName: u.escapeString(i.globals.seriesNames[n]),
-											rel: n + 1,
-											"data:realIndex": n,
-										});
+									var o = e.graphics.group().attr({
+										class: "apexcharts-series",
+										seriesName: u.escapeString(i.globals.seriesNames[n]),
+										rel: n + 1,
+										"data:realIndex": n,
+									});
 									(e.dataRadiusOfPercent[n] = []),
 										(e.dataRadius[n] = []),
 										(e.angleArr[n] = []),
@@ -13817,11 +13815,7 @@
 			function (t) {
 				$(t, 0);
 			}),
-		(Q._unhandledRejectionFn = function (t) {
-			"undefined" != typeof console &&
-				console &&
-				console.warn("Possible Unhandled Promise Rejection:", t);
-		});
+		(Q._unhandledRejectionFn = function (t) {});
 	var nt,
 		rt,
 		ot = (function () {
@@ -20488,15 +20482,13 @@
 				})),
 				a.extend(a.Defs, {
 					pattern: function (t, e, i) {
-						return this.put(new a.Pattern())
-							.update(i)
-							.attr({
-								x: 0,
-								y: 0,
-								width: t,
-								height: e,
-								patternUnits: "userSpaceOnUse",
-							});
+						return this.put(new a.Pattern()).update(i).attr({
+							x: 0,
+							y: 0,
+							width: t,
+							height: e,
+							patternUnits: "userSpaceOnUse",
+						});
 					},
 				}),
 				(a.Shape = a.invent({

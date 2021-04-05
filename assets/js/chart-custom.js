@@ -3401,6 +3401,7 @@ if (jQuery("#apex-column").length) {
 	)).render();
 }
 if (jQuery("#apex-mixed-chart").length) {
+	console.log(jQuery("#apex-column").length);
 	options = {
 		chart: {
 			height: 350,

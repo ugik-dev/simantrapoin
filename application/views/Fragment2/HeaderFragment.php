@@ -27,15 +27,21 @@
    <link src='<?= base_url('assets/') ?>fullcalendar/daygrid/main.css' rel='stylesheet' />
    <link src='<?= base_url('assets/') ?>fullcalendar/timegrid/main.css' rel='stylesheet' />
    <link src='<?= base_url('assets/') ?>fullcalendar/list/main.css' rel='stylesheet' />
+
+
    <!-- Maps -->
    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
    <!-- JS -->
 
    <script src="<?= base_url('assets/') ?>js/jquery-3.1.1.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
    <!-- <link rel="stylesheet" type="text/css" href="<?= base_url('assets/') ?>datatables/datatables.min.css"/>
  
 <script type="text/javascript" src="<?= base_url('assets/') ?>datatables/datatables.min.js"></script> -->
+   <!-- Apexcharts JavaScript -->
+   <!-- <script src="<?= base_url('assets/js/') ?>apexcharts.js"></script> -->
+
    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.24/af-2.3.5/b-1.7.0/b-colvis-1.7.0/b-html5-1.7.0/b-print-1.7.0/cr-1.5.3/date-1.0.2/fc-3.3.2/fh-3.1.8/kt-2.6.1/r-2.2.7/rg-1.1.2/rr-1.2.7/sc-2.0.3/sb-1.0.1/sp-1.2.2/sl-1.3.2/datatables.min.css" />
 
    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
