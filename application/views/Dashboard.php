@@ -401,7 +401,7 @@
                data = json['data'];
                Object.values(data).forEach((d) => {
                   console.log(d['latitude'], d['longitude'])
-                  var x = L.marker([d['longitude'], d['latitude']]).bindPopup(`<a href="<?= base_url() ?>PengirimanController/DetailPengiriman?id_pengiriman=${d['id_pengiriman']}">${d['nama_badan']} </a>`).addTo(map)
+                  var x = L.marker([d['latitude'], d['longitude']]).bindPopup(`<a href="<?= base_url() ?>PengirimanController/DetailPengiriman?id_pengiriman=${d['id_pengiriman']}">${d['nama_badan']} </a>`).addTo(map)
                   // s
                });
             },
