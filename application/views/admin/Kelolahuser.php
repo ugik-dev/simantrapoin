@@ -25,7 +25,6 @@
                     <th style="width: 15%; text-align:center!important">Username</th>
                     <th style="width: 12%; text-align:center!important">Nama</th>
                     <th style="width: 12%; text-align:center!important">Role</th>
-                    <th style="width: 10%; text-align:center!important">Sub Role</th>
                     <th style="width: 7%; text-align:center!important">Action</th>
                   </tr>
                 </thead>
@@ -60,20 +59,38 @@
             <label for="nama">Nama User</label>
             <input type="text" placeholder="" class="form-control" id="nama" name="nama" required="required">
           </div>
-          <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" placeholder="" class="form-control" id="password" name="password" required="required">
-          </div>
-          <div class="form-group">
-            <label for="repassword">Re-Password</label>
-            <input type="password" placeholder="" class="form-control" id="repassword" name="repassword" required="required">
-          </div>
-          <div class="form-group">
-            <label for="level">Level</label>
-            <select class="form-control mr-sm-2" id="level" name="level" required="required">
-            </select>
+
+
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label for="no_telp">No Telpon</label>
+                <input type="text" placeholder="" class="form-control" id="no_telp" name="no_telp">
+              </div>
+            </div>
+            <div class="col-lg-6">
+
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" placeholder="" class="form-control" id="email" name="email">
+              </div>
+            </div>
           </div>
 
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" placeholder="" class="form-control" id="password" name="password" required="required">
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label for="repassword">Re-Password</label>
+                <input type="password" placeholder="" class="form-control" id="repassword" name="repassword" required="required">
+              </div>
+            </div>
+          </div>
           <div class="form-group">
             <label for="id_role">Role</label>
             <select class="form-control mr-sm-2" id="id_role" name="id_role" required="required">
@@ -165,9 +182,10 @@
       'id_role': $('#user_modal').find('#id_role'),
       'password': $('#user_modal').find('#password'),
       'repassword': $('#user_modal').find('#repassword'),
+      'email': $('#user_modal').find('#email'),
+      'no_telp': $('#user_modal').find('#no_telp'),
       'lokasi': $('#user_modal').find('#lokasi'),
       'deskripsi': $('#user_modal').find('#deskripsi'),
-      'level': $('#user_modal').find('#level'),
     }
     KelolahuserModal.password.on('change', () => {
       confirmPasswordRule(KelolahuserModal.password, KelolahuserModal.repassword);
@@ -315,7 +333,7 @@
                             </div>
                           </div>
                         `;
-        renderData.push([user['username'], user['nama'], user['title_role'], user['nama_role'] == 'backoffice' ? (user['level'] == '4' ? 'Penomoran' : 'Cetak') : '-', button]);
+        renderData.push([user['username'], user['nama'], user['title_role'], button]);
       });
       FDataTable.clear().rows.add(renderData).draw('full-hold');
     }
@@ -341,29 +359,22 @@
       KelolahuserModal.saveEditBtn.show();
       var id = $(this).data('id');
       var user = dataKelolahuser[id];
+      console.log(user)
+      if (user['id_role'] == '99') {
+        KelolahuserModal.username.prop('disabled', true);
+        KelolahuserModal.id_role.prop('disabled', true);
+      } else {
+        KelolahuserModal.username.prop('disabled', false);
+        KelolahuserModal.id_role.prop('disabled', false);
+      }
       KelolahuserModal.password.prop('disabled', true);
       KelolahuserModal.repassword.prop('disabled', true);
       KelolahuserModal.id_user.val(user['id_user']);
       KelolahuserModal.nama.val(user['nama']);
       KelolahuserModal.username.val(user['username']);
+      KelolahuserModal.no_telp.val(user['no_telp']);
+      KelolahuserModal.email.val(user['email']);
       KelolahuserModal.id_role.val(user['id_role']);
-      if (KelolahuserModal.id_role.val() == '1') {
-        KelolahuserModal.level.prop('disabled', true);
-      } else {
-        KelolahuserModal.level.prop('disabled', false);
-        KelolahuserModal.level.val(user['level']);
-      }
-      KelolahuserModal.id_role.trigger('change');
-    });
-
-    KelolahuserModal.id_role.on('change', () => {
-      if (KelolahuserModal.id_role.val() != '3') {
-        KelolahuserModal.level.prop('required', false);
-        KelolahuserModal.level.prop('disabled', true);
-      } else {
-        KelolahuserModal.level.prop('required', true);
-        KelolahuserModal.level.prop('disabled', false);
-      }
     });
 
     FDataTable.on('click', '.delete', function() {
@@ -452,32 +463,6 @@
           error: function(e) {}
         });
       });
-    }
-
-    renderLevelSelection();
-
-
-    function renderLevel(index) {
-      KelolahuserModal.level.append($('<option>', {
-        value: index,
-        text: index,
-      }));
-    }
-
-    function renderLevelSelection() {
-      KelolahuserModal.level.empty();
-      KelolahuserModal.level.append($('<option>', {
-        value: "",
-        text: "-- Pilih Level --"
-      }));
-      KelolahuserModal.level.append($('<option>', {
-        value: '4',
-        text: 'BO Penomoran',
-      }));
-      KelolahuserModal.level.append($('<option>', {
-        value: '5',
-        text: 'BO Cetak',
-      }));
     }
 
     function editKelolahuser() {

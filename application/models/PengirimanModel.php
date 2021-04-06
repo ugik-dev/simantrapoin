@@ -5,7 +5,7 @@ class PengirimanModel extends CI_Model
 {
 	public function getTahapProposal($id)
 	{
-		$this->db->select('id_tahap_proposal');
+		$this->db->select('id_tahap_proposal, status_proposal');
 		$this->db->from('pengiriman as cb');
 		$this->db->where('id_pengiriman', $id);
 		$res = $this->db->get();
@@ -14,7 +14,7 @@ class PengirimanModel extends CI_Model
 	public function getAllPengiriman($filter = [])
 	{
 		if (!empty($filter['sort'])) {
-			$this->db->select('created_at,id_pengiriman, nib, ,nama_badan, lokasi_perizinan, status_proposal , id_tahap_proposal, tujuan , survey');
+			$this->db->select('created_at,id_pengiriman, nib, ,nama_badan, lokasi_perizinan, status_proposal , tujuan , survey, tp.*');
 		} else {
 			$this->db->select('cb.*,
 			coalesce(cb.nib_file, "null", "")  as nib_file,
@@ -55,8 +55,21 @@ class PengirimanModel extends CI_Model
 			$this->db->join("user as u11", "cb.acc_11 = u11.id_user", 'LEFT');
 			$this->db->join("user as t", "cb.logs_ditolak = t.id_user", 'LEFT');
 		}
+		$this->db->join("tahap_proposal as tp", "cb.id_tahap_proposal = tp.id_tahap_proposal");
+
 		if (!empty($filter['id_pengiriman'])) $this->db->where('cb.id_pengiriman', $filter['id_pengiriman']);
-		if (!empty($filter['status_proposal'])) $this->db->where('cb.status_proposal', $filter['status_proposal']);
+		if (!empty($filter['status_proposal'])) {
+			if ($filter['status_proposal'] == 'MY_TASK') {
+				if ($this->session->userdata('id_role') == '4' or $this->session->userdata('id_role') == '5') {
+					$this->db->where('tp.role_act', '45');
+				} else {
+					$this->db->where('tp.role_act', $this->session->userdata('id_role'));
+				}
+			} else {
+
+				$this->db->where('cb.status_proposal', $filter['status_proposal']);
+			}
+		}
 		if (!empty($filter['self_status'])) {
 			if ($filter['self_status'] == 'diproses') $this->db->where('cb.id_tahap_proposal < "' . $this->session->userdata()['level'] . '" AND status_proposal != "DITOLAK"');
 			if ($filter['self_status'] == 'menunggu') $this->db->where('cb.id_tahap_proposal = "' . $this->session->userdata()['level'] . '"');

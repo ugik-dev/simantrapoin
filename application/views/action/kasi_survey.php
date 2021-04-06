@@ -104,13 +104,25 @@
                 }
                 i = 1;
                 data = json['data'];
+                title = '';
                 Object.values(data).forEach((d) => {
+                    if (title != d['title_role']) {
+
+                        render_team.append(`
+                        <div class="col-md-12">
+                        <hr>
+                        <label><strong>${d['title_role']}</strong></label><br>
+                        </div>
+                        `);
+                        title = d['title_role'];
+
+                    }
 
                     render_team.append(`
-                      <div class="col-md-6 custom-control custom-switch">
+                      <div class="col-md-6 col-lg-4 custom-control custom-switch">
                                 <input type="hidden" name="email_tim_${i}" value="${d['email']}" >
                                 <input type="checkbox" class="custom-control-input" id="tim_${i}" name="tim_${i}" value="${d['id_user']}" >
-                                <label class="custom-control-label" for="tim_${i}" >${d['title_role']} | ${d['nama']}</label>
+                                <label class="custom-control-label" for="tim_${i}" > ${d['nama']}</label>
                             </div>
                     `)
                     i++;

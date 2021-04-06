@@ -818,19 +818,6 @@ MONTHSEN = [
 	"November",
 	"December",
 ];
-function renderDate(date) {
-	if (date == "0000-00-00 00:00:00") {
-		return "-";
-	}
-	var date = new Date(date);
-	var day = date.getDay();
-	// intToDay(day);
-	var jam = date.getHours();
-	var menit = date.getMinutes();
-	return `${intToDay(day)}, ${date.getDate()} ${
-		MONTHS[date.getMonth()]
-	} ${date.getFullYear()},<br> ${date.getHours()}:${date.getMinutes()} `;
-}
 
 function renderDate2(date) {
 	if (date == "0000-00-00 00:00:00") {

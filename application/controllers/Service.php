@@ -320,11 +320,11 @@ class Service extends CI_Controller
             $this->SecurityModel->rolesOnlyGuard(array('backoffice'));
             $data = $this->input->POST();
 
-            $status = $this->PengirimanModel->getTahapProposal($data['id_pengiriman'])['id_tahap_proposal'];
-            if ($status > 10) {
+            $status = $this->PengirimanModel->getTahapProposal($data['id_pengiriman']);
+            if ($status['id_tahap_proposal'] > 10) {
                 throw new UserException("Sudah ada tindakan !!", USER_NOT_FOUND_CODE);
             }
-            $data = $this->ServiceModel->act_11($data);
+            $data = $this->ServiceModel->act_11($data, $status);
             echo json_encode(array('data' => $data));
         } catch (Exception $e) {
             ExceptionHandler::handle($e);

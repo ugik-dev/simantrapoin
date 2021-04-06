@@ -7,7 +7,8 @@
             <form class="form-inline" id="toolbar_form" onsubmit="return false;">
               <input type="hidden" id="sort" name="sort" value='1'>
               <select class="form-control mr-sm-2" id="status_proposal" name="status_proposal">
-                <option class="form-control mr-sm-2" value="" selected>Semua</option>
+                <option class="form-control mr-sm-2" value="">Semua</option>
+                <option class="form-control mr-sm-2" value="MY_TASK" selected>Menunggu Saya</option>
                 <option class="form-control mr-sm-2" value="DRAFT">Draft</option>
                 <option class="form-control mr-sm-2" value="DIPROSES">Diproses</option>
                 <option class="form-control mr-sm-2" value="DITERIMA">Diterima</option>
@@ -34,12 +35,12 @@
               <thead>
                 <tr>
                   <th style="width: 5%; text-align:center!important">ID</th>
-                  <th style="width: 10%; text-align:center!important">Tanggal Dibuat</th>
-                  <th style="width: 15%; text-align:center!important">NIK</th>
+                  <th style="width: 15%; text-align:center!important">Information</th>
+                  <th style="width: 15%; text-align:center!important">Nama Badan & NIB</th>
                   <th style="width: 12%; text-align:center!important">Lokasi</th>
                   <th style="width: 10%; text-align:center!important">Perizinan</th>
-                  <th style="width: 10%; text-align:center!important">Status</th>
-                  <th style="width: 7%; text-align:center!important">Action</th>
+                  <th style="width: 5%; text-align:center!important">Status</th>
+                  <th style="width: 5%; text-align:center!important">Action</th>
                 </tr>
               </thead>
               <tbody></tbody>
@@ -131,6 +132,7 @@
     // $('#pariwisata').addClass('active');
     // $('#biro').addClass('active');
 
+    var my_role = `<?= $this->session->userdata('id_role') ?>`
     var toolbar = {
       'form': $('#toolbar_form'),
       'status_proposal': $('#status_proposal'),
@@ -320,7 +322,7 @@
             <a class="btn mb-3 btn-link" href='<?= site_url() ?>PengirimanController/DetailPengiriman?id_pengiriman=${biro['id_pengiriman']}'><i class='fa fa-share'></i> Open</a>
               `;
         <?php  } ?>
-        renderData.push([biro['id_pengiriman'], renderDate(biro['created_at']), biro['nama_badan'] + '<br>NIB :' + biro['nib'], biro['lokasi_perizinan'], biro['tujuan'] == 'usaha' ? "Usaha" : 'Umum', statusPermohonan(biro['status_proposal']), button]);
+        renderData.push([biro['id_pengiriman'], renderDate(biro['created_at'], false) + '<br>' + (biro['nama_tahap_proposal']), biro['nama_badan'] + '<br>NIB :' + biro['nib'], biro['lokasi_perizinan'], biro['tujuan'] == 'usaha' ? "Usaha" : 'Umum', statusPermohonan(biro['status_proposal']), button]);
       });
       FDataTable.clear().rows.add(renderData).draw('full-hold');
     }

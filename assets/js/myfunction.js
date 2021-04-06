@@ -136,7 +136,7 @@ MONTHSEN = [
 	"November",
 	"December",
 ];
-function renderDate(date) {
+function renderDate(date, clock = true) {
 	if (date == "0000-00-00 00:00:00") {
 		return "-";
 	}
@@ -145,9 +145,13 @@ function renderDate(date) {
 	// intToDay(day);
 	var jam = date.getHours();
 	var menit = date.getMinutes();
-	return `${intToDay(day)}, ${date.getDate()} ${
+	res = `${intToDay(day)}, ${date.getDate()} ${
 		MONTHS[date.getMonth()]
-	} ${date.getFullYear()},<br> ${date.getHours()}:${date.getMinutes()} `;
+	} ${date.getFullYear()}`;
+	if (clock == true) {
+		res = res + `,<br> ${date.getHours()}:${date.getMinutes()} `;
+	}
+	return res;
 }
 
 function renderDate2(date) {

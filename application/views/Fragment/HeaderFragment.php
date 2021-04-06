@@ -36,7 +36,6 @@
     <script src="<?= base_url('assets/') ?>js/plugins/typeahead/bootstrap3-typeahead.min.js"></script>
     <script src="<?= base_url('assets/') ?>js/plugins/popper/popper.min.js"></script>
     <script src="<?= base_url('assets/') ?>js/plugins/chartJs/Chart.min.js"></script>
-    <script src="<?= base_url('assets/') ?>js/plugins/sweetalert/sweetalert2.all.min.js"></script>
     <script src="<?= base_url('assets/') ?>js/plugins/d3/d3.min.js"></script>
     <script src="<?= base_url('assets/') ?>js/plugins/d3/d3-save-svg.min.js"></script>
     <script src="<?= base_url('assets/') ?>js/plugins/c3/c3.min.js"></script>
@@ -58,25 +57,26 @@
 <html lang="en">
 
 <head>
-   <!-- Required meta tags -->
-   <title>SIMANTRAPOIN | <?= $title ?></title>
+    <!-- Required meta tags -->
+    <title>SIMANTRAPOIN | <?= $title ?></title>
 
-   <meta charset="utf-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-   <!-- <title>Vito - Responsive Bootstrap 4 Admin Dashboard Template</title> -->
-   <!-- Favicon -->
-   <link rel="apple-touch-icon" sizes="180x180" href="<?= base_url('assets/icon/') ?>apple-touch-icon.png">
-   <link rel="icon" type="image/png" sizes="32x32" href="<?= base_url('assets/icon/') ?>favicon-32x32.png">
-   <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url('assets/icon/') ?>favicon-16x16.png">
-   <!-- Bootstrap CSS -->
-   <link rel="stylesheet" href="<?= base_url('assets/') ?>css/bootstrap.min.css">
-   <!-- Typography CSS -->
-   <link rel="stylesheet" href="<?= base_url('assets/') ?>css/typography.css">
-   <!-- Style CSS -->
-   <link rel="stylesheet" href="<?= base_url('assets/') ?>css/style.css">
-   <!-- Responsive CSS -->
-   <link rel="stylesheet" href="<?= base_url('assets/') ?>css/responsive.css">
-   <script src="<?= base_url('assets/') ?>js/jquery-3.3.1.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- <title>Vito - Responsive Bootstrap 4 Admin Dashboard Template</title> -->
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="<?= base_url('assets/icon/') ?>apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="<?= base_url('assets/icon/') ?>favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url('assets/icon/') ?>favicon-16x16.png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="<?= base_url('assets/') ?>css/bootstrap.min.css">
+    <!-- Typography CSS -->
+    <script src="<?= base_url('assets/') ?>js/plugins/sweetalert/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="<?= base_url('assets/') ?>css/typography.css">
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="<?= base_url('assets/') ?>css/style.css">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="<?= base_url('assets/') ?>css/responsive.css">
+    <script src="<?= base_url('assets/') ?>js/jquery-3.3.1.min.js"></script>
 
 </head>
 

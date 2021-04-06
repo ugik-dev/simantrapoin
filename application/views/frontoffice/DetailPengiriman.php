@@ -16,6 +16,9 @@
                 <li class="nav-item">
                   <a class="nav-link" id="profile-tab-three" data-toggle="tab" href="#profile-three" role="tab" aria-controls="profile" aria-selected="false">Dokumen</a>
                 </li>
+                <li class="nav-item" id="bar-survey" style="display: none;">
+                  <a class="nav-link" id="survey-tab" data-toggle="tab" href="#survey-three" role="tab" aria-controls="survey" aria-selected="false">Evaluasi Survey</a>
+                </li>
                 <li class="nav-item">
                   <?php
                   if ($this->session->userdata('nama_role') != 'customer') $this->load->view('action/' . $this->session->userdata('nama_role'))
@@ -157,7 +160,21 @@
                   <div id="nib_file"></div>
                   <div id="file_pendukung"></div>
                 </div>
-
+                <div class="tab-pane fade " id="survey-three" role="tabpanel" aria-labelledby="survey-tab-three">
+                  <div class="table-responsive">
+                    <table id="FDataTableSurvey" class="table table-bordered table-hover" style="padding:0px">
+                      <thead>
+                        <tr>
+                          <th style="width: 10%; text-align:center!important">Nama</th>
+                          <th style="width: 10%; text-align:center!important">Instansi</th>
+                          <th style="width: 12%; text-align:center!important">Deskripsi</th>
+                          <th style="width: 15%; text-align:center!important">Info</th>
+                        </tr>
+                      </thead>
+                      <tbody></tbody>
+                    </table>
+                  </div>
+                </div>
 
               </div>
             </div>
@@ -248,6 +265,14 @@
       'btn_word': $('#layout_pengiriman').find('#btn_word'),
     }
     var FDataTable = $('#FDataTable').DataTable({
+      'columnDefs': [],
+      deferRender: true,
+      'paging': false,
+      'searching': false,
+      'ordering': false
+    });
+
+    var FDataTableSurvey = $('#FDataTableSurvey').DataTable({
       'columnDefs': [],
       deferRender: true,
       'paging': false,
@@ -348,6 +373,8 @@
             $.when(getDataDumy()).done(function(a1) {
               if (dataProfil['id_tahap_proposal'] >= '4' && dataProfil['survey'] == 'ya') {
                 $.when(getTimSurveyDetail()).done(function(a1) {
+                  document.getElementById('bar-survey').style.display = 'block';
+
                   renderProfile()
                 })
               } else {
@@ -358,6 +385,7 @@
           } else {
             if (dataProfil['id_tahap_proposal'] >= '4' && dataProfil['survey'] == 'ya') {
               $.when(getTimSurveyDetail()).done(function(a1) {
+                document.getElementById('bar-survey').style.display = 'block';
                 renderProfile()
               })
             } else {
@@ -556,7 +584,7 @@
 
             btn = `<button type="button" onclick="myFunctionRenderFiles('file_draft','${data['file_draft']}','Draft')" class="btn btn-primary" data-toggle="modal" data-target=".modal_files"><i class="ri-search-eye-line"></i> Draft</button><br>`
           } else {
-
+            btn = '';
           }
           renderData.push([renderDate(data['date_acc_7']), data['nama_acc_7'], data['tujuan'] = "umum" ? 'Kasi Umum ' : "Kasi Usaha", btn + data['catatan_7'], statusSelf('ok', 'Draft')]);
         }
@@ -662,6 +690,7 @@
 
             btn = `<button type="button" onclick="myFunctionRenderFiles('file_draft','${data['file_draft']}','Draft')" class="btn btn-primary" data-toggle="modal" data-target=".modal_files"><i class="ri-search-eye-line"></i> Draft</button><br>`
           } else {
+            btn = '';
 
           }
           renderData.push([renderDate(data['date_acc_7']), data['nama_acc_7'], data['tujuan'] = "umum" ? 'Kasi Umum ' : "Kasi Usaha", btn + data['catatan_7'], statusSelf('ok', 'Draft')]);
@@ -724,19 +753,21 @@
           }
           data = json['data'][0];
           title = '';
+          renderDataSurvey = [];
           tx = 'Tanggal : ' + renderDate2(data['date_survey']) + '';
           for (i = 1; i <= data['count_tim']; i++) {
             if (data['nama_tim_' + i]) {
-
-
               if (title != data['title_role_' + i]) {
                 tx += ' <br><hr><strong>' + data['title_role_' + i] + '</strong>';
                 title = data['title_role_' + i];
               }
               tx += ' <br>' + data['nama_tim_' + i];
+              renderDataSurvey.push([data['nama_tim_' + i], data['title_role_' + i], '', '']);
             }
           }
           dataSurvey = tx;
+          FDataTableSurvey.clear().rows.add(renderDataSurvey).draw('full-hold');
+
         },
         error: function(e) {}
       });

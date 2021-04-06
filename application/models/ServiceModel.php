@@ -435,11 +435,13 @@ class ServiceModel extends CI_Model
     }
 
 
-    public function act_11($data)
+    public function act_11($data, $stat)
     {
         $now = date("Y-m-d h:i:s");
-        $this->db->set('id_tahap_proposal', '99');
 
+        if ($stat['status_proposal'] == 'DIPROSESS') $this->db->set('status_proposal', 'DITERIMA');
+        $this->db->set('id_tahap_proposal', '99');
+        $this->db->set('no_dokumen', $data['no_dokumen']);
         $this->db->set('no_dokumen', $data['no_dokumen']);
         $this->db->set('catatan_11', $data['catatan']);
         $this->db->set('acc_11', $this->session->userdata()['id_user']);
