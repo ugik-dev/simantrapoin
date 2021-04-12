@@ -230,6 +230,7 @@
 <script>
    $(document).ready(function() {
       getDailyActivity()
+      getRoleDailyActivity()
 
       body_daily = $('#body_daily_activity')
 
@@ -265,12 +266,38 @@
          });
       }
 
+      function getRoleDailyActivity() {
+         return $.ajax({
+            url: `<?php echo base_url('DashboardController/RoleDailyActivity/') ?>`,
+            'type': 'GET',
+            data: {},
+            success: function(data) {
+               var json = JSON.parse(data);
+               if (json['error']) {
+                  return;
+               }
+               data = json['data'];
+               data_r = [];
+               data_ac = [];
+               Object.values(data).forEach((d) => {
+                  console.log(d)
+                  data_r.push(d['title_role'])
+                  data_ac.push(parseInt(d['count_act']))
+
+               });
+
+               renderPerformaRole(data_r, data_ac)
+            },
+            error: function(e) {}
+         });
+      }
+
       function daily_performance(i) {
          if (i == '0')
             return `<div class="badge badge-pill badge-dangger">Tidak Ada Aktifitas</div>`
-         if (i > '0')
+         if (i < '5')
             return `<div class="badge badge-pill badge-warning">Baik</div>`
-         if (i > '7')
+         if (i >= '5')
             return `<div class="badge badge-pill badge-success">Sangat Baik</div>`
       }
 
@@ -310,122 +337,113 @@
       }
 
    });
+   renderGraphPengajuan()
 
-   options = {
-      chart: {
-         height: 350,
-         type: "line",
-         stacked: !1,
-      },
-      stroke: {
-         width: [0, 2, 5],
-         curve: "smooth",
-      },
-      plotOptions: {
-         bar: {
-            columnWidth: "50%",
+   function renderGraphPengajuan() {
+
+      options = {
+         chart: {
+            height: 350,
+            type: "line",
+            stacked: !1,
          },
-      },
-      colors: ["#27b345", "#827af3"],
-      series: [{
-            name: "Disposision",
-            type: "column",
-            data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30],
+         stroke: {
+            width: [0, 2, 5],
+            curve: "smooth",
          },
-         {
-            name: "Clear Disposition",
-            type: "area",
-            data: [44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43],
-         },
-      ],
-      fill: {
-         opacity: [0.85, 0.25, 1],
-         gradient: {
-            inverseColors: !1,
-            shade: "light",
-            type: "vertical",
-            opacityFrom: 0.85,
-            opacityTo: 0.55,
-            stops: [0, 100, 100, 100],
-         },
-      },
-      labels: [
-         "01/01/2003",
-         "02/01/2003",
-         "03/01/2003",
-         "04/01/2003",
-         "05/01/2003",
-         "06/01/2003",
-         "07/01/2003",
-         "08/01/2003",
-         "09/01/2003",
-         "10/01/2003",
-         "11/01/2003",
-      ],
-      markers: {
-         size: 0,
-      },
-      xaxis: {
-         type: "datetime",
-      },
-      yaxis: {
-         min: 0,
-      },
-      tooltip: {
-         shared: !0,
-         intersect: !1,
-         y: {
-            formatter: function(e) {
-               return void 0 !== e ? e.toFixed(0) + " views" : e;
+         plotOptions: {
+            bar: {
+               columnWidth: "50%",
             },
          },
-      },
-      legend: {
-         labels: {
-            useSeriesColors: !0,
+         colors: ["#27b345", "#827af3"],
+         series: [{
+               name: "Disposision",
+               type: "column",
+               data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30],
+            },
+            {
+               name: "Clear Disposition",
+               type: "area",
+               data: [44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43],
+            },
+         ],
+         fill: {
+            opacity: [0.85, 0.25, 1],
+            gradient: {
+               inverseColors: !1,
+               shade: "light",
+               type: "vertical",
+               opacityFrom: 0.85,
+               opacityTo: 0.55,
+               stops: [0, 100, 100, 100],
+            },
          },
+         labels: [
+            "01/01/2003",
+            "02/01/2003",
+            "03/01/2003",
+            "04/01/2003",
+            "05/01/2003",
+            "06/01/2003",
+            "07/01/2003",
+            "08/01/2003",
+            "09/01/2003",
+            "10/01/2003",
+            "11/01/2003",
+         ],
          markers: {
-            customHTML: [
-               function() {
-                  return "";
-               },
-               function() {
-                  return "";
-               }
-            ],
+            size: 0,
          },
-      },
-   };
-
-   var chart = new ApexCharts(document.querySelector("#performa"), options);
-
-   chart.render();
-
-   performa_daily_option = {
-      chart: {
-         type: 'donut'
-      },
-      colors: ["#27b345", "#827af3", '#ffb037', '#ff7a00', '#007580', '#e4bad4', '#ff7171'],
-      series: [44, 55, 13, 33, 32, 25, 25],
-      labels: ['Front Office', 'Kasi Umum', 'Kasi Usaha', 'Kasi Survey', 'Kabid', 'Kepala Dinas', 'Operator']
-      // plotOptions: {
-      //    pie: {
-      //       donut: {
-      //          labels: {
-      //             show: true,
-      //             name: ['1', '2'],
-      //             value: [
-      //                '30', '70'
-      //             ]
-      //          }
-      //       }
-      //    }
-      // }
+         xaxis: {
+            type: "datetime",
+         },
+         yaxis: {
+            min: 0,
+         },
+         tooltip: {
+            shared: !0,
+            intersect: !1,
+            y: {
+               formatter: function(e) {
+                  return void 0 !== e ? e.toFixed(0) + " views" : e;
+               },
+            },
+         },
+         legend: {
+            labels: {
+               useSeriesColors: !0,
+            },
+            markers: {
+               customHTML: [
+                  function() {
+                     return "";
+                  },
+                  function() {
+                     return "";
+                  }
+               ],
+            },
+         },
+      };
+      var chart = new ApexCharts(document.querySelector("#performa"), options);
+      chart.render();
    }
 
-   var performa_daily = new ApexCharts(document.querySelector("#performa_daily"), performa_daily_option);
-
-   performa_daily.render();
+   function renderPerformaRole(data_r, data_ac) {
+      console.log(data_r)
+      console.log(data_ac)
+      performa_daily_option = {
+         chart: {
+            type: 'donut'
+         },
+         colors: ["#27b345", "#827af3", '#ffb037', '#ff7a00', '#007580', '#e4bad4', '#ff7171'],
+         series: data_ac,
+         labels: data_r
+      }
+      var performa_daily = new ApexCharts(document.querySelector("#performa_daily"), performa_daily_option);
+      performa_daily.render();
+   }
 
    // chart = new ApexCharts(
    //    document.querySelector("#performa-user"),

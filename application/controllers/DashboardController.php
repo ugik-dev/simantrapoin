@@ -24,4 +24,18 @@ class DashboardController extends CI_Controller
             ExceptionHandler::handle($e);
         }
     }
+
+    public function RoleDailyActivity()
+    {
+        try {
+            $this->SecurityModel->userOnlyGuard(TRUE);
+            $data = $this->input->get();
+            $data = $this->DashboardModel->RoleDailyActivity($this->input->get());
+
+            // $idPengiriman = $this->PengirimanModel->de_approvPengiriman($data);
+            echo json_encode(array('data' => $data));
+        } catch (Exception $e) {
+            ExceptionHandler::handle($e);
+        }
+    }
 }

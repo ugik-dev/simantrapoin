@@ -251,6 +251,7 @@ class ServiceModel extends CI_Model
         $this->db->update('pengiriman');
 
         ExceptionHandler::handleDBError($this->db->error(), "Ubah Pengiriman", "pengiriman");
+        $this->addDailyActivity($data);
         return $data['id_pengiriman'];
     }
 
@@ -273,6 +274,7 @@ class ServiceModel extends CI_Model
         $this->db->update('pengiriman');
 
         ExceptionHandler::handleDBError($this->db->error(), "Ubah Pengiriman", "pengiriman");
+        $this->addDailyActivity($data);
         return $data['id_pengiriman'];
     }
 
@@ -335,6 +337,7 @@ class ServiceModel extends CI_Model
 
             ExceptionHandler::handleDBError($this->db->error(), "Insert Tim Survey", "survey");
         }
+        $this->addDailyActivity($data);
 
         return $data['id_pengiriman'];
     }
@@ -365,6 +368,7 @@ class ServiceModel extends CI_Model
         $this->db->update('pengiriman');
 
         ExceptionHandler::handleDBError($this->db->error(), "Ubah Pengiriman", "pengiriman");
+        $this->addDailyActivity($data);
         return $data['id_pengiriman'];
     }
 
@@ -380,6 +384,7 @@ class ServiceModel extends CI_Model
         $this->db->update('pengiriman');
 
         ExceptionHandler::handleDBError($this->db->error(), "Ubah Pengiriman", "pengiriman");
+        $this->addDailyActivity($data);
         return $data['id_pengiriman'];
     }
 
@@ -397,6 +402,7 @@ class ServiceModel extends CI_Model
         $this->db->update('pengiriman');
 
         ExceptionHandler::handleDBError($this->db->error(), "Ubah Pengiriman", "pengiriman");
+        $this->addDailyActivity($data);
         return $data['id_pengiriman'];
     }
 
@@ -413,6 +419,7 @@ class ServiceModel extends CI_Model
         $this->db->update('pengiriman');
 
         ExceptionHandler::handleDBError($this->db->error(), "Ubah Pengiriman", "pengiriman");
+        $this->addDailyActivity($data);
         return $data['id_pengiriman'];
     }
 
@@ -429,6 +436,7 @@ class ServiceModel extends CI_Model
         $this->db->update('pengiriman');
 
         ExceptionHandler::handleDBError($this->db->error(), "Ubah Pengiriman", "pengiriman");
+        $this->addDailyActivity($data);
         return $data['id_pengiriman'];
     }
 
@@ -445,6 +453,7 @@ class ServiceModel extends CI_Model
         $this->db->update('pengiriman');
 
         ExceptionHandler::handleDBError($this->db->error(), "Ubah Pengiriman", "pengiriman");
+        $this->addDailyActivity($data);
         return $data['id_pengiriman'];
     }
 
@@ -465,6 +474,7 @@ class ServiceModel extends CI_Model
         $this->db->update('pengiriman');
 
         ExceptionHandler::handleDBError($this->db->error(), "Ubah Pengiriman", "pengiriman");
+        $this->addDailyActivity($data);
         return $data['id_pengiriman'];
     }
 }

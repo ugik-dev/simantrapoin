@@ -8,13 +8,29 @@ class DashboardModel extends CI_Model
     public function DailyActivity()
     {
         $now = date("Y-m-d");
-
         $this->db->select('cb.id_user , COUNT(id) as count_act, u.nama , photo,title_role');
         $this->db->where('date', $now);
         $this->db->from('daily_activity as cb');
         $this->db->join('user as u', 'cb.id_user = u.id_user', 'LEFT');
         $this->db->join('role as r', 'r.id_role = u.id_role', 'LEFT');
         $this->db->group_by('id_user');
+        $this->db->order_by('count_act', 'desc');
+        $res = $this->db->get();
+        $res = $res->result_array();
+        return $res;
+    }
+
+
+    public function RoleDailyActivity()
+    {
+        $now = date("Y-m-d");
+        $this->db->select('title_role , COUNT(id) as count_act,title_role');
+        $this->db->where('date', $now);
+        $this->db->from('daily_activity as cb');
+        $this->db->join('user as u', 'cb.id_user = u.id_user', 'LEFT');
+        $this->db->join('role as r', 'r.id_role = u.id_role', 'LEFT');
+        $this->db->group_by('title_role');
+        // $this->db->order_by('count_act', 'desc');
         $res = $this->db->get();
         $res = $res->result_array();
         return $res;
