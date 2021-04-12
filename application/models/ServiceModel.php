@@ -120,6 +120,18 @@ class ServiceModel extends CI_Model
     }
 
 
+    public function addDailyActivity($data)
+    {
+        $data['id_user'] = $this->session->userdata()['id_user'];
+
+        $dataInsert = DataStructure::slice($data, ['id_user',  'desk', 'id_pengiriman']);
+        $this->db->insert('daily_activity', $dataInsert);
+        ExceptionHandler::handleDBError($this->db->error(), "Insert daily_activity", "daily_activity");
+        $id = $this->db->insert_id();
+    }
+
+
+
     public function addService($data)
     {
         $data['user_sending'] = $this->session->userdata('id_user');
@@ -192,11 +204,12 @@ class ServiceModel extends CI_Model
             $this->db->set('status_proposal', 'DIPROSES');
             $this->db->set('id_tahap_proposal', '1');
             $this->db->set('tujuan', $data['tujuan']);
-            $this->db->set('tujuan', $data['tujuan']);
             $this->db->set('catatan_1', $data['catatan']);
             $this->db->set('acc_1', $this->session->userdata()['id_user']);
             $this->db->set('date_acc_1', $now);
+            $data['desk'] = "Penerimaan Data";
         } else {
+            $data['desk'] = "Penolakan Data";
             // $this->db->set('logs_ditolak', $this->session->userdata()['id_user']);
             // $this->db->set('status_proposal', 'DITOLAK');
             // $this->db->set('date_tolak', $now);
@@ -208,6 +221,7 @@ class ServiceModel extends CI_Model
         $this->db->update('pengiriman');
 
         ExceptionHandler::handleDBError($this->db->error(), "Ubah Pengiriman", "pengiriman");
+        $this->addDailyActivity($data);
         return $data['id_pengiriman'];
     }
 

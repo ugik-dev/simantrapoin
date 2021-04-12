@@ -192,7 +192,7 @@ class Service extends CI_Controller
                 for ($i = 1; $i <= $data['count_tim']; $i++) {
                     if (!empty($data['tim_' . $i])) {
                         $team['tim_' . $j] = $data['tim_' . $i];
-                        array_push($emailtim, $data['email_tim_' . $i]);
+                        if (!empty($data['email_tim_' . $i])) array_push($emailtim, $data['email_tim_' . $i]);
                         $j++;
                     };
                 }

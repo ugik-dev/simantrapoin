@@ -374,12 +374,10 @@
               if (dataProfil['id_tahap_proposal'] >= '4' && dataProfil['survey'] == 'ya') {
                 $.when(getTimSurveyDetail()).done(function(a1) {
                   document.getElementById('bar-survey').style.display = 'block';
-
                   renderProfile()
                 })
               } else {
                 renderProfile()
-
               }
             })
           } else {
@@ -390,7 +388,6 @@
               })
             } else {
               renderProfile()
-
             }
           }
         },
@@ -552,7 +549,10 @@
         } else {
           if (data['survey'] == 'ya') {
             if (data['id_tahap_proposal'] == '4') {
-              document.getElementById('btn_act_b').style.display = 'block';
+              if (n_role == 'kasi_survey') {
+
+                document.getElementById('btn_act_b').style.display = 'block';
+              }
               renderData.push([renderDate(data['date_acc_4']), data['nama_acc_4'], 'Kasi Survey', data['catatan_4'] + '<br><hr>' + dataSurvey, statusSelf(8) + '<br>' + statusSelf(9)]);
               return renderData;
             } else {
