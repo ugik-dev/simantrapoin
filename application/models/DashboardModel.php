@@ -7,23 +7,17 @@ class DashboardModel extends CI_Model
 
     public function DailyActivity()
     {
-        $tmp = "";
-        if (!empty($this->session->userdata('id_kabupaten'))) {
-            $this->db->where('cb.id_kabupaten', $this->session->userdata('id_kabupaten'));
-            $tmp = $this->session->userdata('id_kabupaten');
+        $now = date("Y-m-d");
 
-            $tmp = 'where id_kabupaten = "' . $tmp . '"';
-        };
-        $sql = 'sum(domestik) as domestik_cagarbudaya,sum(mancanegara) as mancanegara_cagarbudaya,sum(jumlah) as totalpengunjung_cagarbudaya,( SELECT count(*) FROM cagarbudaya ' . $tmp . ') as jumlah_cagarbudaya ';
-
-        $this->db->select($sql);
-        $this->db->where('approv != 0');
-        $this->db->from('rec_cagarbudaya as cb');
-
+        $this->db->select('cb.id_user , COUNT(id) as count_act, u.nama , photo,title_role');
+        $this->db->where('date', $now);
+        $this->db->from('daily_activity as cb');
+        $this->db->join('user as u', 'cb.id_user = u.id_user', 'LEFT');
+        $this->db->join('role as r', 'r.id_role = u.id_role', 'LEFT');
+        $this->db->group_by('id_user');
         $res = $this->db->get();
         $res = $res->result_array();
-
-        return $res[0];
+        return $res;
     }
 
     public function getJumlahPenginapan()

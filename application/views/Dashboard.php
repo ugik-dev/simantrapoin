@@ -118,64 +118,8 @@
                            <th scope="col">Progress</th>
                         </tr>
                      </thead>
-                     <tbody>
-                        <tr>
-                           <td class="text-center">
-                              <img class="rounded-circle img-fluid avatar-40" src="<?= base_url('assets/') ?>images/user/01.jpg" alt="profile">
-                           </td>
-                           <td>Anna Sthesia</td>
-                           <td>Front Office</td>
-                           <td>5</td>
-                           <td>
-                              <div class="badge badge-pill badge-success">Sangat Baik</div>
-                           </td>
-                        </tr>
-                        <tr>
-                           <td class="text-center">
-                              <img class="rounded-circle img-fluid avatar-40" src="<?= base_url('assets/') ?>images/user/02.jpg" alt="profile">
-                           </td>
-                           <td>Brock Lee</td>
-                           <td>Kabid</td>
-                           <td>3</td>
-                           <!-- <td>$1200</td> -->
-                           <td>
-                              <div class="badge badge-pill badge-primary">Stabil</div>
-                           </td>
-                        </tr>
-                        <tr>
-                           <td class="text-center">
-                              <img class="rounded-circle img-fluid avatar-40" src="<?= base_url('assets/') ?>images/user/03.jpg" alt="profile">
-                           </td>
-                           <td>Dan Druff</td>
-                           <td>Back Office</td>
-                           <td>0</td>
-                           <td>
-                              <div class="badge badge-pill badge-danger">Sangat Buruk</div>
-                           </td>
-                        </tr>
-                        <tr>
-                           <td class="text-center">
-                              <img class="rounded-circle img-fluid avatar-40" src="<?= base_url('assets/') ?>images/user/04.jpg" alt="profile">
-                           </td>
-                           <td>Lynn Guini</td>
-                           <td>Kabid</td>
-                           <!-- <td>#4875</td> -->
-                           <td>1</td>
-                           <td>
-                              <div class="badge badge-pill badge-warning text-white">Kurang</div>
-                           </td>
-                        </tr>
-                        <tr>
-                           <td class="text-center">
-                              <img class="rounded-circle img-fluid avatar-40" src="<?= base_url('assets/') ?>images/user/05.jpg" alt="profile">
-                           </td>
-                           <td>Eric Shun</td>
-                           <td>Kasi Survey</td>
-                           <td>3</td>
-                           <td>
-                              <div class="badge badge-pill badge-success">Baik</div>
-                           </td>
-                        </tr>
+                     <tbody id="body_daily_activity">
+
                      </tbody>
                   </table>
                </div>
@@ -285,6 +229,52 @@
 
 <script>
    $(document).ready(function() {
+      getDailyActivity()
+
+      body_daily = $('#body_daily_activity')
+
+      function getDailyActivity() {
+         return $.ajax({
+            url: `<?php echo base_url('DashboardController/DailyActivity/') ?>`,
+            'type': 'GET',
+            data: {},
+            success: function(data) {
+               var json = JSON.parse(data);
+               if (json['error']) {
+                  return;
+               }
+               data = json['data'];
+               Object.values(data).forEach((d) => {
+                  console.log(d)
+                  body_daily.append(`   <tr>
+                     <td class="text-center">
+                        <img class="rounded-circle img-fluid avatar-40" src="<?= base_url() ?>${d['photo'] ? 'upload/photo/'+d['photo'] : 'assets/images/user/05.jpg'}" alt="profile">
+                     </td>
+                     <td>${d['nama']}</td>
+                     <td>${d['title_role']}</td>
+                     <td>${d['count_act']}</td>
+                     <td>
+                   ${daily_performance( d['count_act'])}
+                     </td>
+                  </tr>`)
+
+
+               });
+            },
+            error: function(e) {}
+         });
+      }
+
+      function daily_performance(i) {
+         if (i == '0')
+            return `<div class="badge badge-pill badge-dangger">Tidak Ada Aktifitas</div>`
+         if (i > '0')
+            return `<div class="badge badge-pill badge-warning">Baik</div>`
+         if (i > '7')
+            return `<div class="badge badge-pill badge-success">Sangat Baik</div>`
+      }
+
+
       getMaps()
       var map = L.map('mapid').setView({
          lon: 106.0596408,
