@@ -255,7 +255,7 @@
                      <td>${d['title_role']}</td>
                      <td>${d['count_act']}</td>
                      <td>
-                   ${daily_performance( d['count_act'])}
+                   ${daily_performance(d['count_act'])}
                      </td>
                   </tr>`)
 
@@ -295,9 +295,9 @@
       function daily_performance(i) {
          if (i == '0')
             return `<div class="badge badge-pill badge-dangger">Tidak Ada Aktifitas</div>`
-         if (i < '5')
+         else if (i < 5)
             return `<div class="badge badge-pill badge-warning">Baik</div>`
-         if (i >= '5')
+         else if (i >= 5)
             return `<div class="badge badge-pill badge-success">Sangat Baik</div>`
       }
 
