@@ -409,6 +409,7 @@ class Service extends CI_Controller
             $message = 'Hallo, <br> Terdapat Disposisi Pengajuan Perizinan kepada anda, 
         harap cek di halaman ' . base_url() . '/PengirimanController/DetailPengiriman?id_pengiriman=' . $data['id_pengiriman'];
         }
+        if (empty($send['to'])) return;
         $send['subject'] = 'SIMANTRAPOIN';
 
         $send['message'] = $this->template_email($message);
