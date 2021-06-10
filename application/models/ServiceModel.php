@@ -90,12 +90,28 @@ class ServiceModel extends CI_Model
         return $res->result_array();
     }
 
+    public function authTim($filter)
+    {
+        for ($i = 1; $i <= 15; $i++) {
+            // $query = 'SELECT id_pengiriman FROM `survey` where id_pengiriman = "' . $filter['id_pengiriman'] . '" AND tim_' . $i . ' = "' . $this->session->userdata('id_user') . '"';
+            $this->db->select("id_pengiriman");
+            $this->db->from('survey');
+            $this->db->where("id_pengiriman = '" . $filter['id_pengiriman'] . "' AND tim_" . $i . ' = ' . $this->session->userdata('id_user'));
+            // $this->db->simple_query($query);
+            $res = $this->db->get();
+            $res = $res->result_array();
+            // return $res;
+            if (!empty($res)) return $i;
+        }
+        throw new UserException("Data tidak ditemukan", USER_NOT_FOUND_CODE);
+    }
+
     public function getTimSurvey($filter)
     {
         $this->db->select("nama,id_user,title_role,nama_role, email");
         $this->db->from('user as u');
         $this->db->join('role as r', 'id_role');
-        $this->db->where("u.id_role > '89' AND u.id_role < '99'");
+        $this->db->where("u.id_role >= '88' AND u.id_role < '99'");
         $res = $this->db->get();
         // return $res;
         return $res->result_array();
@@ -183,6 +199,32 @@ class ServiceModel extends CI_Model
 
         return $data['id_pengiriman'];
     }
+
+
+
+    public function actTimSurvey($data)
+    {
+        // $data['user_sending'] = $this->session->userdata('id_user');
+        // if ($this->session->userdata()['nama_role'] == 'customer') {
+        //     $data['nik'] = $this->session->userdata()['username'];
+        // }
+
+        // $data['status_proposal'] = 'DIPROSES';
+        $row = $data['row_tim'];
+        $dataInsert = array(
+            'act_tim_' . $row => $data['keputusan'],
+            'cctn_' . $row => $data['catatan'],
+            'doc_tim_' . $row => $data['doc_survey']
+        );
+        $this->db->set(DataStructure::slice($dataInsert, ['act_tim_' . $row, 'cctn_' . $row, 'doc_tim_' . $row]));
+        $this->db->where('id_pengiriman', $data['id_pengiriman']);
+        $this->db->update('survey');
+        ExceptionHandler::handleDBError($this->db->error(), "Insert Pengiriman", "pengiriman");
+        // $id = $this->db->insert_id();
+
+        return $data['id_pengiriman'];
+    }
+
 
 
     public function editPengiriman($data)

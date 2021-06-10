@@ -29,7 +29,8 @@
                            ?>
                         </ul>
                      </div>
-                     <?php $this->load->view('Fragment2/ProfileNavigation') ?>
+                     <?php
+                     $this->load->view('Fragment2/ProfileNavigation') ?>
 
                   </nav>
                </div>
@@ -37,5 +38,11 @@
          </div>
       </div>
    </div>
-   <?php $this->load->view('Fragment2/' . $this->session->userdata()['nama_role'] . '/Menu') ?>
+   <?php
+   if ($this->session->userdata()['nama_controller'] == 'TimSurvey') {
+      $this->load->view('Fragment2/timsurvey/Menu');
+   } else {
+      $this->load->view('Fragment2/' . $this->session->userdata()['nama_role'] . '/Menu');
+   }
+   ?>
 </div>

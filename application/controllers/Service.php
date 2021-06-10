@@ -331,6 +331,25 @@ class Service extends CI_Controller
         }
     }
 
+    function act_tim_survey()
+    {
+        try {
+            $this->SecurityModel->controllerOnlyGuard('timsurvey', true);
+            $data = $this->input->POST();
+            $data['row_tim'] = $this->ServiceModel->authTim(array('id_pengiriman' => $data['id_pengiriman']));
+            $data['doc_survey'] = FileIO::genericUpload('doc_survey', array('pdf', 'jpeg', 'jpg', 'png'), NULL, $data, '20000');
+
+            // $status = $this->PengirimanModel->getTahapProposal($data['id_pengiriman']);
+            // if ($status['id_tahap_proposal'] > 10) {
+            //     throw new UserException("Sudah ada tindakan !!", USER_NOT_FOUND_CODE);
+            // }
+            $data = $this->ServiceModel->actTimSurvey($data);
+            echo json_encode(array('data' => $data));
+        } catch (Exception $e) {
+            ExceptionHandler::handle($e);
+        }
+    }
+
 
 
 

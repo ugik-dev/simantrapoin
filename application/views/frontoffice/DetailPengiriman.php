@@ -21,7 +21,11 @@
                 </li>
                 <li class="nav-item">
                   <?php
-                  if ($this->session->userdata('nama_role') != 'customer') $this->load->view('action/' . $this->session->userdata('nama_role'))
+                  if ($this->session->userdata()['nama_controller'] == 'TimSurvey') {
+                    $this->load->view('action/timsurvey');
+                  } else {
+                    if ($this->session->userdata('nama_role') != 'customer') $this->load->view('action/' . $this->session->userdata('nama_role'));
+                  }
                   ?> </li>
               </ul>
               <div class="tab-content" id="myTabContent-4">
@@ -223,6 +227,7 @@
   $(document).ready(function() {
     var id_pengiriman = "<?= $contentData['id_pengiriman'] ?>";
     var n_role = "<?= $this->session->userdata()['nama_role'] ?>";
+    <?php if ($this->session->userdata()['nama_controller'] == 'TimSurvey') echo 'n_role = "tim_survey";' ?>
     var tabThree = $('#contact-tab-three');
     var approv_btn = $('#approv_btn');
     var de_approv_btn = $('#de_approv_btn');
@@ -549,8 +554,8 @@
         } else {
           if (data['survey'] == 'ya') {
             if (data['id_tahap_proposal'] == '4') {
-              if (n_role == 'kasi_survey') {
-
+              if (n_role == 'kasi_survey' ||
+                n_role == 'tim_survey') {
                 document.getElementById('btn_act_b').style.display = 'block';
               }
               renderData.push([renderDate(data['date_acc_4']), data['nama_acc_4'], 'Kasi Survey', data['catatan_4'] + '<br><hr>' + dataSurvey, statusSelf(8) + '<br>' + statusSelf(9)]);
@@ -762,7 +767,16 @@
                 title = data['title_role_' + i];
               }
               tx += ' <br>' + data['nama_tim_' + i];
-              renderDataSurvey.push([data['nama_tim_' + i], data['title_role_' + i], '', '']);
+              if (data['act_tim_' + i] == '0')
+                inf = statusSelf('wait', 'Draft')
+              else if (data['act_tim_' + i] == '1')
+                inf = statusSelf('ok', 'Diterima')
+              else
+                inf = statusSelf('x', 'Ditolak')
+              if (data['doc_tim_' + i] != '') {
+                inf += `<br><button type="button" onclick="myFunctionRenderFiles('doc_survey','${data['doc_tim_' + i]}','')" class="btn btn-primary" data-toggle="modal" data-target=".modal_files"><i class="ri-search-eye-line"></i> Document</button><br>`
+              }
+              renderDataSurvey.push([data['nama_tim_' + i], data['title_role_' + i], data['cctn_' + i], inf]);
             }
           }
           dataSurvey = tx;

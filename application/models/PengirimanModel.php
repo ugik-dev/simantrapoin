@@ -14,7 +14,7 @@ class PengirimanModel extends CI_Model
 	public function getAllPengiriman($filter = [])
 	{
 		if (!empty($filter['sort'])) {
-			$this->db->select('created_at,id_pengiriman, nib, ,nama_badan, lokasi_perizinan, status_proposal , tujuan , survey, tp.*');
+			$this->db->select('created_at,cb.id_pengiriman, nib, ,nama_badan, lokasi_perizinan, status_proposal , tujuan , survey, tp.*');
 		} else {
 			$this->db->select('cb.*,
 			coalesce(cb.nib_file, "null", "")  as nib_file,
@@ -56,7 +56,14 @@ class PengirimanModel extends CI_Model
 			$this->db->join("user as t", "cb.logs_ditolak = t.id_user", 'LEFT');
 		}
 		$this->db->join("tahap_proposal as tp", "cb.id_tahap_proposal = tp.id_tahap_proposal");
-
+		if ($this->session->userdata()['nama_controller'] == 'TimSurvey') {
+			$this->db->join("survey as surv", "cb.id_pengiriman = surv.id_pengiriman");
+			$text_surv = ' surv.tim_1 = "' . $this->session->userdata()['id_user'] . '"';
+			for ($i = 2; $i <= 15; $i++) {
+				$text_surv = $text_surv . (' OR surv.tim_' . $i . ' = "' . $this->session->userdata()['id_user'] . '"');
+			}
+			$this->db->where($text_surv);
+		}
 		if (!empty($filter['id_pengiriman'])) $this->db->where('cb.id_pengiriman', $filter['id_pengiriman']);
 		if (!empty($filter['status_proposal'])) {
 			if ($filter['status_proposal'] == 'MY_TASK') {
@@ -66,7 +73,6 @@ class PengirimanModel extends CI_Model
 					$this->db->where('tp.role_act', $this->session->userdata('id_role'));
 				}
 			} else {
-
 				$this->db->where('cb.status_proposal', $filter['status_proposal']);
 			}
 		}

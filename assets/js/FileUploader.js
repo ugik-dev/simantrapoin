@@ -32,7 +32,7 @@ class FileUploader {
 			this.accept = "image/*";
 			this.camera = "capture='camera'";
 		} else {
-			this.camera = "zzzzzzzzzzz";
+			this.camera = "";
 		}
 		this.el.html(`
       <div class="form-group">

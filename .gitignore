@@ -18,6 +18,7 @@
 /upload/swa/*
 /upload/profile/*
 /upload/photo/*
+/upload/doc_survey/*
 !/upload/photo/profile_small.jpg
 !/upload/profile/profile_small.jpg
 
