@@ -25,7 +25,7 @@
                         <textarea class="form-control" name="catatan" rows="3" required></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="nib">File <small>*jika ada</small></label>
+                        <label for="nib">Lampiran <small>*jika ada</small></label>
                         <p id="doc_survey"></p>
                     </div>
                     <!-- <p>Modal body text goes here.</p> -->
@@ -82,8 +82,8 @@
                             return;
                         }
                         swal("Simpan Berhasil", "", "success");
-                        // location.reload();
-                        // $('.step1-modal').modal('hide');
+                        location.reload();
+                        $('.step1-modal').modal('hide');
                     },
                     error: function(e) {}
                 });

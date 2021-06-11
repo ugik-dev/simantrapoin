@@ -13,6 +13,7 @@ class PengirimanModel extends CI_Model
 	}
 	public function getAllPengiriman($filter = [])
 	{
+		// return $filter;
 		if (!empty($filter['sort'])) {
 			$this->db->select('created_at,cb.id_pengiriman, nib, ,nama_badan, lokasi_perizinan, status_proposal , tujuan , survey, tp.*');
 		} else {
@@ -112,8 +113,9 @@ class PengirimanModel extends CI_Model
 		if ($this->session->userdata('nama_role') == 'customer') $this->db->where('cb.nik', $this->session->userdata('username'));
 		// var_dump($this->session->userdata());
 		// $this->db->where('cb.id_pengiriman', 16);
-
 		$res = $this->db->get();
+		// print_r($this->db->last_query());
+		// die();
 		return DataStructure::keyValue($res->result_array(), 'id_pengiriman');
 	}
 

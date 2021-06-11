@@ -580,7 +580,7 @@
 
         if (data['id_tahap_proposal'] == '6') {
           renderData.push(['-', '-', data['tujuan'] = "umum" ? 'Kasi Umum ' : "Kasi Usaha", '-', statusSelf('wait', 'Draft')]);
-          if (n_role == 'kasi_umum') {
+          if (n_role == 'kasi_umum' || n_role == "kasi_usaha") {
             document.getElementById('btn_act_b').style.display = 'block';
           }
           return renderData;
@@ -680,13 +680,14 @@
           }
           return renderData;
         } else {
-          renderData.push([renderDate(data['date_acc_6']), data['nama_acc_6'], 'Kabid', data['catatan_6'], statusSelf(6)]);
+          if (data['tolak_in'] != '3')
+            renderData.push([renderDate(data['date_acc_6']), data['nama_acc_6'], 'Kabid', data['catatan_6'], statusSelf(6)]);
         }
 
 
         if (data['id_tahap_proposal'] == '6') {
-          renderData.push(['-', '-', data['tujuan'] = "umum" ? 'Kasi Umum ' : "Kasi Usaha", '-', statusSelf('wait', 'Draft')]);
-          if (n_role == 'kasi_umum') {
+          renderData.push(['-', '-', data['tujuan'] == "umum" ? 'Kasi Umum ' : "Kasi Usaha", '-', statusSelf('wait', 'Draft')]);
+          if (n_role == 'kasi_umum' || n_role == 'kasi_usaha') {
             document.getElementById('btn_act_b').style.display = 'block';
           }
           return renderData;
@@ -698,7 +699,7 @@
             btn = '';
 
           }
-          renderData.push([renderDate(data['date_acc_7']), data['nama_acc_7'], data['tujuan'] = "umum" ? 'Kasi Umum ' : "Kasi Usaha", btn + data['catatan_7'], statusSelf('ok', 'Draft')]);
+          renderData.push([renderDate(data['date_acc_7']), data['nama_acc_7'], data['tujuan'] == "umum" ? 'Kasi Umum ' : "Kasi Usaha", btn + data['catatan_7'], statusSelf('ok', 'Draft')]);
         }
 
         if (data['id_tahap_proposal'] == '7') {
@@ -768,13 +769,13 @@
               }
               tx += ' <br>' + data['nama_tim_' + i];
               if (data['act_tim_' + i] == '0')
-                inf = statusSelf('wait', 'Draft')
+                inf = statusSelf('wait', 'Evaluation')
               else if (data['act_tim_' + i] == '1')
                 inf = statusSelf('ok', 'Diterima')
               else
                 inf = statusSelf('x', 'Ditolak')
               if (data['doc_tim_' + i] != '') {
-                inf += `<br><button type="button" onclick="myFunctionRenderFiles('doc_survey','${data['doc_tim_' + i]}','')" class="btn btn-primary" data-toggle="modal" data-target=".modal_files"><i class="ri-search-eye-line"></i> Document</button><br>`
+                inf += `<br><button type="button" onclick="myFunctionRenderFiles('doc_survey','${data['doc_tim_' + i]}','')" class="btn btn-primary" data-toggle="modal" data-target=".modal_files"><i class="ri-search-eye-line"></i> Lampiran</button><br>`
               }
               renderDataSurvey.push([data['nama_tim_' + i], data['title_role_' + i], data['cctn_' + i], inf]);
             }

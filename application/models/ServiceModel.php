@@ -303,14 +303,20 @@ class ServiceModel extends CI_Model
         $now = date("Y-m-d h:i:s");
 
         if ($data['keputusan'] == 'terima') {
-            // $this->db->set('status_proposal', 'DIPROSES');
             $this->db->set('id_tahap_proposal', '3');
-            // $this->db->set('tujuan', $data['tujuan']);
-            // $this->db->set('survey', $data['survey']);
+            $this->db->set('catatan_3', $data['catatan']);
+            $this->db->set('acc_3', $this->session->userdata()['id_user']);
+            $this->db->set('date_acc_3', $now);
+        } else {
+            $this->db->set('tolak_in', '3');
+            $this->db->set('id_tahap_proposal', '6');
+            $this->db->set('survey', 'tidak');
+            $this->db->set('status_proposal', 'DITOLAK');
             $this->db->set('catatan_3', $data['catatan']);
             $this->db->set('acc_3', $this->session->userdata()['id_user']);
             $this->db->set('date_acc_3', $now);
         }
+
         // $this->db->set(DataStructure::slice($data, ['nama', 'nib', 'catatan_fo', 'user_sending', 'alamat', 'deskripsi', 'no_dokumen', 'dokumen_permohonan', 'tujuan', 'survey', 'nama_badan']));
         $this->db->where('id_pengiriman', $data['id_pengiriman']);
         $this->db->update('pengiriman');
@@ -331,6 +337,7 @@ class ServiceModel extends CI_Model
         } else {
             $this->db->set('tolak_in', '4');
             $this->db->set('id_tahap_proposal', '5');
+            $this->db->set('survey', 'tidak');
             $this->db->set('status_proposal', 'DITOLAK');
             $this->db->set('catatan_4', $data['catatan']);
             $this->db->set('acc_4', $this->session->userdata()['id_user']);

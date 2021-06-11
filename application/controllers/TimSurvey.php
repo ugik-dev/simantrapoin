@@ -14,7 +14,7 @@ class TimSurvey extends CI_Controller
 
     public function index()
     {
-        $this->SecurityModel->rolesOnlyGuard(array('dinkes', 'kasi_umum', 'kasi_usaha'));
+        $this->SecurityModel->controllerOnlyGuard('timsurvey', true);
         $pageData = array(
             'title' => 'Pengajuan',
             'content' => 'frontoffice/Pengajuan',

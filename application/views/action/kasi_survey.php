@@ -13,10 +13,10 @@
                     <div class="form-group">
                         <input hidden value="<?= $contentData['id_pengiriman'] ?>" name="id_pengiriman">
                         <input hidden id='email_user_survey' name="email_user">
-                        <label>Keputusan</label>
-                        <select class="form-control mb-3" id="act_4" name="keputusan" required>
+                        <!-- <label>Keputusan</label> -->
+                        <select hidden class="form-control mb-3" id="act_4" name="keputusan" required>
                             <option selected=""></option>
-                            <option value="terima">Terima</option>
+                            <option value="terima" selected>Terima</option>
                             <option value="tolak">Tolak</option>
                             <!-- <option value="3">Three</option> -->
                         </select>
